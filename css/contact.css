@@ -1,0 +1,148 @@
+.contact-us-header-background {
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.836), rgba(49, 163, 221, 0.452)) ,url(../images/about_us_background.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 100%;
+    height: 420px;
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-start;
+}
+
+
+
+.contact-us-header-background h1 {
+    font-size: 3rem;
+    color: white;
+    padding: 0 0 160px 100px;
+}
+
+
+
+
+.form-container {
+    padding: 0 15px;
+}
+
+
+.form-container form {
+    background-color: white;
+    width: 700px;
+    max-width: 100%;
+    margin: -100px auto 80px;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    font-size: .875rem;
+}
+
+
+.form-container form h2 {
+    line-height: 2;
+    margin-bottom: 50px;
+    font-size: 1rem;
+}
+  
+
+.form-container form label {
+    display: block;
+    margin-bottom: 10px;
+}
+
+
+  
+
+.form-container form input[type="text"],
+input[type="email"],
+input[type="password"],
+textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 25px;
+    border: 1px solid silver;
+    border-radius: 3px;
+    font-size: .875rem;
+    outline: none;
+}
+
+
+
+
+  
+
+.form-container form button {
+    width: 50%;
+    padding: 10px 14px;
+    background-color: rgb(80, 80, 80);
+    color: white;
+    border: none;
+    outline: none;
+    border-radius: 3px;
+    cursor: pointer;
+    margin: auto;
+    display: block;
+}
+  
+
+.form-container form button:hover {
+    background-color: black;
+}
+  
+
+
+form .form-contact {
+    margin-top: 70px;
+    text-align: center;
+    will-change: transform;
+}
+
+form .form-contact p {
+    line-height: 1.9
+}
+
+form .form-contact p .fa-envelope {
+    margin-right: 5px;
+}
+
+form .form-contact p .fa-phone {
+    margin-right: 5px;
+}
+
+form .form-contact .icons {
+    margin-top: 20px;
+    cursor: default
+}
+
+form .form-contact .icons a {
+    color: inherit;
+    margin-right: 7px;
+}
+
+form .form-contact .fa-brands {
+    font-size: 1.3rem;
+    cursor: pointer;
+    transition: color .3s ease-out
+}
+
+form .form-contact .icons a .fa-facebook-f:hover {
+    color: rgb(66 103 178);
+}
+
+form .form-contact .icons a .fa-instagram:hover {
+    color: rgb(193 53 132);
+}
+
+form .form-contact .icons a .fa-twitter:hover {
+    color: rgb(29 161 242);
+}
+
+form .form-contact .icons a .fa-linkedin-in:hover {
+    color: rgb(0, 119, 181);
+}
+
+
+
+
+
+

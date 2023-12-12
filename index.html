@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>AKO SVE USPIJE NEKA OVO BUDE PROJEKAT ZA GITHUB</title>
+        <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+        <link rel="stylesheet" href="css/style.css">
+        <link rel="stylesheet" href="css/media_queries.css">
+        
+    </head>
+    <body>
+
+        <!---------------------------------------------------     HEADER(NAVBAR)     ------------------------------------------------------>
+        <header>
+            <a href="index.html">
+                <img id="logo" src="images/logo.png" alt="Yorkshire Logo" title="Home">
+            </a>
+
+            <nav id="navbar">
+                <ul>
+                    <li><a href="index.html">HOME</a></li>
+                    <li><a href="contact.html">CONTACT</a></li>
+                    <li><a href="about_us.html">ABOUT US</a></li>  
+                    
+                </ul>
+            </nav>
+            
+            <div class="cart-icon" title="Your cart">
+                <i class="fas fa-shopping-cart"></i>
+                <span class="badge">0</span>
+            </div>
+            <i id="hamburger-menu-icon" class="fa-solid fa-bars"></i>
+        </header>
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        <!---------------------------------------------------     MAIN     ------------------------------------------------------>
+        <main id="main">
+
+
+            <!---------------------------------------------------     TITLE SECTION     ------------------------------------------------------>
+            <section class="title-section">
+                <div>
+                    <h1>YORKSHIRE</h1>
+                    <h2>Versatile online marketplace</h2>
+                    <h2>Quality product selection <i class="fa fa-down-long" id="animate-arrow"></i></h2>
+                    <p id="p-for-animation">Our goal is to make your shopping experience exceptional</p>
+                </div>
+    
+                <div class="button-wrapper">
+                    <button><a href="contact.html">CONTACT US</a></button><button id="learn-more-button">LEARN MORE</button>
+                </div>
+                 
+            </section>
+
+
+            <!---------------------------------------------------     WHAT WE DO SECTION     ------------------------------------------------------>
+            <section class="what-we-do-section">
+                <h1>WHAT WE DO</h1>
+                <div class="expertise-wrapper">
+                    <div>
+                        <h2>Providing Premium E-commerce Solutions</h2>
+                        <p>- Guaranteed satisfaction with our top-notch services <br>
+                        - Offering a wide range of products including electronics, clothing and more</p>
+                        
+                        <h3>Selling High-Quality Products</h3>
+                        <p>Buy high-quality products! <i id="fa-products-section-trigger" class="fa fa-arrow-down"></i></p>
+                        
+
+                        <h3>Quality Assurance</h3>
+                        <p>- We stand behind our work with <strong>warranties</strong><br>
+                        Take a look at some of our Customer Reviews <i id="fa-customer-products-section-trigger" class="fa fa-arrow-down"></i></p>
+
+                        <h3>Years of Experience</h3>
+                        <p>- We bring <strong>over 15 years</strong> of experience in the e-commerce industry <br>
+                        - We strive for excellence in every solution</p><br>
+
+                        <p>Contact us today for more info! <button><a href="contact.html">Contact Us <i class="fa fa-arrow-right-long"></i></a></button></p>
+                        
+
+                        
+                    </div>
+                </div>
+            </section>
+
+
+           
+           
+            <hr>
+
+     
+
+
+            <!---------------------------------------------------     PRODUCTS SECTION     ------------------------------------------------------>
+            <section class="products-section">
+                <h1>Explore some of our products</h1>
+                        
+                <label for="category-select">Select a category:</label>
+                <select id="category-select">
+                    <option value="men's clothing">Men's Clothing</option>
+                    <option value="jewelery">Jewelery</option>
+                    <option value="electronics">Electronics</option>
+                    <option value="women's clothing">Women's Clothing</option>
+                </select>
+
+                <div class="products" id="product-container">
+                    <!-- Div koji ce se dinamicki popuniti putem JS -->
+                </div>
+            </section>
+
+
+
+
+
+
+            <!---------------------------------------------------     CUSTOMER REVIEWS SECTION     ------------------------------------------------------>
+            <section class="customer-reviews-section">
+                <h1>Customer Feedback</h1>
+                <div class="customers-wrapper">
+                    <div class="single-customer">
+                        <img src="images/john_doe.jpg" alt="John Doe">
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="far fa-star"></i>
+                        <h4>John Doe</h4>
+                        <p>"Fast delivery and great products! YORKSHIRE is my go-to e-commerce store."</p>
+                    </div>
+                    <div class="single-customer">
+                        <img src="images/jack_smith.jpg" alt="Jane Doe">
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star-half-alt"></i>
+                        <h4>Jack Smith</h4>
+                        <p>"YORKSHIRE's e-commerce offers top-notch products. Impressive quality!"</p>
+                    </div>
+                    <div class="single-customer">
+                        <img src="images/chloe_bennett.jpg" alt="Jack Smith">
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="far fa-star"></i>
+                        <h4>Chloe Bennett</h4>
+                        <p>"Exceptional products and outstanding service. Highly recommended!"</p>
+                    </div>
+                </div>    
+            </section>
+
+
+            
+       </main>
+
+ 
+      
+       
+       
+       
+       
+       
+       
+       <!---------------------------------------------------     FOOTER     ------------------------------------------------------>
+       <footer>
+            <div class="logo">
+                <img src="images/logo.png" alt="Yorkshire Logo">
+            </div>
+            <div class="footer-links">
+                <a href="#">Info</a><hr>
+                <a href="#">Support</a><hr>
+                <a href="#">Marketing</a><br>
+                <a href="#">Privacy Policy</a><hr>
+                <a href="#">Terms of Sale</a>
+            </div>
+            <div class="footer-contact">
+                <h4>Contact</h4>
+                <p><i class="fa-solid fa-envelope"></i> yorkshire@example.com</p>
+                <p><i class="fa-solid fa-phone"></i> +12 34 56789</p>
+                <div class="icons">
+                    <a href="#" title="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="#" title="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#" title="Twitter"><i class="fa-brands fa-twitter"></i></a>
+                    <a href="#" title="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+                </div>
+            </div>
+            <p id="copyright">&copy; 2023 Yorkshire Computer Services</p>
+        </footer>
+        
+        
+        
+        
+        
+        
+        <!--↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓     SKRIVAJUCI CART     ↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓-->
+        <div class="cart-toggler-wrapper">
+           <div class="cart">
+               <h2>YOUR CART</h2>
+               
+               <ul id="cart-items">
+                   <!-- Lista koja ce se dinamicki popuniti putem JS -->
+                </ul>
+                
+                <div id="cart-summary">
+                    <h3 id="total-price">Total: $0.00</h3>
+                    <button id="checkout-button">Checkout</button>
+                    <button id="clear-cart-button">Remove All</button>
+                </div>
+                
+                <span class="x" title="Close">x</span>
+                
+                
+           </div>
+           
+           <div id="loader">
+                <h1>YORKSHIRE</h1>
+           </div>
+        </div>
+        <!--↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑     SKRIVAJUCI CART     ↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑-->
+        
+        
+
+
+
+
+
+
+
+
+        <!-- Scroll to top button -->
+        <div class="scroll-to-top-button" title="Back to top">
+            <i class="fa fa-angle-up"></i>
+        </div>
+        
+        
+
+
+
+        
+        
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+        <script src="js/gsap.js"></script>
+        <script src="js/script.js" type="module"></script>
+</body>
+</html>

@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Yorkshire</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="stylesheet" href=".//css/style.css">
+    <link rel="stylesheet" href="css/media_queries.css">
+</head>
+<body>
+    
+    <!---------------------------------------------------     HEADER(NAVBAR)     ------------------------------------------------------>
+    <header>
+        <a href="index.html">
+            <img id="logo" src="images/logo.png" alt="Yorkshire Logo" title="Home">
+        </a>
+
+        <nav id="navbar">
+            <ul>
+                <li><a href="index.html">HOME</a></li>
+                <li><a href="contact.html">CONTACT</a></li>
+                <li><a href="about_us.html">ABOUT US</a></li>  
+                
+            </ul>
+        </nav>
+        
+        
+        <i id="hamburger-menu-icon" class="fa-solid fa-bars"></i>
+    </header>
+
+
+
+
+
+
+
+
+    <div class="contact-us-header-background">
+        <h1>Contact</h1>
+    </div>
+    
+
+
+
+    <!---------------------------------------------------     FORMA     ------------------------------------------------------>
+    <div class="form-container">
+        <form id="form"> 
+            <h2>Have a question or need assistance?<br>
+                Feel free to reach out using the form below,<br>
+                and we'll get back to you as soon as possible
+            </h2>
+            
+            <div class="name-wrapper">
+                <label for="name">Your name</label>
+                <input type="text" id="name" name="name" required>
+            </div>
+
+            <div class="email-wrapper">
+                <label for="email">Your email address</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            
+
+            <label for="subject">Subject</label>
+            <input type="text" id="subject" name="subject" placeholder="Optional">
+
+
+            <div class="message-wrapper">
+                <label for="message">Your message</label>
+                <textarea id="message" name="message" rows="4" cols="50" required></textarea>
+            </div>
+
+
+            <button id="form-btn" type="submit">Send</button>
+
+            <div class="form-contact">
+                <p><i class="fa-solid fa-envelope"></i> yorkshire@example.com</p>
+                <p><i class="fa-solid fa-phone"></i> +12 34 56789</p>
+                <div class="icons">
+                    <a href="#" title="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="#" title="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#" title="Twitter"><i class="fa-brands fa-twitter"></i></a>
+                    <a href="#" title="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+                </div>
+            </div>
+            </div>
+        </form>
+    </div>
+
+
+
+
+
+
+
+
+
+    <!---------------------------------------------------     FOOTER     ------------------------------------------------------>
+    <footer>
+        <div class="logo">
+            <img src="images/logo.png" alt="Yorkshire Logo">
+        </div>
+        <div class="footer-links">
+            <a href="#">Info</a><hr>
+            <a href="#">Support</a><hr>
+            <a href="#">Marketing</a><br>
+            <a href="#">Privacy Policy</a><hr>
+            <a href="#">Terms of Sale</a>
+        </div>
+        <div class="footer-contact">
+            <h4>Contact</h4>
+            <p><i class="fa-solid fa-envelope"></i> yorkshire@example.com</p>
+            <p><i class="fa-solid fa-phone"></i> +12 34 56789</p>
+            <div class="icons">
+                <a href="#" title="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+                <a href="#" title="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                <a href="#" title="Twitter"><i class="fa-brands fa-twitter"></i></a>
+                <a href="#" title="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+            </div>
+        </div>
+        <p id="copyright">&copy; 2023 Yorkshire Computer Services</p>
+    </footer>
+
+
+
+
+
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="js/gsap_contact.js"></script>
+    <script src="js/contact.js"></script>
+</body>
+</html>

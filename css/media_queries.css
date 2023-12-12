@@ -1,0 +1,447 @@
+/* -----------------------------------------------------------    do 1200px     --------------------------------------------------------------- */
+@media only screen and (max-width: 1200px) {
+
+
+    header {
+        padding-right: 130px;
+    }
+
+    .title-section {
+        padding-bottom: 100px
+    }
+    
+    .what-we-do-section .expertise-wrapper div {
+        max-width: 750px;
+    }
+
+    .customer-reviews-section .customers-wrapper {
+        gap: 46px;
+    }
+
+    .customer-reviews-section .customers-wrapper .single-customer {
+        width: 16.875rem;
+    }
+
+    footer {
+        gap: 35px;
+    }
+
+    footer .logo {
+        width: 230px
+    }
+
+    footer .logo img {
+        width: 230px
+    }
+
+    footer .footer-contact {
+        width: 230px
+    }
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* -----------------------------------------------------------    do 992px     --------------------------------------------------------------- */
+@media only screen and (max-width: 992px) {
+
+
+    header {
+        padding-left: 45px
+    }
+
+    #navbar ul li {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+
+    .what-we-do-section .expertise-wrapper div p button {
+        width: 200px;
+    }
+
+    .products-section .products .single-product {
+        flex: 40%;
+    }
+
+
+
+
+    footer {
+        padding: 100px 50px;
+        gap: 100px;
+    }
+
+
+    footer .logo img {
+        width: 230px
+    }
+
+
+    footer .footer-contact {
+        margin: auto;
+    }
+
+
+    .cart-toggler-wrapper .cart {
+        width: 670px
+    }
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* -----------------------------------------------------------    do 768px     --------------------------------------------------------------- */
+@media only screen and (max-width: 768px) {
+
+
+  
+
+    .fa-shopping-cart {
+        font-size: 1.5rem
+    }
+
+    .badge {
+        padding: 3px 6px;
+    }
+
+    .cart-icon {
+        top: 20px;
+    }
+
+    
+    #navbar {
+        opacity: 0;
+        background-color: rgb(49, 163, 221);
+        position: absolute;
+        top: -100vh;
+        left: 0;
+        width: 100%;
+        z-index: 3333333333;
+        height: 40vh;
+    }
+
+    #navbar ul {
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 100%;
+    }
+
+    #navbar ul li a {
+        color: black
+    } 
+
+    
+    #hamburger-menu-icon {
+        display: block;
+    }
+
+
+ 
+    .title-section {
+        padding-bottom: 65px;
+        gap: 7%
+    }
+
+    .title-section div h1 {
+        font-size: 3.75rem
+    }
+
+    .title-section div h2 {
+        font-size: 1.45rem;
+        margin-bottom: 5px;
+    }
+
+
+
+    .title-section div p {
+        font-size: 1rem
+    }
+
+    .title-section div button {
+        display: block;
+        width: 500px;
+        margin-bottom: 12px;
+        font-size: 1.125rem;
+    }
+
+
+    .what-we-do-section h1 {
+        font-size: 3.5rem
+    }
+
+    .what-we-do-section .expertise-wrapper div p button {
+        display: block;
+        margin: auto;
+        margin-top: 30px;
+        width: 70%;
+    }
+
+
+    .customer-reviews-section .customers-wrapper .single-customer:last-child {
+        padding-bottom: 0
+    }
+
+
+    footer {
+        gap: 50px;
+    }
+
+    
+
+
+    /* ---------------- contact.html ------------------- */
+    .cart-toggler-wrapper .cart {
+        width: 540px
+    }
+
+
+}
+
+
+
+
+
+
+
+/* -----------------------------------------------------------    do 576px     --------------------------------------------------------------- */
+@media only screen and (max-width: 576px) {
+
+
+    header {
+        padding-left: 20px;
+    }
+
+
+    hr {
+        margin: 60px auto;
+    }
+
+    .cart-icon {
+        right: 25px;
+    }
+
+    #hamburger-menu-icon {
+        right: 28px;
+    }
+
+    .title-section {
+        justify-content: flex-end;
+        background-attachment: scroll;
+    }
+
+    .title-section div h1 {
+        font-size: 3.3rem
+    }
+
+    .title-section div h2 {
+        font-size: 1.1rem;
+        margin-bottom: 5px;
+    }
+
+    .fa-down-long {
+        font-size: 30px;
+        margin-top: 6px;
+    }
+
+
+    .title-section div button {
+        background-color: rgba(0, 0, 0, .5);
+        width: 300px;
+    }
+
+    .what-we-do-section {
+        padding: 0 12px;
+    }
+
+    .what-we-do-section h1 {
+        font-size: 2.4rem
+    }
+
+    .what-we-do-section .expertise-wrapper div {
+        padding: 45px 14px 25px 14px;
+    }
+
+
+
+    .what-we-do-section .expertise-wrapper div p button {
+        width: 90%;
+    }
+
+
+    .products-section {
+        padding: 0 12px;
+    }
+
+    .products-section h1 {
+        font-size: 2rem;
+    }
+
+    .products-section .products .single-product {
+        flex: 100%;
+        
+    }
+
+    .customer-reviews-section {
+        padding: 0 15px 10px 15px;
+        margin-top: 60px
+    }
+
+    .customer-reviews-section h1 {
+        font-size: 2rem;
+        padding-top: 50px;
+    }
+
+    .customer-reviews-section .customers-wrapper .single-customer:last-child {
+        padding-bottom: 62px
+    }
+
+    footer {
+        padding: 60px 15px 100px 15px;
+    }
+
+
+
+
+
+
+    /* ---------------------------     about_us.html     --------------------------- */
+    .about-us-header-background h1 {
+        font-size: 2.5rem;
+        padding-left: 50px;
+        padding-right: 50px
+    }
+
+    .about-us-wrapper {
+        padding: 50px 15px;
+    }
+
+    .about-us-wrapper .image {
+        text-align: center;
+    }
+
+
+
+
+
+
+    /* ---------------------------     contact.html     --------------------------- */
+    .contact-us-header-background h1 {
+        font-size: 2.5rem;
+        padding-left: 50px;
+        padding-right: 50px
+    }
+
+    .form-container form button {
+        width: 100%;
+    }
+
+
+
+
+    
+
+    /* ---------------------------     CART     --------------------------- */
+    .cart-toggler-wrapper .cart {
+        padding: 50px 18px 80px;
+        width: 90%;
+        height: 80%;
+    }
+
+    #cart-items {
+        padding: 5px;
+        height: 65%;
+        
+    }
+
+    #cart-items img {
+        height: 30px;
+        width: 30px;
+    }
+
+    #cart-items p {
+        font-size: .75rem
+    }
+
+    .cart-toggler-wrapper .cart h2 {
+        font-size: 1.3rem;
+        margin-bottom: 15px;
+    }
+
+    #total-price {
+        width: fit-content;
+        font-size: 1rem
+    }
+
+
+    #loader h1 {
+        font-size: 3rem
+    }
+    
+
+
+
+
+
+    .scroll-to-top-button {
+        bottom: 20px;
+        right: 15px;
+        padding: 12px 16px;
+    }
+
+    .scroll-to-top-button .fa-angle-up {
+        font-size: 1.1rem       
+    }
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

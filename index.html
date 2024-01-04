@@ -27,6 +27,24 @@
                     
                 </ul>
             </nav>
+
+
+
+
+            <div class="login-register">
+                <button class="login-button">Log In</button>
+                <button class="register-button">Sign Up</button>
+            </div>
+        
+            
+            <div class="logout-delete">
+                <button class="logout-button">Log Out</button>
+                <button class="delete-button" title="Delete Your Account"><i class="fas fa-user-times"></i></button>
+            </div>
+
+
+
+
             
             <div class="cart-icon" title="Your cart">
                 <i class="fas fa-shopping-cart"></i>
@@ -243,6 +261,46 @@
         <div class="scroll-to-top-button" title="Back to top">
             <i class="fa fa-angle-up"></i>
         </div>
+
+
+
+
+
+
+
+
+
+
+        <!-- Skrivajuce forme -->
+        <div class="login-form-wrapper">
+            <form id="login-form">
+                <h3>Log In</h3>
+                <label for="username_or_email">Your username or email</label>
+                <input type="text" name="username_or_email" id="username_or_email" autocomplete="username">
+                <label for="password">Your password</label>
+                <input type="password" name="password" id="password" autocomplete="current-password">
+                <button type="submit">LOG IN</button>
+                <span class="close-form-button">x</span>
+            </form>
+        </div>
+    
+
+
+        <div class="register-form-wrapper">
+            <form id="register-form">
+                <h3>Sign Up!</h3>
+                <label for="new-username">Your username</label>
+                <input type="text" name="new-username" id="new-username">
+                <label for="new-email">Your email</label>
+                <input type="email" name="new-email" id="new-email" autocomplete="email">
+                <label for="new-password">Your password</label>
+                <input type="password" name="new-password" id="new-password" autocomplete="current-password">
+                <button type="submit">SIGN UP</button>
+                <span class="close-form-button">x</span>
+            </form>
+        </div>
+
+
         
         
 

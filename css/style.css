@@ -121,13 +121,248 @@ header a img:hover {
     color: rgb(201, 201, 201);
     text-decoration: none;
     transition: color .3s;
-    font-size: 0.875rem;
+    font-size: 0.75rem;
 }
 
 
 #navbar ul li a:hover {
     color: white;
 }
+
+
+
+
+
+
+
+
+
+
+/* ------------------------------------ login,registracija,odjava stilovi.... ---------------------------------- */
+.login-register {
+    cursor: default;
+}
+
+.login-register .login-button {
+    font-size: .75rem;
+    width: 68px;
+    padding: 7px;
+    background-color: transparent;
+    color: rgb(49, 163, 221);
+    border: 1px solid rgb(49, 163, 221);
+    outline: none;
+    cursor: pointer;
+}
+
+.login-register .register-button {
+    font-size: .75rem;
+    width: 68px;
+    padding: 7px;
+    background-color: rgb(49, 163, 221);
+    color: black;
+    border: 1px solid rgb(49, 163, 221);
+    outline: none;
+    cursor: pointer;
+}
+
+
+
+.logout-delete {
+    cursor: default;
+}
+
+.logout-delete .logout-button {
+    font-size: .75rem;
+    width: 68px;
+    padding: 7px;
+    outline: none;
+    cursor: pointer;
+    background-color: transparent;
+    /* border-radius: 7px; */
+    color: rgb(49, 163, 221);
+    border: 1px solid rgb(49, 163, 221);
+}
+
+.logout-delete .delete-button {
+    width: 35px;
+    font-size: .75rem;
+    padding: 7px;
+    background-color: rgb(221, 49, 49);
+    /* border-radius: 7px; */
+    color: rgb(200, 200, 200);
+    border: 1px solid rgb(221, 49, 49);
+    outline: none;
+    cursor: pointer;
+}
+
+
+
+
+
+
+
+
+
+                                     /* REGISTER FORM WRAPPER I LOGIN FORM WRAPPER  */
+/* REGISTER FORM */
+.register-form-wrapper {
+    height: 100vh;
+    width: 100%;
+    background-color: rgba(255, 255, 255, .8);
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: none;
+    z-index: 20000;
+}
+
+#register-form {
+    background-color: black;
+    color: white;
+    width: 270px;
+    padding: 40px;
+    border-radius: 7px;
+    box-shadow: 0px 0px 10px black;
+    position: relative;
+}
+
+#register-form h3 {
+    font-weight: 400;
+    margin-bottom: 35px;
+}
+
+#register-form label {
+    display: block;;
+    font-size: .9rem
+}
+
+#register-form input {
+    margin-bottom: 20px;
+    font-size: .9rem;
+    outline: none;
+    padding: 1px 5px;
+}
+
+#register-form button {
+    padding: 7px;
+    background-color: rgb(165, 165, 165);
+    border-radius: 1rem;
+    color: black;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    transition: all .3s;
+    width: 188px;
+    margin-top: 5px
+}
+
+
+
+
+
+
+
+
+
+
+
+/* ZAJEDNICKA KLASA ZA 'X' U OBJE FORME */
+.close-form-button {
+    position: absolute;
+    top: 4px;
+    right: 5px;
+    border-radius: 50%;
+    font-size: .75rem;
+    cursor: pointer;
+    color: silver;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: .1rem .5rem .3rem .45rem;
+}
+.close-form-button:hover {
+    background-color: rgba(255, 255, 255, .2)
+}
+
+
+
+
+
+
+
+
+
+
+
+/* LOGIN FORM */
+.login-form-wrapper {
+    z-index: 20000;
+    height: 100vh;
+    width: 100%;
+    background-color: rgba(255, 255, 255, .8);
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: none;
+}
+
+#login-form {
+    background-color: black;
+    color: white;
+    width: 270px;
+    padding: 40px;
+    border-radius: 7px;
+    box-shadow: 0px 0px 10px black;
+    position: relative;
+}
+
+#login-form h3 {
+    font-weight: 400;
+    margin-bottom: 35px;
+}
+
+#login-form label {
+    display: block;;
+    font-size: .9rem
+}
+
+#login-form input {
+    margin-bottom: 20px;
+    font-size: .9rem;
+    outline: none;
+    padding: 1px 5px;
+}
+
+#login-form button {
+    padding: 7px;
+    background-color: rgb(155, 155, 155);
+    border-radius: 1rem;
+    color: black;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    transition: all .3s;
+    width: 188px;
+    margin-top: 5px
+}
+
+
+
+/* ------------------------------------------------------------------------------------------- */
+
+
+
+
+
+
+
+
+
+
 
 .cart-icon {
     position: fixed;
@@ -157,18 +392,18 @@ header a img:hover {
 
 .fa-shopping-cart {
     font-size: 1.9rem;
-    color: white
+    color: rgb(200, 200, 200)
 }
 
 .badge {
     position: absolute;
     top: -10px;
     right: -10px;
-    background-color: red;
-    color: white;
+    background-color: rgb(49, 163, 221);
+    color: rgb(255, 255, 255);
     border-radius: 50%;
     padding: 5px 8px;
-    font-size: 10px;
+    font-size: 9.6px;
 }
 
 
@@ -557,7 +792,7 @@ header a img:hover {
     border-bottom: 3px double silver;
     padding-bottom: 10px;
     color: rgb(87, 87, 87);
-    font-size: 0.875rem;
+    font-size: 0.75rem;
 }   
 
 
@@ -578,7 +813,8 @@ footer {
     background-color: black;
     color: rgb(141, 141, 141);
     display: flex;
-    font-size: .875rem;
+    /* font-size: .875rem; */
+    font-size: 0.75rem;
     justify-content: center;
     gap: 100px;
     flex-wrap: wrap;

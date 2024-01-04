@@ -11,6 +11,10 @@ import updateProducts from './fetch_display_data.js';
 import Cart from './cart.js'
 
 
+/* Korisnik */
+import User from './user.js';
+
+
 /* Event listeners callback funkcije */
 import {
     headerToggler,
@@ -36,6 +40,24 @@ import {
 
 
 
+
+
+
+
+/* Unikatni token korisnika */
+let token = '';
+if (JSON.parse(localStorage.getItem('registeredUser'))) {
+    token = JSON.parse(localStorage.getItem('registeredUser')).token;
+} else {
+    token = generateUniqueToken();
+}
+
+
+
+
+
+
+
 // Event listener na 'select' elementu za prikazivanje proizvoda iz izabrane kategorije
 const categorySelect = document.getElementById('category-select');
 categorySelect.addEventListener('change', () => {
@@ -49,13 +71,6 @@ updateProducts(`men's clothing`);
 ////////////////////////////////////////////////////////////////////////////////////////
 
 
-
-// Kreiramo unikatni token za svakog pojedinacnog korisnika koji ce se koristiti za autorizaciju i autentifikaciju
-const userToken = localStorage.getItem('user_token');
-if (!userToken) {
-    const newToken = generateUniqueToken();
-    localStorage.setItem('user_token', newToken);
-}
 
 
 
@@ -155,7 +170,7 @@ hamburgerMenuIcon.addEventListener('click', () => {
 
 
 /* --------------------------------------------------------------------------------------
- ------------------------------- KREIRAMO INSTANCU KLASE --------------------------------
+ ------------------------------- KREIRAMO INSTANCU KLASE 'Cart' --------------------------------
  --------------------------------------------------------------------------------------*/
 const shoppingCart = new Cart();
 
@@ -170,7 +185,11 @@ update_checkout_removeAll_buttonsStatus();
 
 // Simuliramo porudzbinu
 checkoutButton.addEventListener('click', () => {
-    placeOrder(document.querySelector('#loader'), checkoutButton, clearCartButton, userToken, shoppingCart, update_addToCartButtonsStatus, cartToggler);
+    if (JSON.parse(localStorage.getItem('loggedInUser'))) {
+        placeOrder(document.querySelector('#loader'), checkoutButton, clearCartButton, token, shoppingCart, update_addToCartButtonsStatus, cartToggler);
+    } else {
+        alert('You must be logged in to place your order');
+    }
 });
 
 
@@ -239,11 +258,40 @@ function isProductInCart(productID) {
 
 
 
+
+
+
+
+
+
+
+/* --------------------------------------------------------------------------------------
+ ------------------------------- KREIRAMO INSTANCU KLASE 'User' --------------------------------
+ --------------------------------------------------------------------------------------*/
+const user = new User();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /* ------------------------------------------------------- EXPORTS ------------------------------------------------------- */
 export {
     update_checkout_removeAll_buttonsStatus,
     update_addToCartButtonsStatus,
     isProductInCart,
     shoppingCart,
-    userToken
+    token
 }

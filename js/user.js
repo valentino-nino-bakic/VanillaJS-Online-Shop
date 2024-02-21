@@ -45,27 +45,24 @@ class User {
 
     
     
+
     login() {
         let registeredUser = JSON.parse(localStorage.getItem('registeredUser'));
         if (!this.validateOnLogin()) {
             return false;
         }
-        if (registeredUser) {
-            if ((this.usernameOrEmail.value !== registeredUser.username || this.usernameOrEmail.value !== registeredUser.email) && this.password.value !== registeredUser.password) {
-                alert('There is no such username or email and password in our database, try again')
-                return false;
-            }
-        } else {
-            alert('There is no such username or email and password in our database, try again')
-            return false;
-        }
         
-        let loggedInAgain = JSON.parse(localStorage.getItem('registeredUser'));
-        localStorage.setItem('loggedInUser', JSON.stringify(loggedInAgain));
-        location.reload();
-        return true;
+        if (registeredUser) {
+            if ((this.usernameOrEmail.value === registeredUser.username || this.usernameOrEmail.value === registeredUser.email) && this.password.value === registeredUser.password) {
+                localStorage.setItem('loggedInUser', JSON.stringify(registeredUser));
+                location.reload();
+                return true;
+            }
+        }
+       
+        alert('There is no such username or email and password in our database, try again');
+        return false;
     }
-
 
 
 

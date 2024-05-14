@@ -4,6 +4,7 @@ const mongoose = require('mongoose');
 require('dotenv').config();
 const PORT = process.env.PORT;
 const DB_CONNECTION_STRING = process.env.DB_CONNECTION_STRING;
+const userRouter = require('./routes/userRoutes');
 
 
 app.use(express.json());
@@ -23,14 +24,18 @@ connectToDatabase();
 
 
 
+
+app.use('/api', userRouter);
+
+
+
+
 app.get('/', (req, res) => {
     res.render('index');
 });
-
 app.get('/contact', (req, res) => {
     res.render('contact');
 });
-
 app.get('/about', (req, res) => {
     res.render('about_us');
 });

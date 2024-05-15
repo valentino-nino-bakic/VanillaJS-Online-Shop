@@ -1,5 +1,7 @@
-const User = require('../models/userModel');
 const jwt = require('jsonwebtoken');
+const bcrypt = require('bcrypt');
+const SECRET_KEY = process.env.SECRET_KEY;
+const User = require('../models/userModel');
 
 
 
@@ -14,10 +16,13 @@ const UserController = {
                 return res.status(400).json({ message: `Username ${usernameOccupied} already exists, try with different one...` });
             }
 
+            const salt = await bcrypt.genSalt(10);
+            const hashedPassword = await bcrypt.hash(password, salt);
+
             const newUserData = {
                 username: username,
                 email: email,
-                password: password
+                password: hashedPassword
             }
             const newUser = new User(newUserData);
 
@@ -37,11 +42,16 @@ const UserController = {
         try {
             const { usernameOrEmail, password } = req.body;
             const user = await User.findOne({ $or: [{ username: usernameOrEmail }, { email: usernameOrEmail }] });
-            if (!user || user.password !== password) {
-                return res.status(401).json({ message: 'Invalid username/email or password' });
+            if (!user) {
+                return res.status(401).json({ message: 'Invalid username/email' });
             }
 
-            const token = jwt.sign({ id: user._id }, JWT_SECRET, { expiresIn: '1h' });
+            const validPassword = await bcrypt.compare(password, user.password);
+            if (!validPassword) {
+                return res.status(401).json({ message: 'Invalid password' });
+            }
+
+            const token = jwt.sign({ id: user._id }, SECRET_KEY, { expiresIn: '1h' });
             res.status(200).json({ message: 'You have been successfully logged in!', token: token });
 
         } catch (error) {
@@ -55,13 +65,14 @@ const UserController = {
 
     delete: async (req, res) => {
         try {
-            const userId = req.params.id;
-            const user = await User.findById(userId);
-            if (!user) {
-                return res.status(401).json({ message: 'Operation failed, try again later...' });
+            const { password } = req.body;
+
+            const validPassword = await bcrypt.compare(password, req.user.password);
+            if (!validPassword) {
+                return res.status(401).json({ message: 'Invalid password' });
             }
 
-            await User.findByIdAndDelete(userId);
+            await User.findByIdAndDelete(req.user._id);
             return res.status(204).json({ message: 'You have successfully deleted your account!' });
 
         } catch (error) {
@@ -75,14 +86,22 @@ const UserController = {
 
     modify: async (req, res) => {
         try {
-            const userId = req.params.id;
-            const user = await User.findById(userId);
-            if (!user) {
-                return res.status(401).json({ message: 'Operation failed, try again later...' });
+            const { newUsername, newPassword, currentPassword } = req.body;
+
+            const validPassword = await bcrypt.compare(currentPassword, req.user.password);
+            if (!validPassword) {
+                return res.status(401).json({ message: 'Invalid password' });
             }
 
-            const modifiedUserData = req.body;
-            await User.findByIdAndUpdate(userId, modifiedUserData, { new: true });
+            const modifiedUserData = {
+                username: newUsername || req.user.username,
+            }
+            if (newPassword) {
+                const salt = await bcrypt.genSalt(10);
+                modifiedUserData.password = await bcrypt.hash(newPassword, salt);
+            }
+
+            await User.findByIdAndUpdate(req.user._id, modifiedUserData, { new: true });
             return res.status(201).json({ message: 'You have successfully modified your account!' });
 
         } catch (error) {

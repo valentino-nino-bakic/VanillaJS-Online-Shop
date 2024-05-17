@@ -8,6 +8,23 @@ const User = require('../models/userModel');
 const UserController = {
 
 
+    getUser: async (req, res) => {
+        try {
+            const userId = req.params.id;
+            const user = await User.findById(userId);
+            if (!user) {
+                return res.status(404).json({ message: 'User not found' });
+            }
+            return res.status(200).json({ user: user });
+        } catch (error) {
+            console.log(error);
+            res.status(500).json({ message: error.message });
+        }
+    },
+
+
+
+
     signup: async (req, res) => {
         try {
             const { username, email, password } = req.body;
@@ -65,7 +82,7 @@ const UserController = {
 
     delete: async (req, res) => {
         try {
-            const { password } = req.body;
+            const password = req.body.password;
 
             const validPassword = await bcrypt.compare(password, req.user.password);
             if (!validPassword) {
@@ -73,7 +90,7 @@ const UserController = {
             }
 
             await User.findByIdAndDelete(req.user._id);
-            return res.status(204).json({ message: 'You have successfully deleted your account!' });
+            return res.status(200).json({ message: 'You have successfully deleted your account!' });
 
         } catch (error) {
             console.log(error);

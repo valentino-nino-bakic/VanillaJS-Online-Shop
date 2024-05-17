@@ -1,6 +1,3 @@
-import { token } from './script.js'
-
-
 
 
 /* KREIRAMO KLASU ZA LOGIN I REGISTRACIJU KORISNIKA */
@@ -21,20 +18,37 @@ class User {
 
 
 
-    register() {
-        let loggedInUser = {
-            username: this.newUsername.value,
-            email: this.newEmail.value,
-            password: this.newPassword.value,
-            token: token
-        }
-        if (this.validateOnSignUp()) {
-            localStorage.setItem('loggedInUser', JSON.stringify(loggedInUser));
-            localStorage.setItem('registeredUser', JSON.stringify(loggedInUser));
-            document.querySelector('.register-form-wrapper').style.display = 'none';
-            location.reload();
-        } else {
-            alert('Registration failed');
+    async register() {
+        try {
+            const requestBody = {
+                username: this.newUsername.value,
+                email: this.newEmail.value,
+                password: this.newPassword.value,
+            }
+            const apiUrl = 'http://localhost:<PORT_NUMBER>/api/signup';
+
+            if (this.validateOnSignUp()) {
+                const response = await fetch(apiUrl, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(requestBody)
+                })
+                if (!response.ok) {
+                    const data = await response.json();
+                    throw new Error(data.message);
+                }
+                const data = await response.json();
+                alert(data.message);
+                document.querySelector('.register-form-wrapper').style.display = 'none';
+                document.querySelector('.login-form-wrapper').style.display = 'block';
+            } else {
+                alert('Registration failed');
+            }
+        } catch (error) {
+            alert(error);
+            console.log(error);
         }
     }
 
@@ -46,22 +60,37 @@ class User {
     
     
 
-    login() {
-        let registeredUser = JSON.parse(localStorage.getItem('registeredUser'));
-        if (!this.validateOnLogin()) {
-            return false;
-        }
-        
-        if (registeredUser) {
-            if ((this.usernameOrEmail.value === registeredUser.username || this.usernameOrEmail.value === registeredUser.email) && this.password.value === registeredUser.password) {
-                localStorage.setItem('loggedInUser', JSON.stringify(registeredUser));
-                location.reload();
-                return true;
+    async login() {
+        try {
+            const requestBody = {
+                usernameOrEmail: this.usernameOrEmail.value,
+                password: this.password.value,
             }
+            const apiUrl = 'http://localhost:<PORT_NUMBER>/api/login';
+
+            if (this.validateOnLogin()) {
+                const response = await fetch(apiUrl, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(requestBody)
+                })
+                if (!response.ok) {
+                    const data = await response.json();
+                    throw new Error(data.message);
+                }
+                const data = await response.json();
+                localStorage.setItem('token', JSON.stringify(data.token));
+                alert(data.message);
+                location.reload();
+            } else {
+                alert('Failed to log in');
+            }
+        } catch (error) {
+            alert(error);
+            console.log(error);
         }
-       
-        alert('There is no such username or email and password in our database, try again');
-        return false;
     }
 
 
@@ -81,9 +110,33 @@ class User {
 
 
 
-    deleteAccount() {
-        localStorage.clear();
-        location.reload();
+    async deleteAccount(password) {
+        try {
+            const token = JSON.parse(localStorage.getItem('token'));
+            const decodedToken = jwt_decode(token);
+            const userId = decodedToken.id;
+            const apiUrl = `http://localhost:<PORT_NUMBER>/api/delete/${userId}`;
+
+            const response = await fetch(apiUrl, {
+                method: 'DELETE',
+                headers: {
+                    'Authorization': `Bearer: ${token}`,
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ password: password.value })
+            });
+            const data = await response.json();
+            if (!response.ok) {
+                alert(data.message);
+                return;
+            }
+            localStorage.removeItem('token');
+            alert(data.message);
+            location.reload();
+        } catch (error) {
+            alert(error);
+            console.log(error);
+        }
     }
 
 
@@ -138,21 +191,19 @@ class User {
     TAKODJE SE U NJOJ NALAZE EVENT LISTENERI KOJI IZVRSAVAJU LOGIKU DRUGIH METODA IZ OVE KLASE .....
     */
     isInLocalStorage() {
-        let loggedInUserData = JSON.parse(localStorage.getItem('loggedInUser'));
-        if (!loggedInUserData) {
+        const token = JSON.parse(localStorage.getItem('token'));
+        if (!token) {
             document.querySelector('.login-register').style.display = 'block';
             document.querySelector('.logout-delete').style.display = 'none';
             const signUpBtn = document.querySelector('#register-form button');
             signUpBtn.addEventListener('click', e => {
                 e.preventDefault();
                 this.register();
-                
             })
             const logInBtn = document.querySelector('#login-form button');
             logInBtn.addEventListener('click', e => {
                 e.preventDefault();
-                    this.login();
-                    
+                this.login();
             })
             document.querySelector('.login-button').addEventListener('click', () => {
                 document.querySelector('.login-form-wrapper').style.display = 'flex';
@@ -179,17 +230,22 @@ class User {
                 this.logout()
             })
             document.querySelector('.delete-button').addEventListener('click', e => {
-                e.preventDefault();
-                if (confirm(`Are you sure you want to delete your account?
-If so, there is no going back and all your orders will be cancelled if there are any`)) {
-                    let password = loggedInUserData.password;
-                    if (prompt('One last step - enter your password') === password) {
-                        this.deleteAccount()
-                    } else {
-                        alert('Incorrect password');
-                        return
-                    }
+                if (confirm('Are you sure you want to delete your account?\nIf so, there is no going back and all your orders will be cancelled if there are any')) {
+                    document.querySelector('.confirm-account-deletion-wrapper').style.display = 'flex';
+                    document.body.classList.add('disable-scroll');
+                    document.documentElement.classList.add('disable-scroll');
+
                 }
+            });
+            document.querySelector('#confirm-account-deletion-form').addEventListener('submit', async e => {
+                e.preventDefault();
+                const password = document.querySelector('#confirm-account-deletion-password');
+                this.deleteAccount(password);
+            })
+            document.querySelector('#confirm-account-deletion-form .close-form-button').addEventListener('click', async e => {
+                e.target.parentElement.parentElement.style.display = 'none';
+                document.body.classList.remove('disable-scroll');
+                document.documentElement.classList.remove('disable-scroll');
             })
         }
     }

@@ -68,7 +68,7 @@ const UserController = {
                 return res.status(401).json({ message: 'Invalid password' });
             }
 
-            const token = jwt.sign({ id: user._id }, SECRET_KEY, { expiresIn: '1h' });
+            const token = jwt.sign({ id: user._id, username: user.username }, SECRET_KEY, { expiresIn: '1h' });
             res.status(200).json({ message: 'You have been successfully logged in!', token: token });
 
         } catch (error) {
@@ -119,7 +119,9 @@ const UserController = {
             }
 
             await User.findByIdAndUpdate(req.user._id, modifiedUserData, { new: true });
-            return res.status(201).json({ message: 'You have successfully modified your account!' });
+
+            const token = jwt.sign({ id: req.user._id, username: req.user.username }, SECRET_KEY, { expiresIn: '1h' });
+            return res.status(201).json({ message: 'You have successfully modified your account!', token: token });
 
         } catch (error) {
             console.log(error);

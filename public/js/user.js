@@ -9,7 +9,7 @@ class User {
         this.newUsername = document.querySelector('#new-username');
         this.newEmail = document.querySelector('#new-email');
         this.newPassword = document.querySelector('#new-password');
-        this.isInLocalStorage();
+        this.isLoggedIn();
     }
 
 
@@ -54,11 +54,11 @@ class User {
 
 
 
-    
 
 
-    
-    
+
+
+
 
     async login() {
         try {
@@ -66,7 +66,7 @@ class User {
                 usernameOrEmail: this.usernameOrEmail.value,
                 password: this.password.value,
             }
-            const apiUrl = 'http://localhost:<PORT_NUMBER>/api/login';
+            const apiUrl = 'http://localhost:<PORT_NUMBER>:8080/api/login';
 
             if (this.validateOnLogin()) {
                 const response = await fetch(apiUrl, {
@@ -115,7 +115,7 @@ class User {
             const token = JSON.parse(localStorage.getItem('token'));
             const decodedToken = jwt_decode(token);
             const userId = decodedToken.id;
-            const apiUrl = `http://localhost:<PORT_NUMBER>/api/delete/${userId}`;
+            const apiUrl = `http://localhost:<PORTNUMBER>:8080/api/delete/${userId}`;
 
             const response = await fetch(apiUrl, {
                 method: 'DELETE',
@@ -144,6 +144,48 @@ class User {
 
 
 
+    async modifyAccount(newModifiedUsername, newModifiedPassword, currentUserPassword) {
+        try {
+            const token = JSON.parse(localStorage.getItem('token'));
+            const decodedToken = jwt_decode(token);
+            const userId = decodedToken.id;
+            const apiUrl = `http://localhost:<PORT_NUMBER>/api/modify/${userId}`;
+
+            const requestBody = {
+                newUsername: newModifiedUsername,
+                newPassword: newModifiedPassword,
+                currentPassword: currentUserPassword
+            }
+
+            const response = await fetch(apiUrl, {
+                method: 'PUT',
+                headers: {
+                    'Authorization': `Bearer: ${token}`,
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(requestBody)
+            });
+
+            const data = await response.json();
+
+            if (!response.ok) {
+                alert(data.message);
+                return;
+            }
+
+            localStorage.setItem('token', JSON.stringify(data.token));
+            alert(data.message);
+            location.reload();
+        } catch (error) {
+            alert(error);
+            console.log(error);
+        }
+    }
+
+
+
+
+
 
 
     validateOnSignUp() {
@@ -157,7 +199,7 @@ class User {
             return false;
         }
         return true;
-    }     
+    }
 
 
 
@@ -179,23 +221,22 @@ class User {
 
 
 
-    
 
 
 
-    
+
+
 
     /*
     OVA METODA PO OTVARANJU STRANICE AZURIRA SADRZAJ ZACELJA NASE STRANICE NA OSVNOVU STANJA LOCAL STORAGE-A
     (ako je korisnik prijavljen onda prikazujemo 'Log Oout' dugme a ako nije prijavljen prikazujemo 'Log In' i 'Sign Up' dugmad....)
     TAKODJE SE U NJOJ NALAZE EVENT LISTENERI KOJI IZVRSAVAJU LOGIKU DRUGIH METODA IZ OVE KLASE .....
     */
-    isInLocalStorage() {
+    isLoggedIn() {
         const token = JSON.parse(localStorage.getItem('token'));
         if (!token) {
             document.querySelector('.login-register').style.display = 'block';
             document.querySelector('.user-account-actions-container').style.display = 'none';
-            // document.querySelector('.logout-delete').style.display = 'none';
             const signUpBtn = document.querySelector('#register-form button');
             signUpBtn.addEventListener('click', e => {
                 e.preventDefault();
@@ -221,11 +262,17 @@ class User {
                     e.target.parentElement.parentElement.style.display = 'none';
                     document.body.classList.remove('disable-scroll');
                     document.documentElement.classList.remove('disable-scroll');
-                });    
-            });    
+                });
+            });
         } else {
             document.querySelector('.login-register').style.display = 'none';
             document.querySelector('.user-account-actions-container').style.display = 'block';
+
+            const decodedToken = jwt_decode(token);
+            const loggedInUserUsername = document.createElement('p');
+            loggedInUserUsername.textContent = decodedToken.username;
+            document.querySelector('#user-account-actions-toggler').appendChild(loggedInUserUsername);
+
             document.querySelector('#user-account-actions-toggler').addEventListener('click', () => {
                 let userAccountActionsDiv = document.querySelector('.user-account-actions');
                 if (userAccountActionsDiv.style.display === 'none') {
@@ -233,12 +280,13 @@ class User {
                 } else {
                     userAccountActionsDiv.style.display = 'none';
                 }
-            })
-            // document.querySelector('.logout-delete').style.display = 'block';
+            });
+
             document.querySelector('.logout-button').addEventListener('click', e => {
                 e.preventDefault();
                 this.logout()
-            })
+            });
+
             document.querySelector('.delete-button').addEventListener('click', e => {
                 if (confirm('Are you sure you want to delete your account?\nIf so, there is no going back and all your orders will be cancelled if there are any')) {
                     document.querySelector('.confirm-account-deletion-wrapper').style.display = 'flex';
@@ -252,11 +300,27 @@ class User {
                 const password = document.querySelector('#confirm-account-deletion-password');
                 this.deleteAccount(password);
             })
-            document.querySelector('#confirm-account-deletion-form .close-form-button').addEventListener('click', async e => {
-                e.target.parentElement.parentElement.style.display = 'none';
-                document.body.classList.remove('disable-scroll');
-                document.documentElement.classList.remove('disable-scroll');
+
+            document.querySelector('.modify-button').addEventListener('click', e => {
+                document.querySelector('.modify-account-form-wrapper').style.display = 'flex';
+                document.body.classList.add('disable-scroll');
+                document.documentElement.classList.add('disable-scroll');
+            });
+            document.querySelector('#modify-account-form').addEventListener('submit', async e => {
+                e.preventDefault();
+                const newModifiedUsername = document.querySelector('#new-modified-username').value;
+                const newModifiedPassword = document.querySelector('#new-modified-password').value;
+                const currentUserPassword = document.querySelector('#current-user-password').value;
+                this.modifyAccount(newModifiedUsername, newModifiedPassword, currentUserPassword);
             })
+
+            document.querySelectorAll('.close-form-button').forEach(button => {
+                button.addEventListener('click', e => {
+                    e.target.parentElement.parentElement.style.display = 'none';
+                    document.body.classList.remove('disable-scroll');
+                    document.documentElement.classList.remove('disable-scroll');
+                });
+            });
         }
     }
 

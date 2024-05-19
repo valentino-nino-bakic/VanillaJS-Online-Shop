@@ -43,7 +43,10 @@
                     <button class="modify-button action-button"><i class="fas fa-user-edit"></i> Modify Account</button><hr>
                     <button class="delete-button action-button" title="Delete Your Account"><i class="fas fa-user-times"></i> Delete Account</button>
                 </div>
-                <button id="user-account-actions-toggler"><i class="fa fa-user"></i></button>
+                <div id="user-account-actions-toggler">
+                    <button><i class="fa fa-user"></i></button>
+                    <!-- <p>// Ovdje cemo prikazati 'username' ulogovanog korisnika dinnamicki putem JavaScript-a.</p> -->
+                </div>
             </div>
 
 
@@ -308,8 +311,7 @@
 
 
 
-
-
+        
         <div class="confirm-account-deletion-wrapper">
             <form id="confirm-account-deletion-form">
                 <label for="confirm-account-deletion-password">One last step - enter your password</label>
@@ -318,6 +320,34 @@
                 <span class="close-form-button">x</span>
             </form>
         </div>
+
+
+
+
+        <div class="modify-account-form-wrapper">
+            <form id="modify-account-form">
+                <h3>Edit Profile</h3>
+                <label for="new-modified-username">New username</label>
+                <input type="text" id="new-modified-username">
+                <label for="new-modified-password">New password</label>
+                <input type="password" id="new-modified-password"><hr>
+                <label for="current-user-password">Current password</label>
+                <input type="password" id="current-user-password">
+                <button type="submit">MODIFY ACCOUNT</button>
+                <span class="close-form-button">x</span>
+            </form>
+        </div>
+
+
+
+
+
+
+    
+
+
+
+
 
 
         

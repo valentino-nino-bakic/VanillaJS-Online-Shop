@@ -66,7 +66,7 @@ class User {
                 usernameOrEmail: this.usernameOrEmail.value,
                 password: this.password.value,
             }
-            const apiUrl = 'http://localhost:<PORT_NUMBER>:8080/api/login';
+            const apiUrl = 'http://localhost:<PORT_NUMBER>/api/login';
 
             if (this.validateOnLogin()) {
                 const response = await fetch(apiUrl, {
@@ -115,7 +115,7 @@ class User {
             const token = JSON.parse(localStorage.getItem('token'));
             const decodedToken = jwt_decode(token);
             const userId = decodedToken.id;
-            const apiUrl = `http://localhost:<PORTNUMBER>:8080/api/delete/${userId}`;
+            const apiUrl = `http://localhost:<PORT_NUMBER>/api/delete/${userId}`;
 
             const response = await fetch(apiUrl, {
                 method: 'DELETE',

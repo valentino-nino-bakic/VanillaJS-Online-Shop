@@ -42,7 +42,7 @@ class User {
                 const data = await response.json();
                 alert(data.message);
                 document.querySelector('.register-form-wrapper').style.display = 'none';
-                document.querySelector('.login-form-wrapper').style.display = 'block';
+                document.querySelector('.login-form-wrapper').style.display = 'flex';
             } else {
                 alert('Registration failed');
             }
@@ -99,7 +99,7 @@ class User {
 
 
     logout() {
-        localStorage.removeItem('loggedInUser');
+        localStorage.removeItem('token');
         location.reload();
     }
 
@@ -194,7 +194,8 @@ class User {
         const token = JSON.parse(localStorage.getItem('token'));
         if (!token) {
             document.querySelector('.login-register').style.display = 'block';
-            document.querySelector('.logout-delete').style.display = 'none';
+            document.querySelector('.user-account-actions-container').style.display = 'none';
+            // document.querySelector('.logout-delete').style.display = 'none';
             const signUpBtn = document.querySelector('#register-form button');
             signUpBtn.addEventListener('click', e => {
                 e.preventDefault();
@@ -224,7 +225,16 @@ class User {
             });    
         } else {
             document.querySelector('.login-register').style.display = 'none';
-            document.querySelector('.logout-delete').style.display = 'block';
+            document.querySelector('.user-account-actions-container').style.display = 'block';
+            document.querySelector('#user-account-actions-toggler').addEventListener('click', () => {
+                let userAccountActionsDiv = document.querySelector('.user-account-actions');
+                if (userAccountActionsDiv.style.display === 'none') {
+                    userAccountActionsDiv.style.display = 'flex';
+                } else {
+                    userAccountActionsDiv.style.display = 'none';
+                }
+            })
+            // document.querySelector('.logout-delete').style.display = 'block';
             document.querySelector('.logout-button').addEventListener('click', e => {
                 e.preventDefault();
                 this.logout()

@@ -167,32 +167,65 @@ header a img:hover {
 
 
 
-.logout-delete {
-    cursor: default;
+
+
+.user-account-actions-container {
+    position: relative;
 }
 
-.logout-delete .logout-button {
-    font-size: .75rem;
-    width: 68px;
-    padding: 7px;
+.user-account-actions-container hr {
+    
+    width: 100%;
+    margin: 10px 0;
+    border: 1px solid rgba(192, 192, 192, .3);
+    border-bottom: none
+    
+}
+
+
+.user-account-actions-container .user-account-actions {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    width: 200px;
+    padding: 5px;
+    background-color: black;
+    display: none;
+    flex-direction: column;
+    align-items: flex-start;
+    border: 1px solid rgba(192, 192, 192, 0.233);
+    border-radius: 7px;
+}
+
+#user-account-actions-toggler {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgb(200, 200, 200);
+    border: none;
+    border-radius: 50%;
+    padding: 7.5px;
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+
+.user-account-actions-container .user-account-actions .action-button {
+    width: 100%;
+    text-align: left;
+    font-size: .875rem;
+    padding: 10px 3px;
     outline: none;
     cursor: pointer;
     background-color: transparent;
-    /* border-radius: 7px; */
-    color: rgb(49, 163, 221);
-    border: 1px solid rgb(49, 163, 221);
+    border: none;
+    border-radius: 7px;
+    color: silver;
 }
 
-.logout-delete .delete-button {
-    width: 35px;
-    font-size: .75rem;
-    padding: 7px;
-    background-color: rgb(221, 49, 49);
-    /* border-radius: 7px; */
-    color: rgb(200, 200, 200);
-    border: 1px solid rgb(221, 49, 49);
-    outline: none;
-    cursor: pointer;
+.user-account-actions-container .user-account-actions .action-button:hover {
+    background-color: rgba(192, 192, 192, 0.233);
 }
 
 

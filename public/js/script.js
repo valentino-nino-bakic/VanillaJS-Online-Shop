@@ -66,8 +66,8 @@ categorySelect.addEventListener('change', () => {
 
 
 
-// Po otvaranju stranice inicijalno prikazujemo proizvode iz prve kategorije(men's clothing)
-updateProducts(`men's clothing`);
+// Po otvaranju stranice inicijalno prikazujemo proizvode iz kategorije 'Retro Football Jerseys'.
+updateProducts('Retro Football Jerseys');
 ////////////////////////////////////////////////////////////////////////////////////////
 
 
@@ -246,7 +246,7 @@ function isProductInCart(productID) {
        poklapa sa 'data-product-id'-jem odredjenog button-a, ona vraca boolean 'true' i postavlja vrijednost
        'disabled' atributa button-a na 'true' i obrnuto */
     
-    return shoppingCart.items.some(item => item.id == productID);
+    return shoppingCart.items.some(item => item._id == productID);
 
 }
 

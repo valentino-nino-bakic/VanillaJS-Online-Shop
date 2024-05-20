@@ -8,15 +8,15 @@ import {
 
 
 
-/*----------------------------------------      AZURIRANJE STRANICE SA PODACIMA O PROIZVODIMA SA 'FAKE STORE API'-JA      --------------------------------------------*/
-// Funkcija za dohvatanje proizvoda sa 'fake store api'-ja
+/*----------------------------------------      AZURIRANJE STRANICE SA PODACIMA O PROIZVODIMA IZ NASE BAZE PODATAKA      --------------------------------------------*/
+// Funkcija za dohvatanje proizvoda
 async function fetchProducts() {
-    const response = await fetch('https://fakestoreapi.com/products');
+    const response = await fetch('http://localhost:<PORT_NUMBER>/api/products');
     if (response.ok) {
         const data = await response.json();
-        return data;
+        return data.products;
     }
-    throw new Error('Error fetching products from Fake Store API');
+    throw new Error('Error fetching products from our server');
 }
 
 
@@ -32,15 +32,15 @@ async function updateProducts(category) {
 
         const products = await fetchProducts();
         for (let product of products) {
-            if (product.category === category) {
+            if (product.productCategory === category) {
                 const productHTML = `
 
                     <div class="single-product">
-                        <img src="${product.image}" alt="${product.title}">
-                        <h4>${product.title.length > 50 ? product.title = product.title.substring(0, 50).concat('...') : product.title}</h4>
-                        <p>${product.description.length > 140 ? product.description = product.description.substring(0, 140).concat('...') : product.description}</p>
-                        <h5>$${product.price}</h5>
-                        <button class="add-to-cart-button" data-product-id="${product.id}" ${isProductInCart(product.id) ? 'disabled' : ''}>ADD TO CART</button>
+                        <img src="${product.productImageUrl}" alt="${product.productTitle}">
+                        <h4>${product.productTitle.length > 50 ? product.productTitle = product.productTitle.substring(0, 50).concat('...') : product.productTitle}</h4>
+                        <p>${product.productDescription.length > 140 ? product.productDescription = product.productDescription.substring(0, 140).concat('...') : product.productDescription}</p>
+                        <h5>$${product.productPrice}</h5>
+                        <button class="add-to-cart-button" data-product-id="${product._id}" ${isProductInCart(product._id) ? 'disabled' : ''}>ADD TO CART</button>
                     </div>
 
                 `;
@@ -70,7 +70,7 @@ async function updateProducts(category) {
                     button.addEventListener('click', e => {
 
                         const productID = e.target.getAttribute('data-product-id');
-                        const selectedProduct = products.find(product => product.id == productID);
+                        const selectedProduct = products.find(product => product._id == productID);
 
                         shoppingCart.addItem(selectedProduct);
 

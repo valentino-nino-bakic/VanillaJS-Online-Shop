@@ -27,7 +27,7 @@ class Cart {
     removeItem(productID) {
 
         // Array.findIndex() metoda pronalazi odredjeni proizvod ciji se 'data-product-key' poklapa sa 'data-product-key'-jem kliknutog button-a
-        const indexToRemove = this.items.findIndex(item => item.id == productID);
+        const indexToRemove = this.items.findIndex(item => item._id == productID);
 
         if (indexToRemove !== -1) {
             this.items.splice(indexToRemove, 1); // Uklanjamo proizvod iz niza na odredjenom indeksu
@@ -63,11 +63,11 @@ class Cart {
             this.items.forEach(item => {
                 const listItem = document.createElement('li');
                 listItem.innerHTML = `
-                    <img src="${item.image}">
-                    <p>${item.title}</p>
-                    <p>$${item.price}</p>
+                    <img src="${item.productImageUrl}">
+                    <p>${item.productTitle}</p>
+                    <p>$${item.productPrice}</p>
                     <div>
-                        <button class="remove-from-cart-button" data-product-id="${item.id}">
+                        <button class="remove-from-cart-button" data-product-id="${item._id}">
                             <i class="fa-solid fa-trash" title="Remove from cart"></i>
                         </button>
                     </div>
@@ -75,7 +75,7 @@ class Cart {
                 cartItemsList.appendChild(listItem);
 
                 // Dodajemo cijenu dodatog proizvoda na ukupnu cijenu
-                totalPrice += item.price;
+                totalPrice += item.productPrice;
 
                 // Prikazujemo ukupnu cijenu u korpi
                 const totalElement = cartSummary.querySelector('h3');

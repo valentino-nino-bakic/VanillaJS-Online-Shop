@@ -11,7 +11,7 @@ import {
 /*----------------------------------------      AZURIRANJE STRANICE SA PODACIMA O PROIZVODIMA IZ NASE BAZE PODATAKA      --------------------------------------------*/
 // Funkcija za dohvatanje proizvoda
 async function fetchProducts() {
-    const response = await fetch('http://localhost:<PORT_NUMBER>/api/products');
+    const response = await fetch('http://localhost:<PORT>/api/products');
     if (response.ok) {
         const data = await response.json();
         return data.products;

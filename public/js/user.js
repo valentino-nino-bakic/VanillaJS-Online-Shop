@@ -25,7 +25,7 @@ class User {
                 email: this.newEmail.value,
                 password: this.newPassword.value,
             }
-            const apiUrl = 'http://localhost:<PORT_NUMBER>/api/signup';
+            const apiUrl = 'http://localhost:<PORT>/api/signup';
 
             if (this.validateOnSignUp()) {
                 const response = await fetch(apiUrl, {
@@ -66,7 +66,7 @@ class User {
                 usernameOrEmail: this.usernameOrEmail.value,
                 password: this.password.value,
             }
-            const apiUrl = 'http://localhost:<PORT_NUMBER>/api/login';
+            const apiUrl = 'http://localhost:<PORT>/api/login';
 
             if (this.validateOnLogin()) {
                 const response = await fetch(apiUrl, {
@@ -115,7 +115,7 @@ class User {
             const token = JSON.parse(localStorage.getItem('token'));
             const decodedToken = jwt_decode(token);
             const userId = decodedToken.id;
-            const apiUrl = `http://localhost:<PORT_NUMBER>/api/delete/${userId}`;
+            const apiUrl = `http://localhost:<PORT>/api/delete/${userId}`;
 
             const response = await fetch(apiUrl, {
                 method: 'DELETE',
@@ -149,7 +149,7 @@ class User {
             const token = JSON.parse(localStorage.getItem('token'));
             const decodedToken = jwt_decode(token);
             const userId = decodedToken.id;
-            const apiUrl = `http://localhost:<PORT_NUMBER>/api/modify/${userId}`;
+            const apiUrl = `http://localhost:<PORT>/api/modify/${userId}`;
 
             const requestBody = {
                 newUsername: newModifiedUsername,

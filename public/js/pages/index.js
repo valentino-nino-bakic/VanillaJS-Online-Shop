@@ -1,3 +1,95 @@
+// Shared functionalities with 'profile.js' page.
+import { backToTopButtonToggler, headerToggler, scrollToTop, scrollToProductSection, scrollToCustomerReviewsSection, scrollToWhatWeDoSection } from '../modules/listeners_callbacks.js';
+
+window.addEventListener('scroll', () => {
+    backToTopButtonToggler();
+    headerToggler();
+});
+
+document.querySelector('.scroll-to-top-button').addEventListener('click', scrollToTop);
+
+document.querySelector('#animate-arrow').addEventListener('click', () => {
+    scrollToProductSection(document.querySelector('.products-section'));
+});
+
+document.querySelector('#fa-products-section-trigger').addEventListener('click', () => {
+    scrollToProductSection(document.querySelector('.products-section'));
+});
+
+document.querySelector('#fa-customer-products-section-trigger').addEventListener('click', () => {
+    scrollToCustomerReviewsSection(document.querySelector('.customer-reviews-section'));
+});
+
+document.querySelector('#learn-more-button').addEventListener('click', () => {
+    scrollToWhatWeDoSection(document.querySelector('.what-we-do-section'));
+});
+
+
+/* ---------------------- OTVARANJE I ZATVARANJE KORPE -------------------*/
+const cartIcon = document.querySelector('.cart-icon');
+const closeButton = document.querySelector('.x');
+const cartToggler = document.querySelector('.cart-toggler-wrapper');
+
+// Prikaz korpe klikom na cart ikonicu
+cartIcon.addEventListener('click', () => {
+    cartToggler.style.display = 'block';
+    cartToggler.style.animation = 'cartShow .5s ease-out'
+    document.body.classList.add('disable-scroll');
+    document.documentElement.classList.add('disable-scroll');
+});
+
+// Zatvaranje korpe klikom na 'X'
+closeButton.addEventListener('click', () => {
+    cartToggler.style.display = 'none';
+    document.body.classList.remove('disable-scroll');
+    document.documentElement.classList.remove('disable-scroll');
+});
+
+// Zatvaranje korpe klikom na overlay
+cartToggler.addEventListener('click', e => {
+    if (e.target === cartToggler) {
+        cartToggler.style.display = 'none';
+        document.body.classList.remove('disable-scroll');
+        document.documentElement.classList.remove('disable-scroll');
+    }
+});
+
+
+const cartEmpty_loginFormTogglerButton = document.querySelector('#cart-empty-login-form-toggler-button');
+cartEmpty_loginFormTogglerButton.addEventListener('click', e => {
+    cartToggler.style.display = 'none';
+    document.querySelector('.login-form-wrapper').style.display = 'flex';
+})
+
+const cartEmpty_RegisterFormTogglerButton = document.querySelector('#cart-empty-register-form-toggler-button');
+cartEmpty_RegisterFormTogglerButton.addEventListener('click', e => {
+    cartToggler.style.display = 'none';
+    document.querySelector('.register-form-wrapper').style.display = 'flex';
+})
+
+
+
+
+
+// Prikazivanje skrivenih login i register formi
+document.querySelector('.login-button').addEventListener('click', () => {
+    document.querySelector('.login-form-wrapper').style.display = 'flex';
+    document.body.classList.add('disable-scroll');
+    document.documentElement.classList.add('disable-scroll');
+})
+document.querySelector('.register-button').addEventListener('click', () => {
+    document.querySelector('.register-form-wrapper').style.display = 'flex';
+    document.body.classList.add('disable-scroll');
+    document.documentElement.classList.add('disable-scroll');
+})
+
+
+
+
+
+
+
+
 /*----------------------------------------      AZURIRANJE STRANICE SA PODACIMA O PROIZVODIMA IZ NASE BAZE PODATAKA      --------------------------------------------*/
 // Funkcija za dohvatanje proizvoda
 async function fetchProducts() {

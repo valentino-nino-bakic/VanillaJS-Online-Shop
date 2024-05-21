@@ -120,20 +120,3 @@ ScrollTrigger.create({
     animation: customersAnimation,
     toggleActions: "play none none none",
 });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
-  

@@ -4,7 +4,7 @@ import {
     shoppingCart,
     update_checkout_removeAll_buttonsStatus,
     update_addToCartButtonsStatus 
-} from './script.js';
+} from '../pages/profile.js';
 
 
 

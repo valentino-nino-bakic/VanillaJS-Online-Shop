@@ -1,18 +1,18 @@
 /* ------------------------------------------------------- IMPORTS ------------------------------------------------------- */
 /* Unikatni token */
-import generateUniqueToken from './token_generator.js';
+import generateUniqueToken from '../modules/token_generator.js';
 
 
 /* Fetch logika */
-import updateProducts from './fetch_display_data.js';
+import updateProducts from '../modules/add_to_cart.js';
 
 
 /* Korpa */
-import Cart from './cart.js'
+import Cart from '../modules/cart.js'
 
 
 /* Korisnik */
-import User from './user.js';
+import User from '../modules/user.js';
 
 
 /* Event listeners callback funkcije */
@@ -30,7 +30,7 @@ import {
     switchCategory,
     placeOrder,
     emptyTheCart
-} from './listeners_callbacks.js';
+} from '../modules/listeners_callbacks.js';
 /* ----------------------------------------------------------------------------------------------------------------------- */
 
 

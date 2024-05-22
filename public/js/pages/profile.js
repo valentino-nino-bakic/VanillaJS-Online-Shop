@@ -1,3 +1,17 @@
+// Redirection
+if (!localStorage.getItem('token') && location.pathname === '/profile') {
+    location.href = '/';
+}
+
+
+
+
+
+
+
+
+
+
 /* ------------------------------------------------------- IMPORTS ------------------------------------------------------- */
 
 
@@ -7,11 +21,11 @@ import updateProducts from '../modules/add_to_cart.js';
 
 
 /* Korpa */
-import Cart from '../modules/cart.js'
+import Cart from '../classes/Cart.js'
 
 
 /* Korisnik */
-import Profile from '../classes/Profile.js  ';
+import Profile from '../classes/Profile.js';
 
 
 /* Event listeners callback funkcije */
@@ -257,7 +271,7 @@ function isProductInCart(productID) {
 
 
 /* --------------------------------------------------------------------------------------
- ------------------------------- KREIRAMO INSTANCU KLASE 'User' --------------------------------
+ ------------------------------- KREIRAMO INSTANCU KLASE 'Profile' --------------------------------
  --------------------------------------------------------------------------------------*/
 const profile = new Profile();
 

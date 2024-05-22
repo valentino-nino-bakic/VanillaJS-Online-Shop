@@ -5,7 +5,8 @@ class Profile {
 
     constructor() {
         this.addEventListeners();
-        // this.addInputValidationListeners(); // NAPRAVI OVU METODU!!!!!!!!!!!!
+        this.setLoggedInUserUsername();
+        // this.addInputValidationListeners();
     }
 
 
@@ -13,7 +14,7 @@ class Profile {
 
     logout() {
         localStorage.removeItem('token');
-        location.reload();
+        location.href = '/';
     }
 
 
@@ -85,7 +86,7 @@ class Profile {
 
             localStorage.setItem('token', JSON.stringify(data.token));
             alert(data.message);
-            location.reload();
+            location.href = '/';
         } catch (error) {
             alert(error);
             console.log(error);
@@ -148,6 +149,15 @@ class Profile {
         });
     }
 
+
+
+
+
+    setLoggedInUserUsername() {
+        const decoded = jwt_decode(JSON.parse(localStorage.getItem('token')));
+        const username = decoded.username;
+        document.querySelector('#user-account-actions-toggler p').innerHTML = username;
+    }
 
 
 }

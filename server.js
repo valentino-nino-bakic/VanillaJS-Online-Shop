@@ -8,6 +8,7 @@ const userRouter = require('./routes/userRoutes');
 const productRouter = require('./routes/productRoutes');
 
 
+
 app.use(express.json());
 app.use(express.static('public'));
 app.set('view engine', 'ejs');

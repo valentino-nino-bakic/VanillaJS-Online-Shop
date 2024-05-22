@@ -1,5 +1,35 @@
+// Redirection
+if (localStorage.getItem('token') && location.pathname === '/') {
+    location.href = 'profile';
+}
+
+
+
+
+
+
+
+
 // Shared functionalities with 'profile.js' page.
+import Login_Register from '../classes/Login_Register.js';
 import { backToTopButtonToggler, headerToggler, scrollToTop, scrollToProductSection, scrollToCustomerReviewsSection, scrollToWhatWeDoSection } from '../modules/listeners_callbacks.js';
+
+
+
+
+
+window.addEventListener('DOMContentLoaded', () => {
+    const usernameOrEmail = document.querySelector('#username_or_email');
+    const password = document.querySelector('#password');
+    const newUsername = document.querySelector('#new-username');
+    const newEmail = document.querySelector('#new-email');
+    const newPassword = document.querySelector('#new-password');
+    const login_register = new Login_Register(usernameOrEmail, password, newUsername, newEmail, newPassword);
+})
+
+
+
+
 
 window.addEventListener('scroll', () => {
     backToTopButtonToggler();

@@ -281,7 +281,7 @@ header a img:hover {
 }
 
 #register-form input {
-    margin-bottom: 20px;
+    margin-bottom: 5px;
     font-size: .9rem;
     outline: none;
     padding: 1px 5px;
@@ -373,10 +373,10 @@ header a img:hover {
 }
 
 #login-form input, #modify-account-form input {
-    margin-bottom: 20px;
     font-size: .9rem;
     outline: none;
     padding: 1px 5px;
+    margin-bottom: 5px;
 }
 
 #login-form button, #modify-account-form button {
@@ -401,7 +401,16 @@ header a img:hover {
 
 
 
-
+.error-message {
+    color: rgb(255, 65, 65);
+    font-size: .8rem;
+}
+#login-form div {
+    margin: 15px 0;
+}
+#register-form div {
+    margin: 15px 0;
+}
 
 
 

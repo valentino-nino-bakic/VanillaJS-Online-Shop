@@ -1,17 +1,17 @@
+import { errorValidationMessages, showErrorMessage, hideErrorMessage } from "../modules/inputValidation.js";
 
 
 /* KREIRAMO KLASU ZA LOGIN I REGISTRACIJU KORISNIKA */
 class Login_Register {
 
-    constructor() {
-        this.usernameOrEmail = document.querySelector('#username_or_email')
-        this.password = document.querySelector('#password');
-        this.newUsername = document.querySelector('#new-username');
-        this.newEmail = document.querySelector('#new-email');
-        this.newPassword = document.querySelector('#new-password');
-
-        this.addEventListeners();
-        // this.addInputValidationListeners(); // NAPRAVI OVU METODU!!!!!!!!!!!!
+    constructor(usernameOrEmail, password, newUsername, newEmail, newPassword) {
+        this.usernameOrEmail = usernameOrEmail;
+        this.password = password;
+        this.newUsername = newUsername;
+        this.newEmail = newEmail;
+        this.newPassword = newPassword;
+        this.addClickListeners();
+        this.addInputValidationListeners();
     }
 
 
@@ -70,27 +70,26 @@ class Login_Register {
             }
             const apiUrl = 'http://localhost:<PORT>/api/login';
 
-            if (this.validateOnLogin()) {
-                const response = await fetch(apiUrl, {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify(requestBody)
-                })
-                if (!response.ok) {
-                    const data = await response.json();
-                    throw new Error(data.message);
-                }
+            if (!this.validateOnLogin()) {
+                throw new Error('failed to log in.');
+            }    
+            const response = await fetch(apiUrl, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(requestBody)
+            })
+            if (!response.ok) {
                 const data = await response.json();
-                localStorage.setItem('token', JSON.stringify(data.token));
-                alert(data.message);
-                location.reload();
-            } else {
-                alert('Failed to log in');
+                throw new Error(data.message);
             }
+            const data = await response.json();
+            localStorage.setItem('token', JSON.stringify(data.token));
+            alert(data.message);
+            location.href = '/profile';
+            
         } catch (error) {
-            alert(error);
             console.log(error);
         }
     }
@@ -106,7 +105,7 @@ class Login_Register {
         if (!/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(this.newEmail.value)) {
             return false;
         }
-        if (this.newPassword.value.trim().length < 8) {
+        if (this.newPassword.value.trim().length < 7 || this.newPassword.value.trim().length > 25) {
             return false;
         }
         return true;
@@ -119,12 +118,12 @@ class Login_Register {
 
 
     validateOnLogin() {
-        if (this.usernameOrEmail.value.trim().length < 3) {
-            alert('username or email field must have at least 3 characters')
+        if (this.usernameOrEmail.value.trim().length < 4 || this.usernameOrEmail.value.trim().length > 15) {
+            alert('This field requires minimum 4 and maximum 15 characters')
             return false;
         }
-        if (this.password.value.trim().length < 8) {
-            alert('password must have at least 8 characters')
+        if (this.password.value.trim().length < 7 || this.newPassword.value.trim().length > 25) {
+            alert('This field requires minimum 7 and maximum 25 characters')
             return false;
         }
         return true;
@@ -136,7 +135,7 @@ class Login_Register {
 
 
 
-    addEventListeners() {
+    addClickListeners() {
         const signUpBtn = document.querySelector('#register-form button');
         signUpBtn.addEventListener('click', e => {
             e.preventDefault();
@@ -168,10 +167,49 @@ class Login_Register {
 
 
 
+    addInputValidationListeners() {
+        this.usernameOrEmail.addEventListener('input', e => {
+            if (this.usernameOrEmail.value.trim().length < 4 || this.usernameOrEmail.value.trim().length > 15) {
+                showErrorMessage(this.usernameOrEmail);
+            } else {
+                hideErrorMessage(this.usernameOrEmail);
+            }
+        });
+    
+        this.password.addEventListener('input', e => {
+            if (e.target.value.trim().length < 7 || e.target.value.trim().length > 25) {
+                showErrorMessage(this.password);
+            } else {
+                hideErrorMessage(this.password);
+            }
+        });
 
+        this.newUsername.addEventListener('input', e => {
+            if (e.target.value.trim().length < 4 || e.target.value.trim().length > 15) {
+                showErrorMessage(this.newUsername);
+            } else {
+                hideErrorMessage(this.newUsername);
+            }
+        });
+
+        this.newEmail.addEventListener('input', e => {
+            if (!/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(e.target.value)) {
+                showErrorMessage(this.newEmail);
+            } else {
+                hideErrorMessage(this.newEmail);
+            }
+        });
+
+        this.newPassword.addEventListener('input', e => {
+            if (e.target.value.trim().length < 7 || e.target.value.trim().length > 25) {
+                showErrorMessage(this.newPassword);
+            } else {
+                hideErrorMessage(this.newPassword);
+            }
+        });
+    }
 
 }
-
 
 
 

@@ -119,9 +119,7 @@ const UserController = {
             }
 
             await User.findByIdAndUpdate(req.user._id, modifiedUserData, { new: true });
-
-            const token = jwt.sign({ id: req.user._id, username: req.user.username }, SECRET_KEY, { expiresIn: '1h' });
-            return res.status(201).json({ message: 'You have successfully modified your account!', token: token });
+            return res.status(201).json({ message: 'Your account has been modified!\nYou can now proceed to log in with your new credentials!' });
 
         } catch (error) {
             console.log(error);

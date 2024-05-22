@@ -1,6 +1,5 @@
 /* ------------------------------------------------------- IMPORTS ------------------------------------------------------- */
-/* Unikatni token */
-import generateUniqueToken from '../modules/token_generator.js';
+
 
 
 /* Fetch logika */
@@ -12,7 +11,7 @@ import Cart from '../modules/cart.js'
 
 
 /* Korisnik */
-import User from '../modules/user.js';
+import Profile from '../classes/Profile.js  ';
 
 
 /* Event listeners callback funkcije */
@@ -43,14 +42,6 @@ import {
 
 
 
-
-/* Unikatni token korisnika */
-let token = '';
-if (JSON.parse(localStorage.getItem('registeredUser'))) {
-    token = JSON.parse(localStorage.getItem('registeredUser')).token;
-} else {
-    token = generateUniqueToken();
-}
 
 
 
@@ -268,7 +259,7 @@ function isProductInCart(productID) {
 /* --------------------------------------------------------------------------------------
  ------------------------------- KREIRAMO INSTANCU KLASE 'User' --------------------------------
  --------------------------------------------------------------------------------------*/
-const user = new User();
+const profile = new Profile();
 
 
 
@@ -293,5 +284,4 @@ export {
     update_addToCartButtonsStatus,
     isProductInCart,
     shoppingCart,
-    token
 }

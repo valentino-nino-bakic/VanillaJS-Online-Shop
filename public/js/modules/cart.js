@@ -1,5 +1,5 @@
 /* Pomocne funkcije iz 'script.js' fajla */
-import { update_checkout_removeAll_buttonsStatus, update_addToCartButtonsStatus } from './profile.js';
+import { update_checkout_removeAll_buttonsStatus, update_addToCartButtonsStatus } from '../pages/profile.js';
 
 
 

@@ -114,6 +114,20 @@ document.querySelector('.register-button').addEventListener('click', () => {
 })
 
 
+// Mijenjanje formi
+document.querySelector('#switch-to-register-form-toggler').addEventListener('click', e => {
+    e.preventDefault();
+    document.querySelector('.login-form-wrapper').style.display = 'none';
+    document.querySelector('.register-form-wrapper').style.display = 'flex';
+});
+document.querySelector('#switch-to-login-form-toggler').addEventListener('click', e => {
+    e.preventDefault();
+    document.querySelector('.register-form-wrapper').style.display = 'none';
+    document.querySelector('.login-form-wrapper').style.display = 'flex';
+});
+
+
+
 
 
 

@@ -1,12 +1,16 @@
-
+import { showErrorMessage, hideErrorMessage, showFinalErrorMessage } from "../modules/inputValidation.js";
 
 /* KREIRAMO KLASU ZA ULOGOVANOG KORISNIKA */
 class Profile {
 
-    constructor() {
-        this.addEventListeners();
+    constructor(newModifiedUsername, newModifiedPassword, currentUserPassword, confirmAccountDeletionPassword) {
+        this.newModifiedUsername = newModifiedUsername;
+        this.newModifiedPassword = newModifiedPassword;
+        this.currentUserPassword = currentUserPassword;
+        this.confirmAccountDeletionPassword = confirmAccountDeletionPassword;
+        this.addClickListeners();
+        this.addInputValidationListeners();
         this.setLoggedInUserUsername();
-        // this.addInputValidationListeners();
     }
 
 
@@ -27,6 +31,11 @@ class Profile {
             const decodedToken = jwt_decode(token);
             const userId = decodedToken.id;
             const apiUrl = `http://localhost:<PORT>/api/delete/${userId}`;
+
+            if (!this.validateOnAccountDeletion()) {
+                showFinalErrorMessage(document.querySelector('.final-account-deletion-error-message'));
+                return;
+            }
 
             const response = await fetch(apiUrl, {
                 method: 'DELETE',
@@ -68,6 +77,11 @@ class Profile {
                 currentPassword: currentUserPassword
             }
 
+            if (!this.validateOnAccountModification()) {
+                showFinalErrorMessage(document.querySelector('.final-account-modification-error-message'));
+                return;
+            }
+
             const response = await fetch(apiUrl, {
                 method: 'PUT',
                 headers: {
@@ -84,7 +98,7 @@ class Profile {
                 return;
             }
 
-            localStorage.setItem('token', JSON.stringify(data.token));
+            localStorage.removeItem('token');
             alert(data.message);
             location.href = '/';
         } catch (error) {
@@ -97,22 +111,55 @@ class Profile {
 
 
 
+    validateOnAccountModification() {
+        if (this.newModifiedUsername.value.trim().length < 4 || this.newModifiedUsername.value.trim().length > 15) {
+            return false;
+        }
+        if (this.newModifiedPassword.value.trim().length < 7 || this.newModifiedPassword.value.trim().length > 25) {
+            return false;
+        }
+        if (this.currentUserPassword.value.trim().length < 7 || this.currentUserPassword.value.trim().length > 25) {
+            return false;
+        }
+        return true;
+    }
 
-    async addEventListeners() {
+
+
+
+    validateOnAccountDeletion() {
+        if (this.confirmAccountDeletionPassword.value.trim().length < 7 || this.confirmAccountDeletionPassword.value.trim().length > 25) {
+            return false;
+        }
+        return true;
+    }
+
+
+
+
+
+    addClickListeners() {
+        document.querySelector('#modify-account-form').addEventListener('submit', e => {
+            e.preventDefault();
+            this.modifyAccount(this.newModifiedUsername.value, this.newModifiedPassword.value, this.currentUserPassword.value);
+        })
+        document.querySelector('#confirm-account-deletion-form').addEventListener('submit', e => {
+            e.preventDefault();
+            this.deleteAccount(this.confirmAccountDeletionPassword);
+        })
+        document.querySelector('#logout-button').addEventListener('click', e => {
+            e.preventDefault();
+            this.logout();
+        });
+
         document.querySelector('#user-account-actions-toggler').addEventListener('click', () => {
             let userAccountActionsDiv = document.querySelector('.user-account-actions');
-            if (userAccountActionsDiv.style.display === 'none') {
-                userAccountActionsDiv.style.display = 'flex';
-            } else {
+            if (userAccountActionsDiv.style.display === 'flex') {
                 userAccountActionsDiv.style.display = 'none';
+            } else {
+                userAccountActionsDiv.style.display = 'flex';
             }
         });
-
-        document.querySelector('.logout-button').addEventListener('click', e => {
-            e.preventDefault();
-            this.logout()
-        });
-
         document.querySelector('.delete-button').addEventListener('click', e => {
             if (confirm('Are you sure you want to delete your account?\nIf so, there is no going back and all your orders will be cancelled if there are any')) {
                 document.querySelector('.confirm-account-deletion-wrapper').style.display = 'flex';
@@ -121,25 +168,11 @@ class Profile {
 
             }
         });
-        document.querySelector('#confirm-account-deletion-form').addEventListener('submit', async e => {
-            e.preventDefault();
-            const password = document.querySelector('#confirm-account-deletion-password');
-            this.deleteAccount(password);
-        })
-
         document.querySelector('.modify-button').addEventListener('click', e => {
             document.querySelector('.modify-account-form-wrapper').style.display = 'flex';
             document.body.classList.add('disable-scroll');
             document.documentElement.classList.add('disable-scroll');
         });
-        document.querySelector('#modify-account-form').addEventListener('submit', async e => {
-            e.preventDefault();
-            const newModifiedUsername = document.querySelector('#new-modified-username').value;
-            const newModifiedPassword = document.querySelector('#new-modified-password').value;
-            const currentUserPassword = document.querySelector('#current-user-password').value;
-            this.modifyAccount(newModifiedUsername, newModifiedPassword, currentUserPassword);
-        })
-
         document.querySelectorAll('.close-form-button').forEach(button => {
             button.addEventListener('click', e => {
                 e.target.parentElement.parentElement.style.display = 'none';
@@ -153,10 +186,48 @@ class Profile {
 
 
 
+    addInputValidationListeners() {
+        this.newModifiedUsername.addEventListener('input', e => {
+            if (e.target.value.trim().length < 4 || e.target.value.trim().length > 15) {
+                showErrorMessage(this.newModifiedUsername);
+            } else {
+                hideErrorMessage(this.newModifiedUsername);
+            }
+        });
+
+        this.newModifiedPassword.addEventListener('input', e => {
+            if (e.target.value.trim().length < 7 || e.target.value.trim().length > 25) {
+                showErrorMessage(this.newModifiedPassword);
+            } else {
+                hideErrorMessage(this.newModifiedPassword);
+            }
+        });
+
+        this.currentUserPassword.addEventListener('input', e => {
+            if (e.target.value.trim().length < 7 || e.target.value.trim().length > 25) {
+                showErrorMessage(this.currentUserPassword);
+            } else {
+                hideErrorMessage(this.currentUserPassword);
+            }
+        });
+
+        this.confirmAccountDeletionPassword.addEventListener('input', e => {
+            if (e.target.value.trim().length < 7 || e.target.value.trim().length > 25) {
+                showErrorMessage(this.confirmAccountDeletionPassword);
+            } else {
+                hideErrorMessage(this.confirmAccountDeletionPassword);
+            }
+        });
+    }
+
+
+
+
+
     setLoggedInUserUsername() {
         const decoded = jwt_decode(JSON.parse(localStorage.getItem('token')));
         const username = decoded.username;
-        document.querySelector('#user-account-actions-toggler p').innerHTML = username;
+        document.querySelector('#user-account-actions-toggler p').textContent = username;
     }
 
 

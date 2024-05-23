@@ -1,7 +1,12 @@
 <div class="confirm-account-deletion-wrapper">
     <form id="confirm-account-deletion-form">
-        <label for="confirm-account-deletion-password">One last step - enter your password</label>
-        <input type="password" id="confirm-account-deletion-password" placeholder="Your password">
+        <div class="final-account-deletion-error-message">
+            <!-- ako input polje za sifru nije validno, ne dozvoljavamo da se zathjev posalje na server -->
+        </div>
+        <div>
+            <label for="confirm-account-deletion-password">One last step - enter your password</label>
+            <input type="password" id="confirm-account-deletion-password" placeholder="Your password">
+        </div>
         <button type="submit">DELETE ACCOUNT</button>
         <span class="close-form-button">x</span>
     </form>

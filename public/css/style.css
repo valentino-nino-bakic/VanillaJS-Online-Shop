@@ -409,13 +409,10 @@ header a img:hover {
     color: rgb(255, 65, 65);
     font-size: .8rem;
 }
-#login-form div {
-    margin: 15px 0;
-   
-}
-#register-form div {
+#login-form div, #register-form div, #modify-account-form div {
     margin: 15px 0;
 }
+
 #login-form .forms-switcher, #register-form .forms-switcher {
     font-size: .88rem;
     margin-top: 40px;
@@ -454,7 +451,8 @@ header a img:hover {
 #confirm-account-deletion-form label {
     font-size: .9rem;
     display: block;
-    margin-bottom: 5px
+    margin-bottom: 5px;
+    width: 100%;
 }
 
 
@@ -462,11 +460,11 @@ header a img:hover {
     font-size: .9rem;
     outline: none;
     padding: 1px 5px;
-    
+    width: 100%;
+    margin-bottom: 5px;
 }
 
 #confirm-account-deletion-form button {
-    margin-top: 10px;
     padding: 7px;
     background-color: rgb(221, 49, 49);
     color: white;
@@ -476,6 +474,16 @@ header a img:hover {
     cursor: pointer;
     transition: all .3s;
     width: 100%;
+}
+
+#confirm-account-deletion-form div {
+    margin: 25px 0;
+}
+
+
+
+.final-account-deletion-error-message {
+    margin-bottom: 10px;
 }
 
 

@@ -269,7 +269,13 @@ function isProductInCart(productID) {
 /* --------------------------------------------------------------------------------------
  ------------------------------- KREIRAMO INSTANCU KLASE 'Profile' --------------------------------
  --------------------------------------------------------------------------------------*/
-const profile = new Profile();
+ window.addEventListener('DOMContentLoaded', () => {
+    const newModifiedUsername = document.querySelector('#new-modified-username');
+    const newModifiedPassword = document.querySelector('#new-modified-password');
+    const currentUserPassword = document.querySelector('#current-user-password');
+    const confirmAccountDeletionPassword = document.querySelector('#confirm-account-deletion-password');
+    const profile = new Profile(newModifiedUsername, newModifiedPassword, currentUserPassword, confirmAccountDeletionPassword);
+ });
 
 
 

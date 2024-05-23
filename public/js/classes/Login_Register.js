@@ -1,4 +1,4 @@
-import { errorValidationMessages, showErrorMessage, hideErrorMessage } from "../modules/inputValidation.js";
+import { showErrorMessage, hideErrorMessage, showFinalErrorMessage } from "../modules/inputValidation.js";
 
 
 /* KREIRAMO KLASU ZA LOGIN I REGISTRACIJU KORISNIKA */
@@ -29,25 +29,27 @@ class Login_Register {
             }
             const apiUrl = 'http://localhost:<PORT>/api/signup';
 
-            if (this.validateOnSignUp()) {
-                const response = await fetch(apiUrl, {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify(requestBody)
-                })
-                if (!response.ok) {
-                    const data = await response.json();
-                    throw new Error(data.message);
-                }
+            if (!this.validateOnSignUp()) {
+                showFinalErrorMessage(document.querySelector('.final-signup-error-message'));
+                return;
+            }  
+
+            const response = await fetch(apiUrl, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(requestBody)
+            })
+            if (!response.ok) {
                 const data = await response.json();
-                alert(data.message);
-                document.querySelector('.register-form-wrapper').style.display = 'none';
-                document.querySelector('.login-form-wrapper').style.display = 'flex';
-            } else {
-                alert('Registration failed');
+                throw new Error(data.message);
             }
+            const data = await response.json();
+            alert(data.message);
+            document.querySelector('.register-form-wrapper').style.display = 'none';
+            document.querySelector('.login-form-wrapper').style.display = 'flex';
+            
         } catch (error) {
             alert(error);
             console.log(error);
@@ -71,8 +73,10 @@ class Login_Register {
             const apiUrl = 'http://localhost:<PORT>/api/login';
 
             if (!this.validateOnLogin()) {
-                throw new Error('failed to log in.');
-            }    
+                showFinalErrorMessage(document.querySelector('.final-login-error-message'));
+                return;
+            }
+
             const response = await fetch(apiUrl, {
                 method: 'POST',
                 headers: {
@@ -90,6 +94,7 @@ class Login_Register {
             location.href = '/profile';
             
         } catch (error) {
+            alert(error);
             console.log(error);
         }
     }
@@ -119,11 +124,9 @@ class Login_Register {
 
     validateOnLogin() {
         if (this.usernameOrEmail.value.trim().length < 4 || this.usernameOrEmail.value.trim().length > 15) {
-            alert('This field requires minimum 4 and maximum 15 characters')
             return false;
         }
         if (this.password.value.trim().length < 7 || this.newPassword.value.trim().length > 25) {
-            alert('This field requires minimum 7 and maximum 25 characters')
             return false;
         }
         return true;
@@ -136,16 +139,17 @@ class Login_Register {
 
 
     addClickListeners() {
-        const signUpBtn = document.querySelector('#register-form button');
-        signUpBtn.addEventListener('click', e => {
+        const registerForm = document.querySelector('#register-form');
+        registerForm.addEventListener('submit', e => {
             e.preventDefault();
             this.register();
         })
-        const logInBtn = document.querySelector('#login-form button');
-        logInBtn.addEventListener('click', e => {
+        const loginForm = document.querySelector('#login-form');
+        loginForm.addEventListener('submit', e => {
             e.preventDefault();
             this.login();
         })
+
         document.querySelector('.login-button').addEventListener('click', () => {
             document.querySelector('.login-form-wrapper').style.display = 'flex';
             document.body.classList.add('disable-scroll');
@@ -169,7 +173,7 @@ class Login_Register {
 
     addInputValidationListeners() {
         this.usernameOrEmail.addEventListener('input', e => {
-            if (this.usernameOrEmail.value.trim().length < 4 || this.usernameOrEmail.value.trim().length > 15) {
+            if (e.target.value.trim().length < 4 || e.target.value.trim().length > 15) {
                 showErrorMessage(this.usernameOrEmail);
             } else {
                 hideErrorMessage(this.usernameOrEmail);

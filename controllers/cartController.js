@@ -8,16 +8,24 @@ const CartController = {
     checkout: async (req, res) => {
         try {
             const userId = req.user._id;
-            const { products } = req.body;
+            const products = req.body;
+            let cart = await Cart.findOne({ userId });
 
-            const newCartData = {
-                userId: userId,
-                products: products
+            if (!cart) {
+                cart = new Cart({ userId, products });
+            } else {
+                products.forEach(product => {
+                    const existingProduct = cart.products.find(p => p.productId === product._id);
+                    if (existingProduct) {
+                        existingProduct.quantity += product.quantity;
+                    } else {
+                        cart.products.push(product);
+                    }
+                });
             }
-
-            const newCart = new Cart(newCartData);
-            await newCart.save();
-            return res.status(201).json({ message: 'Your order has been successfully processed!' });
+    
+            await cart.save();
+            return res.status(200).json({ message: 'Your order has been successfully processed!' });
             
         } catch (error) {
             console.log(error);

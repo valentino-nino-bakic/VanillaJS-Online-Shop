@@ -12,6 +12,8 @@ if (!localStorage.getItem('token') && location.pathname === '/profile') {
 
 
 
+
+
 /* ------------------------------------------------------- IMPORTS ------------------------------------------------------- */
 
 
@@ -41,7 +43,6 @@ import {
     scrollToCustomerReviewsSection,
     toggleHamburgerMenu,
     switchCategory,
-    placeOrder,
     emptyTheCart
 } from '../modules/listeners_callbacks.js';
 /* ----------------------------------------------------------------------------------------------------------------------- */
@@ -50,6 +51,24 @@ import {
 
 
 
+/* --------------------------------------------------------------------------------------
+------------------------------- KREIRAMO INSTANCU KLASE 'Cart' --------------------------------
+--------------------------------------------------------------------------------------*/
+
+const shoppingCart = new Cart();
+// Po otvaranju stranice inicijalno prikazujemo proizvode iz kategorije 'Retro Football Jerseys'.
+updateProducts('Retro Football Jerseys');
+
+
+const checkoutButton = document.getElementById('checkout-button');
+const clearCartButton = document.getElementById('clear-cart-button');
+
+checkoutButton.addEventListener('click', e => {
+    shoppingCart.checkout();
+});
+
+// Azuriramo status 'CHECKOUT' i 'Remove All' buttona u korpi po otvaranju stranice
+update_checkout_removeAll_buttonsStatus();
 
 
 
@@ -71,9 +90,6 @@ categorySelect.addEventListener('change', () => {
 
 
 
-// Po otvaranju stranice inicijalno prikazujemo proizvode iz kategorije 'Retro Football Jerseys'.
-updateProducts('Retro Football Jerseys');
-////////////////////////////////////////////////////////////////////////////////////////
 
 
 
@@ -128,25 +144,21 @@ cartToggler.addEventListener('click', e => {
 document.querySelector('#animate-arrow').addEventListener('click', () => {
     scrollToProductSection(document.querySelector('.products-section'));
 });
-/////////////////////////////////////////////////////////////////////////////////////////
 
 /* --------------------- Smooth scroll do 'WHAT WE DO' sekcije --------------------- */
 document.querySelector('#learn-more-button').addEventListener('click', () => {
     scrollToWhatWeDoSection(document.querySelector('.what-we-do-section'));
 });
-/////////////////////////////////////////////////////////////////////////////////////////
 
 /* --------------------- Smooth scroll do 'PRODUCTS' sekcije --------------------- */
 document.querySelector('#fa-products-section-trigger').addEventListener('click', () => {
     scrollToProductSection(document.querySelector('.products-section'));
 });
-/////////////////////////////////////////////////////////////////////////////////////////
 
 /* --------------------- Smooth scroll do 'CUSTOMER REVIEWS' sekcije --------------------- */
 document.querySelector('#fa-customer-products-section-trigger').addEventListener('click', () => {
     scrollToCustomerReviewsSection(document.querySelector('.customer-reviews-section'));
 });
-/////////////////////////////////////////////////////////////////////////////////////////
 
 
 
@@ -161,7 +173,6 @@ const nav = document.querySelector('#navbar');
 hamburgerMenuIcon.addEventListener('click', () => {
     toggleHamburgerMenu(nav, document.querySelector('header'));
 });
-/////////////////////////////////////////////////////////////////////////////////////////
 
 
 
@@ -170,28 +181,9 @@ hamburgerMenuIcon.addEventListener('click', () => {
 
 
 
-/* --------------------------------------------------------------------------------------
- ------------------------------- KREIRAMO INSTANCU KLASE 'Cart' --------------------------------
- --------------------------------------------------------------------------------------*/
-const shoppingCart = new Cart();
-
-
-// Azuriramo status 'CHECKOUT' i 'Remove All' buttona u korpi po otvaranju stranice
-const checkoutButton = document.getElementById('checkout-button');
-const clearCartButton = document.getElementById('clear-cart-button');
-update_checkout_removeAll_buttonsStatus();
 
 
 
-
-// Simuliramo porudzbinu
-checkoutButton.addEventListener('click', () => {
-    if (JSON.parse(localStorage.getItem('loggedInUser'))) {
-        placeOrder(document.querySelector('#loader'), checkoutButton, clearCartButton, token, shoppingCart, update_addToCartButtonsStatus, cartToggler);
-    } else {
-        alert('You must be logged in to place your order');
-    }
-});
 
 
 // Praznimo korpu
@@ -208,7 +200,6 @@ clearCartButton.addEventListener('click', () => {
 /* Funkcija za omogucavanje ili onemogucavanje 'CHECKOUT' i 'Remove All' buttona
 na osnovu stanja korpe */ 
 function update_checkout_removeAll_buttonsStatus() {
-
     if (shoppingCart.isEmpty()) {
         checkoutButton.disabled = true;
         clearCartButton.disabled = true;
@@ -216,7 +207,6 @@ function update_checkout_removeAll_buttonsStatus() {
         checkoutButton.disabled = false;
         clearCartButton.disabled = false;
     }
-
 }
 
 
@@ -225,15 +215,11 @@ function update_checkout_removeAll_buttonsStatus() {
 /* Funkcija za omogucavanje ili onemogucavanje pojedinacnog 'ADD TO CART' button-a
 na osnovu toga da li je taj proizvod vec u korpi */
 function update_addToCartButtonsStatus() {
-
     const addToCartButtons = document.querySelectorAll('.add-to-cart-button');
     addToCartButtons.forEach(button => {
-
         const productID = button.getAttribute('data-product-id'); 
-        button.disabled = isProductInCart(productID);
-        
+        button.disabled = isProductInCart(productID);    
     });
-
 }
 
 
@@ -242,13 +228,10 @@ function update_addToCartButtonsStatus() {
 
 // Funkcija za provjeravanje da li je proizvod dodat u korpu da bismo manipulisali stanjem 'ADD TO CART' buttona
 function isProductInCart(productID) {
-
     /* Array.some() metoda prolazi kroz proizvode u korpi i u slucaju da u njoj postoji proizvod ciji se 'id'
        poklapa sa 'data-product-id'-jem odredjenog button-a, ona vraca boolean 'true' i postavlja vrijednost
        'disabled' atributa button-a na 'true' i obrnuto */
-    
-    return shoppingCart.items.some(item => item._id == productID);
-
+    return shoppingCart.items.some(item => item.product._id == productID);
 }
 
 

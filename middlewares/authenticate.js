@@ -6,7 +6,7 @@ const User = require('../models/userModel');
 async function authenticate(req, res, next) {
     try {
         const authorizationHeader = req.headers.authorization;
-        if (!authorizationHeader || !authorizationHeader.startsWith('Bearer: ')) {
+        if (!authorizationHeader || !authorizationHeader.startsWith('Bearer ')) {
             return res.status(401).json({ message: 'Authentication failed' });
         }
         const token = authorizationHeader.split(' ')[1];

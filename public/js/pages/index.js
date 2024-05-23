@@ -6,10 +6,6 @@ if (localStorage.getItem('token') && location.pathname === '/') {
 
 
 
-
-
-
-
 // Shared functionalities with 'profile.js' page.
 import Login_Register from '../classes/Login_Register.js';
 import { backToTopButtonToggler, headerToggler, scrollToTop, scrollToProductSection, scrollToCustomerReviewsSection, scrollToWhatWeDoSection } from '../modules/listeners_callbacks.js';
@@ -209,6 +205,7 @@ async function updateProducts(category) {
         console.error(`Error loading products: ${error}`);
     }
 }
+
 // Event listener na 'select' elementu za prikazivanje proizvoda iz izabrane kategorije
 const categorySelect = document.getElementById('category-select');
 categorySelect.addEventListener('change', () => {
@@ -216,6 +213,6 @@ categorySelect.addEventListener('change', () => {
     updateProducts(selectedCategory);
 });
 
+
 // Po otvaranju stranice inicijalno prikazujemo proizvode iz kategorije 'Retro Football Jerseys'.
 updateProducts('Retro Football Jerseys');
-////////////////////////////////////////////////////////////////////////////////////////

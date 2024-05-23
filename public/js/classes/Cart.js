@@ -1,4 +1,4 @@
-/* Pomocne funkcije iz 'script.js' fajla */
+/* Pomocne funkcije iz 'profile.js' fajla */
 import { update_checkout_removeAll_buttonsStatus, update_addToCartButtonsStatus } from '../pages/profile.js';
 
 
@@ -10,16 +10,69 @@ import { update_checkout_removeAll_buttonsStatus, update_addToCartButtonsStatus 
 
 class Cart {
     constructor() {
-        this.items = [];
+        const savedItems = JSON.parse(localStorage.getItem('products'));
+        this.items = savedItems ? savedItems : [];
     }
 
 
+    // Porucujemo proizvode
+    async checkout() {
+        try {
+            const token = await JSON.parse(localStorage.getItem('token'));
+            document.querySelector('#loader').style.display = 'flex';
+            document.querySelector('#checkout-button').disabled = true;
+            document.querySelector('#clear-cart-button').disabled = true;
+
+            const requestBody = this.items.map(element => {
+                return {
+                    productId: element.product._id,
+                    quantity: element.quantity
+                };
+            });
+
+            const response = await fetch('http://localhost:<PORT>/api/carts', {
+                method: 'POST',
+                headers: {
+                    'Content-type': 'application/json',
+                    'Authorization': `Bearer ${token}` // jwt iz local storage-a
+                },
+                body: JSON.stringify(requestBody)
+            });
+
+            if (!response.ok) {
+                const data = await response.json();
+                throw new Error(data.message);
+            }
+
+            const data = await response.json();
+
+            setTimeout(() => {
+                alert(data.message);
+                console.log(data.message);
+                this.clearCart();
+                this.resetTotalPrice();
+                update_addToCartButtonsStatus();
+                document.querySelector('#loader').style.display = 'none';
+                document.querySelector('.cart-toggler-wrapper').style.display = 'none';
+                document.body.classList.remove('disable-scroll');
+                document.documentElement.classList.remove('disable-scroll');
+            }, 5000);
+
+        } catch (error) {
+            alert(error);
+            console.log(error);
+        }
+    }
+
+
+
+
     // Metoda za dodavanje proizvoda u korpu
-    addItem(product) {
-
-        this.items.push(product);
+    addItem(product, quantity) {
+        this.items.push({ product, quantity });
+        localStorage.setItem('products', JSON.stringify(this.items));
         this.updateCartBadge();
-
+        this.displayItems();
     }
 
 
@@ -60,14 +113,14 @@ class Cart {
             cartItemsList.appendChild(emptyCartMessage);
         } else {
             // Kreiramo html strukturu za svaki dodati proizvod pojedinacno
-            this.items.forEach(item => {
+            this.items.forEach(element => {
                 const listItem = document.createElement('li');
                 listItem.innerHTML = `
-                    <img src="${item.productImageUrl}">
-                    <p>${item.productTitle}</p>
-                    <p>$${item.productPrice}</p>
+                    <img src="${element.product.productImageUrl}">
+                    <p>${element.product.productTitle}</p>
+                    <p>$${element.product.productPrice}</p>
                     <div>
-                        <button class="remove-from-cart-button" data-product-id="${item._id}">
+                        <button class="remove-from-cart-button" data-product-id="${element.product._id}">
                             <i class="fa-solid fa-trash" title="Remove from cart"></i>
                         </button>
                     </div>
@@ -75,7 +128,7 @@ class Cart {
                 cartItemsList.appendChild(listItem);
 
                 // Dodajemo cijenu dodatog proizvoda na ukupnu cijenu
-                totalPrice += item.productPrice;
+                totalPrice += element.product.productPrice * element.quantity;
 
                 // Prikazujemo ukupnu cijenu u korpi
                 const totalElement = cartSummary.querySelector('h3');
@@ -86,13 +139,9 @@ class Cart {
                 if (removeButton) {
                     const productIDToRemove = removeButton.getAttribute('data-product-id');
                     removeButton.addEventListener('click', () => {
-
                         this.removeItem(productIDToRemove);
-
                         update_checkout_removeAll_buttonsStatus()
                         update_addToCartButtonsStatus()
-
-
                     });
                 }
             });
@@ -116,21 +165,17 @@ class Cart {
 
     // Metoda za azuriranje korpe nakon CHECKOUT-a ili uklanjanja svih proizvoda
     clearCart() {
-
         this.items = [];
         this.displayItems();
         this.updateCartBadge();
         update_checkout_removeAll_buttonsStatus();
-
     }
 
 
     // Metoda za azuriranje prikaza ukupne cijene
     resetTotalPrice() {
-
         const totalPriceElement = document.getElementById('total-price');
         totalPriceElement.textContent = 'Total: $0.00';
-
     }
 
 
@@ -138,6 +183,7 @@ class Cart {
     isEmpty() {
         return this.items.length === 0;
     }
+
 
 
 }

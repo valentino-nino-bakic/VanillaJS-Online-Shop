@@ -820,46 +820,49 @@ header a img:hover {
 
 .products-section .products .single-product p {
     font-size: 12px;
-    margin-top: 12px;
+    margin: 15px 0;
     color: rgb(141, 141, 141);
-    margin-bottom: 70px;
     border-bottom: 1px solid silver;
     padding-bottom: 10px;
 }
 
 .products-section .products .single-product h5 {
-    position: absolute;
-    max-width: 100%;
     width: 100%;
     text-align: center;
-    bottom: 65px;
-    left: 0;
-    right: 0;
     font-weight: lighter;
 }
 
-.products-section .products .single-product button {
-    width: 80%;
-    max-width: 100%;
+
+.products-section .products .single-product .actions {
+    width: 100%;
+    margin: 12px 0;
+    display: flex;
+    justify-content: center;
+    gap: 3px;
+}
+
+.products-section .products .single-product .actions input {
+    width: 20%;
+    text-align: center
+}
+
+.products-section .products .single-product .actions button {
+    width: 75%;
     padding: 5px 14px;
     background-color: rgb(80, 80, 80);
     color: white;
     border: none;
     outline: none;
     border-radius: 3px;
-    position: absolute;
-    bottom: 22px;
-    left: 50%;
-    transform: translateX(-50%);
     cursor: pointer;
 }
 
-.products-section .products .single-product button:hover {
+.products-section .products .single-product .actions button:hover {
     background-color: black
 }
 
 
-.products-section .products .single-product button:disabled {
+.products-section .products .single-product .actions button:disabled {
     cursor: auto;
     opacity: .5;
     background-color: rgb(80, 80, 80);
@@ -867,7 +870,7 @@ header a img:hover {
 
 
 
-.products-section .products .single-product button:hover:disabled {
+.products-section .products .single-product .actions button:hover:disabled {
     cursor: auto
 }
 

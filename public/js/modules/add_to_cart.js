@@ -1,9 +1,9 @@
 /* ------------------------------------------------------- IMPORTS ------------------------------------------------------- */
-import { 
+import {
     isProductInCart,
     shoppingCart,
     update_checkout_removeAll_buttonsStatus,
-    update_addToCartButtonsStatus 
+    update_addToCartButtonsStatus
 } from '../pages/profile.js';
 
 
@@ -32,9 +32,8 @@ async function updateProducts(category) {
 
         const products = await fetchProducts();
         for (let product of products) {
-            
             if (product.productCategory === category && product.inStock > 0) {
-                
+
                 const productHTML = `
 
                     <div class="single-product">
@@ -42,11 +41,14 @@ async function updateProducts(category) {
                         <h4>${product.productTitle.length > 50 ? product.productTitle = product.productTitle.substring(0, 50).concat('...') : product.productTitle}</h4>
                         <p>${product.productDescription.length > 140 ? product.productDescription = product.productDescription.substring(0, 140).concat('...') : product.productDescription}</p>
                         <h5>$${product.productPrice}</h5>
-                        <button class="add-to-cart-button" data-product-id="${product._id}" ${isProductInCart(product._id) ? 'disabled' : ''}>ADD TO CART</button>
+                        <div class="actions">
+                            <input class="quantity" type="number" value="1" min="1" max="${product.inStock}" required />
+                            <button class="add-to-cart-button" data-product-id="${product._id}" ${isProductInCart(product._id) ? 'disabled' : ''}>ADD TO CART</button>
+                        </div>
                     </div>
 
                 `;
-                
+
                 productContainer.innerHTML += productHTML;
 
                 gsap.fromTo(
@@ -71,19 +73,27 @@ async function updateProducts(category) {
                 const addToCartButtons = document.querySelectorAll('.add-to-cart-button');
                 addToCartButtons.forEach(button => {
                     button.addEventListener('click', e => {
-
                         const productID = e.target.getAttribute('data-product-id');
                         const selectedProduct = products.find(product => product._id == productID);
-
-                        shoppingCart.addItem(selectedProduct);
-
+                        const quantity = parseInt(e.target.parentElement.querySelector('.quantity').value);
+                        shoppingCart.addItem(selectedProduct, quantity);
                         update_checkout_removeAll_buttonsStatus()
                         update_addToCartButtonsStatus();
-
                     });
                 });
+
+
+                //Event listener na input poljima za restrikciju unosa kolicine vise nego sto je na zalihama.
+                const quantityInputs = document.querySelectorAll('.quantity');
+                quantityInputs.forEach(input => {
+                    input.addEventListener('input', e => {
+                        console.log(typeof e.target.value)
+                        if (parseInt(e.target.value) > parseInt(e.target.getAttribute('max'))) {
+                            e.target.value = 1;
+                        }
+                    })
+                })
             }
-            
         }
 
     } catch (error) {

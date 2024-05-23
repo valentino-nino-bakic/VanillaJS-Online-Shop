@@ -2,12 +2,12 @@ const mongoose = require('mongoose');
 
 
 const Product = mongoose.model('Product', {
-    productCategory: String,
-    productImageUrl: String,
-    productTitle: String,
-    productDescription: String,
-    productPrice: Number,
-    inStock: Number
+    productCategory: { type: String, required: true },
+    productImageUrl: { type: String, required: true },
+    productTitle: { type: String, required: true },
+    productDescription: { type: String, required: true },
+    productPrice: { type: Number, required: true, min: 0 },
+    inStock: { type: Number, required: true, min: 0 }
 });
 
 

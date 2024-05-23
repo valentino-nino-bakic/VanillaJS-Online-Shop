@@ -32,7 +32,9 @@ async function updateProducts(category) {
 
         const products = await fetchProducts();
         for (let product of products) {
-            if (product.productCategory === category) {
+            
+            if (product.productCategory === category && product.inStock > 0) {
+                
                 const productHTML = `
 
                     <div class="single-product">
@@ -44,6 +46,7 @@ async function updateProducts(category) {
                     </div>
 
                 `;
+                
                 productContainer.innerHTML += productHTML;
 
                 gsap.fromTo(
@@ -80,6 +83,7 @@ async function updateProducts(category) {
                     });
                 });
             }
+            
         }
 
     } catch (error) {

@@ -133,7 +133,7 @@ document.querySelector('#switch-to-login-form-toggler').addEventListener('click'
 /*----------------------------------------      AZURIRANJE STRANICE SA PODACIMA O PROIZVODIMA IZ NASE BAZE PODATAKA      --------------------------------------------*/
 // Funkcija za dohvatanje proizvoda
 async function fetchProducts() {
-    const response = await fetch('http://localhost:<PORT>/api/products');
+    const response = await fetch('http://localhost:8080/api/products');
     if (response.ok) {
         const data = await response.json();
         return data.products;
@@ -155,18 +155,16 @@ async function updateProducts(category) {
         const products = await fetchProducts();
         for (let product of products) {
             if (product.productCategory === category && product.inStock > 0) {
-                const productHTML = `
-
-                    <div class="single-product">
-                        <img src="${product.productImageUrl}" alt="${product.productTitle}">
-                        <h4>${product.productTitle.length > 50 ? product.productTitle = product.productTitle.substring(0, 50).concat('...') : product.productTitle}</h4>
-                        <p>${product.productDescription.length > 140 ? product.productDescription = product.productDescription.substring(0, 140).concat('...') : product.productDescription}</p>
-                        <h5>$${product.productPrice}</h5>
-                        <button class="add-to-cart-button">ADD TO CART</button>
-                    </div>
-
+                const productHTML = document.createElement('div');
+                productHTML.classList.add('single-product');
+                productHTML.innerHTML = `
+                    <img src="${product.productImageUrl}" alt="${product.productTitle}">
+                    <h4>${product.productTitle.length > 50 ? product.productTitle = product.productTitle.substring(0, 50).concat('...') : product.productTitle}</h4>
+                    <p>${product.productDescription.length > 140 ? product.productDescription = product.productDescription.substring(0, 140).concat('...') : product.productDescription}</p>
+                    <h5>$${product.productPrice}</h5>
+                    <button class="add-to-cart-button">ADD TO CART</button>
                 `;
-                productContainer.innerHTML += productHTML;
+                productContainer.appendChild(productHTML);
 
                 gsap.fromTo(
                     productContainer.children,

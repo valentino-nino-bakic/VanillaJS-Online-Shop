@@ -30,7 +30,7 @@ class Profile {
             const token = JSON.parse(localStorage.getItem('token'));
             const decodedToken = jwt_decode(token);
             const userId = decodedToken.id;
-            const apiUrl = `http://localhost:<PORT>/api/delete/${userId}`;
+            const apiUrl = `http://localhost:8080/api/delete/${userId}`;
 
             if (!this.validateOnAccountDeletion()) {
                 showFinalErrorMessage(document.querySelector('.final-account-deletion-error-message'));
@@ -69,7 +69,7 @@ class Profile {
             const token = JSON.parse(localStorage.getItem('token'));
             const decodedToken = jwt_decode(token);
             const userId = decodedToken.id;
-            const apiUrl = `http://localhost:<PORT>/api/modify/${userId}`;
+            const apiUrl = `http://localhost:8080/api/modify/${userId}`;
 
             const requestBody = {
                 newUsername: newModifiedUsername,

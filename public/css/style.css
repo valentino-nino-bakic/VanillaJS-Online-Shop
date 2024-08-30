@@ -771,9 +771,7 @@ header a img:hover {
 
 .products-section label {
     display: block;
-    text-align: center;
     margin-bottom: 7px;
-    margin-top: 40px;
 }
 
 .products-section select {
@@ -889,7 +887,15 @@ header a img:hover {
 }
 #category-select option {
     background-color:black;
-    color: white
+    color: white;
+}
+
+.select-sort-search-container {
+    display: flex;
+    flex-wrap: wrap;
+    width: fit-content;
+    gap: 50px;
+    margin: 60px auto auto;
 }
 
 

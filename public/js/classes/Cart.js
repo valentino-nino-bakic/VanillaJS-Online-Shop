@@ -1,9 +1,3 @@
-/* Pomocne funkcije iz 'profile.js' fajla */
-import { update_checkout_removeAll_buttonsStatus, update_addToCartButtonsStatus } from '../pages/profile.js';
-
-
-
-
 /* ------------------------------------------------------------------------
 --------------- KREIRAMO KLASU 'Cart' KOJA PREDSTAVLJA KORPU --------------
 ------------------------------------------------------------------------ */
@@ -12,6 +6,13 @@ class Cart {
     constructor() {
         const savedItems = JSON.parse(localStorage.getItem('products'));
         this.items = savedItems ? savedItems : [];
+
+        this.checkoutButton = document.getElementById('checkout-button');
+        this.clearCartButton = document.getElementById('clear-cart-button');
+
+        this.updateCartBadge();
+        this.update_addToCartButtonsStatus();
+        this.update_checkout_removeAll_buttonsStatus();
     }
 
 
@@ -30,7 +31,7 @@ class Cart {
                 };
             });
 
-            const response = await fetch('http://localhost:<PORT>/api/carts', {
+            const response = await fetch('http://localhost:8080/api/carts', {
                 method: 'POST',
                 headers: {
                     'Content-type': 'application/json',
@@ -58,6 +59,8 @@ class Cart {
                 document.documentElement.classList.remove('disable-scroll');
             }, 5000);
 
+
+
         } catch (error) {
             alert(error);
             console.log(error);
@@ -78,12 +81,12 @@ class Cart {
 
     // Metoda za uklanjanje proizvoda iz korpe na osnovu 'data-product-key'-ja
     removeItem(productID) {
-
         // Array.findIndex() metoda pronalazi odredjeni proizvod ciji se 'data-product-key' poklapa sa 'data-product-key'-jem kliknutog button-a
-        const indexToRemove = this.items.findIndex(item => item._id == productID);
+        const indexToRemove = this.items.findIndex(item => item.product._id === productID);
 
         if (indexToRemove !== -1) {
             this.items.splice(indexToRemove, 1); // Uklanjamo proizvod iz niza na odredjenom indeksu
+            localStorage.setItem('products', JSON.stringify(this.items)); // Azuriramo local storage
             this.displayItems(); // Azuriramo prikaz korpe nakon uklanjanja proizvoda
             this.updateCartBadge(); // Azuriramo brojac korpe
 
@@ -92,14 +95,12 @@ class Cart {
                 this.resetTotalPrice();
             }
         }
-
     }
 
 
 
     // Metoda za prikazivanje proizvoda u korpi
     displayItems() {
-
         const cartItemsList = document.getElementById('cart-items');
         const cartSummary = document.getElementById('cart-summary');
         cartItemsList.innerHTML = '';
@@ -118,7 +119,7 @@ class Cart {
                 listItem.innerHTML = `
                     <img src="${element.product.productImageUrl}">
                     <p>${element.product.productTitle}</p>
-                    <p>$${element.product.productPrice}</p>
+                    <p>$${element.quantity * element.product.productPrice}</p>
                     <div>
                         <button class="remove-from-cart-button" data-product-id="${element.product._id}">
                             <i class="fa-solid fa-trash" title="Remove from cart"></i>
@@ -140,13 +141,12 @@ class Cart {
                     const productIDToRemove = removeButton.getAttribute('data-product-id');
                     removeButton.addEventListener('click', () => {
                         this.removeItem(productIDToRemove);
-                        update_checkout_removeAll_buttonsStatus()
-                        update_addToCartButtonsStatus()
+                        update_checkout_removeAll_buttonsStatus();
+                        update_addToCartButtonsStatus();
                     });
                 }
             });
         }
-
     }
 
 
@@ -156,7 +156,11 @@ class Cart {
     updateCartBadge() {
         const cartBadge = document.querySelector('.badge');
         cartBadge.style.animation = '';
-        cartBadge.textContent = this.items.length;
+        let numberOfAddedItems = 0;
+        this.items.forEach(element => {
+            numberOfAddedItems += element.quantity;
+        });
+        cartBadge.textContent = numberOfAddedItems;
         setTimeout(() => {
             cartBadge.style.animation = 'badgeMove .5s';
         }, 0);
@@ -166,6 +170,7 @@ class Cart {
     // Metoda za azuriranje korpe nakon CHECKOUT-a ili uklanjanja svih proizvoda
     clearCart() {
         this.items = [];
+        localStorage.setItem('products', JSON.stringify(this.items));
         this.displayItems();
         this.updateCartBadge();
         update_checkout_removeAll_buttonsStatus();
@@ -183,6 +188,54 @@ class Cart {
     isEmpty() {
         return this.items.length === 0;
     }
+
+
+
+
+    update_checkout_removeAll_buttonsStatus() {
+        if (this.isEmpty()) {
+            this.checkoutButton.disabled = true;
+            this.clearCartButton.disabled = true;
+        } else {
+            this.checkoutButton.disabled = false;
+            this.clearCartButton.disabled = false;
+        }
+    }
+
+
+
+
+    update_addToCartButtonsStatus() {
+        const addToCartButtons = document.querySelectorAll('.add-to-cart-button');
+        addToCartButtons.forEach(button => {
+            const productID = button.getAttribute('data-product-id');
+            button.disabled = this.isProductInCart(productID);
+        });
+    }
+
+
+
+
+    isProductInCart(productID) {
+        return this.items.some(item => item.product._id === productID);
+    }
+    
+
+
+
+
+    addClickListeners() {
+        this.checkoutButton.addEventListener('click', () => {
+            this.checkout();
+        });
+
+        this.clearCartButton.addEventListener('click', () => {
+            this.clearCart();
+            this.resetTotalPrice();
+            this.update_addToCartButtonsStatus();    
+        });
+    }
+
 
 
 

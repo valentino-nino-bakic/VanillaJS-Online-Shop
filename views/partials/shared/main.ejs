@@ -39,8 +39,11 @@
                 <p>- We bring <strong>over 15 years</strong> of experience in the e-commerce industry <br>
                     - We strive for excellence in every solution</p><br>
 
-                <p>Contact us today for more info! <button><a href="/contact">Contact Us <i
-                                class="fa fa-arrow-right-long"></i></a></button></p>
+                <p>Contact us today for more info!
+                    <button>
+                        <a href="/contact">Contact Us<i class="fa fa-arrow-right-long"></i></a>
+                    </button>
+                </p>
 
 
 
@@ -60,13 +63,25 @@
     <section class="products-section">
         <h1>Explore some of our products</h1>
 
-        <label for="category-select">Select a category:</label>
-        <select id="category-select">
-            <option value="Retro Football Jerseys">Retro Football Jerseys</option>
-            <option value="Shoes">Shoes</option>
-            <option value="Smartphones">Smartphones</option>
-            <option value="Laptops">Laptops</option>
-        </select>
+        <div class="select-sort-search-container">
+            <div>
+                <label for="category-select">Select a category:</label>
+                <select id="category-select">
+                    <option value="Retro Football Jerseys">Retro Football Jerseys</option>
+                    <option value="Shoes">Shoes</option>
+                    <option value="Smartphones">Smartphones</option>
+                    <option value="Laptops">Laptops</option>
+                </select>
+            </div>
+    
+            <div class="sort-container">
+                <p style="margin-bottom: 7px">Sort:</p>
+                <label><input type="radio" class="sort-option" name="sort-option" value="name-asc"> Name A-Z</label>
+                <label><input type="radio" class="sort-option" name="sort-option" value="name-desc"> Name Z-A</label>
+                <label><input type="radio" class="sort-option" name="sort-option" value="price-asc"> Price (lowest to highest)</label>
+                <label><input type="radio" class="sort-option" name="sort-option" value="price-desc"> Price (highest to lowest)</label>
+            </div>
+        </div>
 
         <div class="products" id="product-container">
             <!-- Div koji ce se dinamicki popuniti putem JS -->

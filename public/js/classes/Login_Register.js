@@ -27,7 +27,7 @@ class Login_Register {
                 email: this.newEmail.value,
                 password: this.newPassword.value,
             }
-            const apiUrl = 'http://localhost:<PORT>/api/signup';
+            const apiUrl = 'http://localhost:8080/api/signup';
 
             if (!this.validateOnSignUp()) {
                 showFinalErrorMessage(document.querySelector('.final-signup-error-message'));
@@ -70,7 +70,7 @@ class Login_Register {
                 usernameOrEmail: this.usernameOrEmail.value,
                 password: this.password.value,
             }
-            const apiUrl = 'http://localhost:<PORT>/api/login';
+            const apiUrl = 'http://localhost:8080/api/login';
 
             if (!this.validateOnLogin()) {
                 showFinalErrorMessage(document.querySelector('.final-login-error-message'));

@@ -12,13 +12,11 @@ function headerToggler() {
 
 // Back to top button vidljivost
 function backToTopButtonToggler() {
-
     if (window.scrollY > window.innerHeight / 2) {
         document.querySelector('.scroll-to-top-button').style.display = 'block';
     } else {
         document.querySelector('.scroll-to-top-button').style.display = 'none';
     }
-
 }
 
 
@@ -122,23 +120,18 @@ function toggleHamburgerMenu(nav, header) {
 
 
 
-// Event listener na 'select' elementu za prikazivanje proizvoda iz izabrane kategorije
-function switchCategory(selectElement, updateProducts, update_addToCartButtonsStatus) {
-    const selectedCategory = selectElement.value;
-    updateProducts(selectedCategory);
-    update_addToCartButtonsStatus();
-}
+
 
 
 
 
 
 // Praznimo korpu
-function emptyTheCart(shoppingCart, update_addToCartButtonsStatus) {
-    shoppingCart.clearCart();
-    shoppingCart.resetTotalPrice();
-    update_addToCartButtonsStatus();    
-}
+// function emptyTheCart(shoppingCart, update_addToCartButtonsStatus) {
+//     shoppingCart.clearCart();
+//     shoppingCart.resetTotalPrice();
+//     update_addToCartButtonsStatus();    
+// }
 
 
 
@@ -166,6 +159,4 @@ export {
     scrollToWhatWeDoSection,
     scrollToCustomerReviewsSection,
     toggleHamburgerMenu,
-    switchCategory,
-    emptyTheCart
 }

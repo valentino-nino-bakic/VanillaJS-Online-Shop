@@ -1,5 +1,5 @@
 const Cart = require('../models/cartModel');
-
+const Product = require('../models/productModel');
 
 
 const CartController = {
@@ -23,10 +23,18 @@ const CartController = {
                     }
                 });
             }
-    
+
             await cart.save();
+
+            for (const product of products) {
+                await Product.findByIdAndUpdate(
+                    product.productId,
+                    { $inc: { inStock: -product.quantity } }
+                );
+            }
+
             return res.status(200).json({ message: 'Your order has been successfully processed!' });
-            
+
         } catch (error) {
             console.log(error);
             res.status(500).json({ message: error.message });

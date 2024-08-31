@@ -32,43 +32,6 @@ function scrollToTop() {
 
 
 
-
-// Prikaz korpe klikom na cart ikonicu
-function showCart(cartToggler, shoppingCart) {
-    cartToggler.style.display = 'block';
-    cartToggler.style.animation = 'cartShow .5s ease-out'
-    document.body.classList.add('disable-scroll');
-    document.documentElement.classList.add('disable-scroll');
-    shoppingCart.displayItems(); // Prikazujemo proizvode iz korpe
-}
-
-
-
-
-// Zatvaranje korpe klikom na 'X'
-function xHidesCart(cartToggler) {
-    cartToggler.style.display = 'none';
-    document.body.classList.remove('disable-scroll');
-    document.documentElement.classList.remove('disable-scroll');
-}
-
-
-
-
-// Zatvaranje korpe klikom na 'X'
-function overlayHidesCart(cartToggler) {
-    cartToggler.style.display = 'none';
-    document.body.classList.remove('disable-scroll');
-    document.documentElement.classList.remove('disable-scroll');
-}
-
-
-
-
-
-
-
-
 /* ------------------------------------------------------            SMOOTH SCROLL LISTENERI              ---------------------------------------------------- */
 /* -------------------- Smooth scroll sa vrha do 'PRODUCTS' sekcije -------------------- */
 function scrollToProductSection(productSection) {
@@ -121,40 +84,11 @@ function toggleHamburgerMenu(nav, header) {
 
 
 
-
-
-
-
-
-// Praznimo korpu
-// function emptyTheCart(shoppingCart, update_addToCartButtonsStatus) {
-//     shoppingCart.clearCart();
-//     shoppingCart.resetTotalPrice();
-//     update_addToCartButtonsStatus();    
-// }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 /* ------------------------------------------------------- EXPORTS ------------------------------------------------------- */
 export {
     headerToggler,
     backToTopButtonToggler,
     scrollToTop,
-    showCart,
-    xHidesCart,
-    overlayHidesCart,
     scrollToProductSection,
     scrollToWhatWeDoSection,
     scrollToCustomerReviewsSection,

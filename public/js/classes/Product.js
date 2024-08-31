@@ -6,15 +6,12 @@ import {
 
 
 /*----------------------------------------      AZURIRANJE STRANICE SA PODACIMA O PROIZVODIMA IZ NASE BAZE PODATAKA      --------------------------------------------*/
-
-
-
 class Product {
     constructor() {
         this.selectElement = document.querySelector('#category-select');
         this.addChangeListeners();
     }
- 
+
 
 
     // Funkcija za dohvatanje proizvoda
@@ -66,15 +63,15 @@ class Product {
                 const productHTML = document.createElement('div');
                 productHTML.classList.add('single-product');
                 productHTML.innerHTML = `
-                <img src="${product.productImageUrl}" alt="${product.productTitle}">
-                <h4>${product.productTitle.length > 50 ? product.productTitle = product.productTitle.substring(0, 50).concat('...') : product.productTitle}</h4>
-                <p>${product.productDescription.length > 140 ? product.productDescription = product.productDescription.substring(0, 140).concat('...') : product.productDescription}</p>
-                <h5>$${product.productPrice}</h5>
-                <div class="actions">
-                    <input class="quantity" type="number" value="1" min="1" max="${product.inStock}" required />
-                    <button class="add-to-cart-button" data-product-id="${product._id}" ${shoppingCart.isProductInCart(product._id) ? 'disabled' : ''}>ADD TO CART</button>
-                </div>
-            `;
+                    <img src="${product.productImageUrl}" alt="${product.productTitle}">
+                    <h4>${product.productTitle.length > 50 ? product.productTitle = product.productTitle.substring(0, 50).concat('...') : product.productTitle}</h4>
+                    <p>${product.productDescription.length > 140 ? product.productDescription = product.productDescription.substring(0, 140).concat('...') : product.productDescription}</p>
+                    <h5>$${product.productPrice}</h5>
+                    <div class="actions">
+                        <input class="quantity" type="number" value="1" min="1" max="${product.inStock}" required />
+                        <button class="add-to-cart-button" data-product-id="${product._id}" ${shoppingCart.isProductInCart(product._id) ? 'disabled' : ''}>ADD TO CART</button>
+                    </div>
+                `;
 
                 productContainer.appendChild(productHTML);
 

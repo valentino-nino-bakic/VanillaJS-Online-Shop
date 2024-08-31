@@ -10,9 +10,14 @@ class Cart {
         this.checkoutButton = document.getElementById('checkout-button');
         this.clearCartButton = document.getElementById('clear-cart-button');
 
+        this.cartIcon = document.querySelector('.cart-icon');
+        this.closeButton = document.querySelector('.x');
+        this.cartToggler = document.querySelector('.cart-toggler-wrapper');
+
         this.updateCartBadge();
         this.update_addToCartButtonsStatus();
         this.update_checkout_removeAll_buttonsStatus();
+        this.addClickListeners();
     }
 
 
@@ -141,8 +146,8 @@ class Cart {
                     const productIDToRemove = removeButton.getAttribute('data-product-id');
                     removeButton.addEventListener('click', () => {
                         this.removeItem(productIDToRemove);
-                        update_checkout_removeAll_buttonsStatus();
-                        update_addToCartButtonsStatus();
+                        this.update_checkout_removeAll_buttonsStatus();
+                        this.update_addToCartButtonsStatus();
                     });
                 }
             });
@@ -173,7 +178,7 @@ class Cart {
         localStorage.setItem('products', JSON.stringify(this.items));
         this.displayItems();
         this.updateCartBadge();
-        update_checkout_removeAll_buttonsStatus();
+        this.update_checkout_removeAll_buttonsStatus();
     }
 
 
@@ -219,7 +224,7 @@ class Cart {
     isProductInCart(productID) {
         return this.items.some(item => item.product._id === productID);
     }
-    
+
 
 
 
@@ -232,7 +237,34 @@ class Cart {
         this.clearCartButton.addEventListener('click', () => {
             this.clearCart();
             this.resetTotalPrice();
-            this.update_addToCartButtonsStatus();    
+            this.update_addToCartButtonsStatus();
+        });
+
+
+        /* ---------------------- OTVARANJE I ZATVARANJE KORPE - 3 sledece metode -------------------*/
+        // Prikaz korpe klikom na cart ikonicu
+        this.cartIcon.addEventListener('click', () => {
+            this.cartToggler.style.display = 'block';
+            this.cartToggler.style.animation = 'cartShow .5s ease-out'
+            document.body.classList.add('disable-scroll');
+            document.documentElement.classList.add('disable-scroll');
+            this.displayItems(); // Prikazujemo proizvode iz korpe
+        });
+
+        // Zatvaranje korpe klikom na 'X'
+        this.closeButton.addEventListener('click', () => {
+            this.cartToggler.style.display = 'none';
+            document.body.classList.remove('disable-scroll');
+            document.documentElement.classList.remove('disable-scroll');
+        });
+
+        // Zatvaranje korpe klikom na overlay
+        this.cartToggler.addEventListener('click', e => {
+            if (e.target === this.cartToggler) {
+                this.cartToggler.style.display = 'none';
+                document.body.classList.remove('disable-scroll');
+                document.documentElement.classList.remove('disable-scroll');
+            }
         });
     }
 

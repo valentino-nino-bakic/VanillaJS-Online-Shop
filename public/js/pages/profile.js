@@ -5,9 +5,6 @@ if (!localStorage.getItem('token') && location.pathname === '/profile') {
 
 
 /* ------------------------------------------------------- IMPORTS ------------------------------------------------------- */
-
-
-
 /* Fetch logika, prikazivanje i filtriranje proizvoda... */
 import Product from '../classes/Product.js';
 
@@ -22,9 +19,6 @@ import {
     headerToggler,
     backToTopButtonToggler,
     scrollToTop,
-    showCart,
-    xHidesCart,
-    overlayHidesCart,
     scrollToProductSection,
     scrollToWhatWeDoSection,
     scrollToCustomerReviewsSection,
@@ -64,35 +58,6 @@ window.addEventListener('scroll', backToTopButtonToggler);
 
 // Nazad na vrh stranice
 document.querySelector('.scroll-to-top-button').addEventListener('click', scrollToTop);
-
-
-
-/* ---------------------- OTVARANJE I ZATVARANJE KORPE -------------------*/
-const cartIcon = document.querySelector('.cart-icon');
-const closeButton = document.querySelector('.x');
-const cartToggler = document.querySelector('.cart-toggler-wrapper');
-
-// Prikaz korpe klikom na cart ikonicu
-cartIcon.addEventListener('click', () => {
-    showCart(cartToggler, shoppingCart);
-});
-
-// Zatvaranje korpe klikom na 'X'
-closeButton.addEventListener('click', () => {
-    xHidesCart(cartToggler)
-});
-
-// Zatvaranje korpe klikom na overlay
-cartToggler.addEventListener('click', e => {
-    if (e.target === cartToggler) {
-        overlayHidesCart(cartToggler)
-    }
-});
-
-
-
-
-
 
 
 

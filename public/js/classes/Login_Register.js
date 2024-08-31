@@ -1,4 +1,4 @@
-import { showErrorMessage, hideErrorMessage, showFinalErrorMessage } from "../modules/inputValidation.js";
+import { showErrorMessage, hideErrorMessage, showFinalErrorMessage } from "../utils/inputValidation.js";
 
 
 /* KREIRAMO KLASU ZA LOGIN I REGISTRACIJU KORISNIKA */

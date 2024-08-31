@@ -8,8 +8,6 @@ function headerToggler() {
 }
 
 
-
-
 // Back to top button vidljivost
 function backToTopButtonToggler() {
     if (window.scrollY > window.innerHeight / 2) {
@@ -18,8 +16,6 @@ function backToTopButtonToggler() {
         document.querySelector('.scroll-to-top-button').style.display = 'none';
     }
 }
-
-
 
 
 /* -------------- NAZAD NA VRH STRANICE --------------- */
@@ -63,10 +59,8 @@ function scrollToCustomerReviewsSection(customerReviewsSection) {
 
 
 
-
 // Hamburger menu
 let isOpen = false; // Globalna varijabla cijom vrijednoscu manipulisemo da bi pravilno otvarali i zatvarali navbar
-
 function toggleHamburgerMenu(nav, header) {
     if (!isOpen) {
         gsap.to(nav, { top: '100%', opacity: 1, duration: .8, ease: Power4.easeOut });

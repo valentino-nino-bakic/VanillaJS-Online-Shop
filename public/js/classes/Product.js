@@ -91,10 +91,6 @@ class Product {
                         }
                     }
                 );
-
-
-
-
             }
 
             // 'Event delegation' tehnika na 'productContainer'-u u odnosu na dugmad za dodavanje svakog pojedinacnog proizvoda u korpu.

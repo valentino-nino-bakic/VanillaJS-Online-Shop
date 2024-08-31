@@ -4,9 +4,11 @@ const mongoose = require('mongoose');
 require('dotenv').config();
 const PORT = process.env.PORT;
 const DB_CONNECTION_STRING = process.env.DB_CONNECTION_STRING;
+
 const userRouter = require('./routes/userRoutes');
 const productRouter = require('./routes/productRoutes');
 const cartRouter = require('./routes/cartRoutes');
+const contactMessageRouter = require('./routes/contactMessageRoutes');
 
 
 
@@ -31,6 +33,7 @@ connectToDatabase();
 app.use('/api', userRouter);
 app.use('/api', productRouter);
 app.use('/api', cartRouter);
+app.use('/api', contactMessageRouter);
 
 
 

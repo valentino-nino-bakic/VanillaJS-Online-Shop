@@ -23,7 +23,7 @@ import {
     scrollToWhatWeDoSection,
     scrollToCustomerReviewsSection,
     toggleHamburgerMenu
-} from '../modules/listeners_callbacks.js';
+} from '../utils/listeners_callbacks.js';
 /* ----------------------------------------------------------------------------------------------------------------------- */
 
 

@@ -8,8 +8,8 @@ gsap.to(document.querySelector('#hamburger-menu-icon'), { y: 0, duration: 1, eas
 
 
 /* ------------- ANIMIRAMO FORMU --------- */
-const myForm = document.getElementById('form');
-const animation = gsap.from(myForm, {
+const contactMessageForm = document.getElementById('contact-message-form');
+const animation = gsap.from(contactMessageForm, {
     y: 150,
     duration: 1.2,
     ease: 'bounce',
@@ -17,14 +17,12 @@ const animation = gsap.from(myForm, {
 
 
 window.addEventListener('load', () => {
-
     animation.play();
-
 });
 
 
 
-const formContact = myForm.querySelector('.form-contact');
+const formContact = contactMessageForm.querySelector('.form-contact');
 gsap.from(formContact, {
     scale: '1.6',
     duration: .8,
@@ -32,14 +30,4 @@ gsap.from(formContact, {
     scrollTrigger: {
         trigger: formContact,
     }
-})
-
-
-
-
-
-
-
-
-
-
+});

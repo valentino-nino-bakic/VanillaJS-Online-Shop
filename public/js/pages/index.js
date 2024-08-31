@@ -8,7 +8,7 @@ if (localStorage.getItem('token') && location.pathname === '/') {
 
 // Shared functionalities with 'profile.js' page.
 import Login_Register from '../classes/Login_Register.js';
-import { backToTopButtonToggler, headerToggler, scrollToTop, scrollToProductSection, scrollToCustomerReviewsSection, scrollToWhatWeDoSection } from '../modules/listeners_callbacks.js';
+import { backToTopButtonToggler, headerToggler, scrollToTop, scrollToProductSection, scrollToCustomerReviewsSection, scrollToWhatWeDoSection } from '../utils/listeners_callbacks.js';
 
 
 

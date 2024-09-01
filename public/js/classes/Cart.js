@@ -4,6 +4,14 @@
 
 class Cart {
     constructor() {
+        /* singleton pattern along wiht static 'getInstance' method below 
+            for consistency of 'Cart' state when creating 
+                new instances across other modules..... */
+        if (Cart.instance) {
+            return Cart.instance;
+        }
+        Cart.instance = this;
+
         const savedItems = JSON.parse(localStorage.getItem('products'));
         this.items = savedItems ? savedItems : [];
 
@@ -21,10 +29,27 @@ class Cart {
     }
 
 
-    // Porucujemo proizvode
+    static getInstance() {
+        if (!Cart.instance) {
+            Cart.instance = new Cart();
+        }
+        return Cart.instance;
+    }
+
+
+
+    // Ordering products
     async checkout() {
+        const token = JSON.parse(localStorage.getItem('token'));
+        if (!token) {
+            this.cartToggler.style.display = 'none';
+            document.querySelector('.register-form-wrapper').style.display = 'flex';
+            document.body.classList.add('disable-scroll');
+            document.documentElement.classList.add('disable-scroll');
+            return;
+        }
+
         try {
-            const token = await JSON.parse(localStorage.getItem('token'));
             document.querySelector('#loader').style.display = 'flex';
             document.querySelector('#checkout-button').disabled = true;
             document.querySelector('#clear-cart-button').disabled = true;
@@ -40,7 +65,7 @@ class Cart {
                 method: 'POST',
                 headers: {
                     'Content-type': 'application/json',
-                    'Authorization': `Bearer ${token}` // jwt iz local storage-a
+                    'Authorization': `Bearer ${token}` // jwt from local storage
                 },
                 body: JSON.stringify(requestBody)
             });
@@ -75,7 +100,7 @@ class Cart {
 
 
 
-    // Metoda za dodavanje proizvoda u korpu
+    // Add item to cart
     addItem(product, quantity) {
         this.items.push({ product, quantity });
         localStorage.setItem('products', JSON.stringify(this.items));
@@ -84,7 +109,7 @@ class Cart {
     }
 
 
-    // Metoda za uklanjanje proizvoda iz korpe na osnovu 'data-product-key'-ja
+    // Remove item from cart
     removeItem(productID) {
         // Array.findIndex() metoda pronalazi odredjeni proizvod ciji se 'data-product-key' poklapa sa 'data-product-key'-jem kliknutog button-a
         const indexToRemove = this.items.findIndex(item => item.product._id === productID);
@@ -104,7 +129,7 @@ class Cart {
 
 
 
-    // Metoda za prikazivanje proizvoda u korpi
+    // Displaying added items
     displayItems() {
         const cartItemsList = document.getElementById('cart-items');
         const cartSummary = document.getElementById('cart-summary');
@@ -157,7 +182,7 @@ class Cart {
 
 
 
-    // Metoda za azuriranje brojaca proizvoda u korpi
+    // keeps track of number of items added
     updateCartBadge() {
         const cartBadge = document.querySelector('.badge');
         cartBadge.style.animation = '';
@@ -172,7 +197,7 @@ class Cart {
     }
 
 
-    // Metoda za azuriranje korpe nakon CHECKOUT-a ili uklanjanja svih proizvoda
+    // updating cart after CHECKOUT or after removing all products from cart
     clearCart() {
         this.items = [];
         localStorage.setItem('products', JSON.stringify(this.items));
@@ -182,14 +207,14 @@ class Cart {
     }
 
 
-    // Metoda za azuriranje prikaza ukupne cijene
+    // update total price after CHECKOUT or after removing all items from cart
     resetTotalPrice() {
         const totalPriceElement = document.getElementById('total-price');
         totalPriceElement.textContent = 'Total: $0.00';
     }
 
 
-    // Metoda za disable-ovanje 'CHECKOUT' i 'Remove All' buttona kada je korpa prazna
+    // updating 'CHECKOUT' and 'Remove All' buttons' 'disabled' attribute.
     isEmpty() {
         return this.items.length === 0;
     }
@@ -242,23 +267,23 @@ class Cart {
 
 
         /* ---------------------- OTVARANJE I ZATVARANJE KORPE - 3 sledece metode -------------------*/
-        // Prikaz korpe klikom na cart ikonicu
+        // cart icon hides cart.
         this.cartIcon.addEventListener('click', () => {
             this.cartToggler.style.display = 'block';
             this.cartToggler.style.animation = 'cartShow .5s ease-out'
             document.body.classList.add('disable-scroll');
             document.documentElement.classList.add('disable-scroll');
-            this.displayItems(); // Prikazujemo proizvode iz korpe
+            this.displayItems(); // updating added items
         });
 
-        // Zatvaranje korpe klikom na 'X'
+        // 'X' hides cart.
         this.closeButton.addEventListener('click', () => {
             this.cartToggler.style.display = 'none';
             document.body.classList.remove('disable-scroll');
             document.documentElement.classList.remove('disable-scroll');
         });
 
-        // Zatvaranje korpe klikom na overlay
+        // overlay hides cart.
         this.cartToggler.addEventListener('click', e => {
             if (e.target === this.cartToggler) {
                 this.cartToggler.style.display = 'none';

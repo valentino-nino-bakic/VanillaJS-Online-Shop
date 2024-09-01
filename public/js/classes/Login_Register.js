@@ -32,7 +32,7 @@ class Login_Register {
             if (!this.validateOnSignUp()) {
                 showFinalErrorMessage(document.querySelector('.final-signup-error-message'));
                 return;
-            }  
+            }
 
             const response = await fetch(apiUrl, {
                 method: 'POST',
@@ -49,7 +49,7 @@ class Login_Register {
             alert(data.message);
             document.querySelector('.register-form-wrapper').style.display = 'none';
             document.querySelector('.login-form-wrapper').style.display = 'flex';
-            
+
         } catch (error) {
             alert(error);
             console.log(error);
@@ -92,7 +92,7 @@ class Login_Register {
             localStorage.setItem('token', JSON.stringify(data.token));
             alert(data.message);
             location.href = '/profile';
-            
+
         } catch (error) {
             alert(error);
             console.log(error);
@@ -150,6 +150,8 @@ class Login_Register {
             this.login();
         })
 
+
+
         document.querySelector('.login-button').addEventListener('click', () => {
             document.querySelector('.login-form-wrapper').style.display = 'flex';
             document.body.classList.add('disable-scroll');
@@ -167,6 +169,16 @@ class Login_Register {
                 document.documentElement.classList.remove('disable-scroll');
             });
         });
+        document.querySelector('#switch-to-register-form-toggler').addEventListener('click', e => {
+            e.preventDefault();
+            document.querySelector('.login-form-wrapper').style.display = 'none';
+            document.querySelector('.register-form-wrapper').style.display = 'flex';
+        });
+        document.querySelector('#switch-to-login-form-toggler').addEventListener('click', e => {
+            e.preventDefault();
+            document.querySelector('.register-form-wrapper').style.display = 'none';
+            document.querySelector('.login-form-wrapper').style.display = 'flex';
+        });
     }
 
 
@@ -179,7 +191,7 @@ class Login_Register {
                 hideErrorMessage(this.usernameOrEmail);
             }
         });
-    
+
         this.password.addEventListener('input', e => {
             if (e.target.value.trim().length < 7 || e.target.value.trim().length > 25) {
                 showErrorMessage(this.password);

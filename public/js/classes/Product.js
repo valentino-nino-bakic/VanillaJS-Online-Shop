@@ -1,8 +1,6 @@
 /* ------------------------------------------------------- IMPORTS ------------------------------------------------------- */
-import {
-    shoppingCart,
-} from '../pages/profile.js';
-
+import Cart from "./Cart.js";
+const shoppingCart = Cart.getInstance();
 
 
 /*----------------------------------------      AZURIRANJE STRANICE SA PODACIMA O PROIZVODIMA IZ NASE BAZE PODATAKA      --------------------------------------------*/
@@ -54,26 +52,27 @@ class Product {
             let products = await this.fetchProducts();
             products = products.filter(product => product.productCategory === category && product.inStock > 0);
 
-            const selectedSortOption = document.querySelector('input[name="sort-option"]:checked')?.value;
-            if (selectedSortOption) {
-                products = sortProducts(products, selectedSortOption);
-            }
+            // const selectedSortOption = document.querySelector('input[name="sort-option"]:checked')?.value;
+            // if (selectedSortOption) {
+            //     products = sortProducts(products, selectedSortOption);
+            // }
 
             for (let product of products) {
-                const productHTML = document.createElement('div');
-                productHTML.classList.add('single-product');
-                productHTML.innerHTML = `
-                    <img src="${product.productImageUrl}" alt="${product.productTitle}">
-                    <h4>${product.productTitle.length > 50 ? product.productTitle = product.productTitle.substring(0, 50).concat('...') : product.productTitle}</h4>
-                    <p>${product.productDescription.length > 140 ? product.productDescription = product.productDescription.substring(0, 140).concat('...') : product.productDescription}</p>
-                    <h5>$${product.productPrice}</h5>
-                    <div class="actions">
-                        <input class="quantity" type="number" value="1" min="1" max="${product.inStock}" required />
-                        <button class="add-to-cart-button" data-product-id="${product._id}" ${shoppingCart.isProductInCart(product._id) ? 'disabled' : ''}>ADD TO CART</button>
+                const productHTML = `
+                    <div class="single-product">
+                        <img src="${product.productImageUrl}" alt="${product.productTitle}">
+                        <h4>${product.productTitle.length > 50 ? product.productTitle = product.productTitle.substring(0, 50).concat('...') : product.productTitle}</h4>
+                        <p>${product.productDescription.length > 140 ? product.productDescription = product.productDescription.substring(0, 140).concat('...') : product.productDescription}</p>
+                        <h5>$${product.productPrice}</h5>
+                        <div class="actions">
+                            <input class="quantity" type="number" value="1" min="1" max="${product.inStock}" required />
+                            <button class="add-to-cart-button" data-product-id="${product._id}" ${shoppingCart.isProductInCart(product._id) ? 'disabled' : ''}>ADD TO CART</button>
+                        </div>
                     </div>
-                `;
+                `
 
-                productContainer.appendChild(productHTML);
+
+                productContainer.innerHTML += productHTML;
 
                 gsap.fromTo(
                     productContainer.children,
@@ -91,32 +90,30 @@ class Product {
                         }
                     }
                 );
-            }
+                // 'Event delegation' tehnika.
+                productContainer.querySelectorAll('.single-product').forEach(p => {
+                    p.addEventListener('click', e => {
+                        if (e.target && e.target.matches('.add-to-cart-button')) {
+                            const productID = e.target.getAttribute('data-product-id');
+                            const selectedProduct = products.find(product => product._id == productID);
+                            const quantity = parseInt(e.target.parentElement.querySelector('.quantity').value);
+                            shoppingCart.addItem(selectedProduct, quantity);
+                            shoppingCart.update_checkout_removeAll_buttonsStatus();
+                            shoppingCart.update_addToCartButtonsStatus();
+                        }
+                    });
+                });
 
-            // 'Event delegation' tehnika na 'productContainer'-u u odnosu na dugmad za dodavanje svakog pojedinacnog proizvoda u korpu.
-            productContainer.addEventListener('click', e => {
-                if (e.target && e.target.matches('.add-to-cart-button')) {
-                    const productID = e.target.getAttribute('data-product-id');
-                    const selectedProduct = products.find(product => product._id == productID);
-                    const quantity = parseInt(e.target.parentElement.querySelector('.quantity').value);
-                    shoppingCart.addItem(selectedProduct, quantity);
-                    shoppingCart.update_checkout_removeAll_buttonsStatus();
-                    shoppingCart.update_addToCartButtonsStatus();
-                }
-            });
-
-            // 'Event delegation' tehnika na 'productContainer'-u u odnosu na input polja za restrikciju unosa kolicine vise nego sto je na zalihama.
-            productContainer.addEventListener('input', e => {
-                if (e.target && e.target.matches('.quantity')) {
-                    const max = parseInt(e.target.getAttribute('max'));
-                    if (parseInt(e.target.value) > max) {
-                        e.target.value = max;
+                // 'Event delegation' tehnika.
+                productContainer.addEventListener('input', e => {
+                    if (e.target && e.target.matches('.quantity')) {
+                        const max = parseInt(e.target.getAttribute('max'));
+                        if (parseInt(e.target.value) > max) {
+                            e.target.value = max;
+                        }
                     }
-                }
-            });
-
-
-
+                });
+            }
         } catch (error) {
             console.error(`Error loading products: ${error}`);
         }

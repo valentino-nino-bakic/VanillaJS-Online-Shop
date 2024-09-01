@@ -40,7 +40,7 @@ window.addEventListener('DOMContentLoaded', () => {
     const confirmAccountDeletionPassword = document.querySelector('#confirm-account-deletion-password');
     profile = new Profile(newModifiedUsername, newModifiedPassword, currentUserPassword, confirmAccountDeletionPassword);
 
-    shoppingCart = new Cart();
+    shoppingCart = Cart.getInstance();
 
     // Po otvaranju stranice inicijalno prikazujemo proizvode iz kategorije 'Retro Football Jerseys'.
     product = new Product();

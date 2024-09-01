@@ -1,17 +1,23 @@
+import { showErrorMessage, hideErrorMessage } from '../utils/inputValidation.js';
+
+
+
 class ContactMessage {
     constructor() {
         this.token = JSON.parse(localStorage.getItem('token')) || null;
+        this.name_email_fieldsVisibility();
         this.contactMessageForm = document.querySelector('#contact-message-form');
         this.addClickListeners();
+        this.addInputListeners();
     }
 
     async sendMessage(e) {
         e.preventDefault();
 
-        const name = document.querySelector('#name').value;
-        const email = this.token ? this.getEmail() : document.querySelector('#email').value;
-        const subject = document.querySelector('#subject').value;
-        const message = document.querySelector('#message').value;
+        const name = this.token ? '' : document.querySelector('#contact-name').value;
+        const email = this.token ? this.getEmail() : document.querySelector('#contact-email').value;
+        const subject = document.querySelector('#contact-message-subject').value;
+        const message = document.querySelector('#contact-message').value;
 
         try {
             const url = 'http://localhost:8080/api/contact-message';
@@ -20,6 +26,10 @@ class ContactMessage {
                 email: email,
                 subject: subject || '',
                 message: message
+            }
+
+            if (!this.emailValid()) {
+                return;
             }
 
             const response = await fetch(url, {
@@ -53,9 +63,41 @@ class ContactMessage {
     }
 
 
+    emailValid() {
+        const email = document.querySelector('#contact-email');
+        if (email.parentElement.style.display !== 'none') {
+            const validity = !/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email.value) ? false : true;
+            return validity;
+        }
+        return true;
+    }
+
+
+    name_email_fieldsVisibility() {
+        if (this.token) {
+            const nameWrapper = document.querySelector('.name-wrapper');
+            const emailWrapper = document.querySelector('.email-wrapper');
+            nameWrapper.style.display = 'none';
+            emailWrapper.style.display = 'none';
+            emailWrapper.querySelector('#contact-email').removeAttribute('required');
+        }
+    }
+
 
     addClickListeners() {
         this.contactMessageForm.addEventListener('submit', this.sendMessage.bind(this));
+    }
+
+
+    addInputListeners() {
+        const email = document.querySelector('#contact-email');
+        email.addEventListener('input', e => {
+            if (!/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(e.target.value)) {
+                showErrorMessage(email);
+            } else {
+                hideErrorMessage(email);
+            }
+        });
     }
 }
 

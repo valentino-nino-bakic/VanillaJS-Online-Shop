@@ -10,6 +10,8 @@ const errorValidationMessages = {
     'current-user-password': 'This field requires minimum 7 and maximum 25 characters',
     'confirm-account-deletion-password': 'This field requires minimum 7 and maximum 25 characters',
 
+    'contact-email': 'Invalid email address',
+
     'final-error-message': 'Please fill out all required fields'
 }
 

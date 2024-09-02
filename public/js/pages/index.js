@@ -1,24 +1,24 @@
-// Redirection
+// redirection
 if (localStorage.getItem('token') && location.pathname === '/') {
     location.href = 'profile';
 }
 
 
 
+// imports
 import { backToTopButtonToggler, headerToggler, scrollToTop, scrollToProductSection, scrollToCustomerReviewsSection, scrollToWhatWeDoSection } from '../utils/listeners_callbacks.js';
-
 
 import Login_Register from '../classes/Login_Register.js';
 import Cart from '../classes/Cart.js';
-
 import Product from '../classes/Product.js';
 
 
 
-
+// classes initialization
 let login_register;
 let shoppingCart;
 let product;
+
 window.addEventListener('DOMContentLoaded', () => {
     const usernameOrEmail = document.querySelector('#username_or_email');
     const password = document.querySelector('#password');
@@ -29,15 +29,14 @@ window.addEventListener('DOMContentLoaded', () => {
 
     shoppingCart = Cart.getInstance();
 
-    // Po otvaranju stranice inicijalno prikazujemo proizvode iz kategorije 'Retro Football Jerseys'.
     product = new Product();
-    product.updateProducts('Retro Football Jerseys');
-})
+    product.fetchProducts();
+});
 
 
 
 
-
+// ui/ux
 window.addEventListener('scroll', () => {
     backToTopButtonToggler();
     headerToggler();

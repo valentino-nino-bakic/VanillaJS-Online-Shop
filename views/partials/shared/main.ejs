@@ -67,24 +67,34 @@
             <div>
                 <label for="category-select">Select a category:</label>
                 <select id="category-select">
+                    <option value="">All Categories</option>
                     <option value="Retro Football Jerseys">Retro Football Jerseys</option>
                     <option value="Shoes">Shoes</option>
                     <option value="Smartphones">Smartphones</option>
                     <option value="Laptops">Laptops</option>
                 </select>
             </div>
-    
-            <div class="sort-container">
-                <p style="margin-bottom: 7px">Sort:</p>
-                <label><input type="radio" class="sort-option" name="sort-option" value="name-asc"> Name A-Z</label>
-                <label><input type="radio" class="sort-option" name="sort-option" value="name-desc"> Name Z-A</label>
-                <label><input type="radio" class="sort-option" name="sort-option" value="price-asc"> Price (lowest to highest)</label>
-                <label><input type="radio" class="sort-option" name="sort-option" value="price-desc"> Price (highest to lowest)</label>
+
+            <div>
+                <label for="sort-options">Sort:</label>
+                <select id="sort-options">
+                    <option value="">Sort</option>
+                    <option value="a-z">Name A-Z</option>
+                    <option value="z-a">Name Z-A</option>
+                    <option value="price-asc">Lowest to Highest Price</option>
+                    <option value="price-desc">Highest to Lowest Price</option>
+                </select>
             </div>
         </div>
 
         <div class="products" id="product-container">
             <!-- Div koji ce se dinamicki popuniti putem JS -->
+        </div>
+
+        <div class="pagination-controls">
+            <button id="prev-page-button">Prev Page</button>
+            <span id="current-page">1</span>
+            <button id="next-page-button">Next Page</button>
         </div>
     </section>
 

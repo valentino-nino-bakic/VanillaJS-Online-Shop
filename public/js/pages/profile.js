@@ -1,20 +1,10 @@
-// Redirection
+// redirection
 if (!localStorage.getItem('token') && location.pathname === '/profile') {
     location.href = '/';
 }
 
 
-/* ------------------------------------------------------- IMPORTS ------------------------------------------------------- */
-/* Fetch logika, prikazivanje i filtriranje proizvoda... */
-import Product from '../classes/Product.js';
-
-/* Korpa */
-import Cart from '../classes/Cart.js'
-
-/* Korisnik */
-import Profile from '../classes/Profile.js';
-
-/* Event listeners callback funkcije */
+// imports
 import {
     headerToggler,
     backToTopButtonToggler,
@@ -24,12 +14,16 @@ import {
     scrollToCustomerReviewsSection,
     toggleHamburgerMenu
 } from '../utils/listeners_callbacks.js';
-/* ----------------------------------------------------------------------------------------------------------------------- */
 
 
 
+import Product from '../classes/Product.js';
+import Cart from '../classes/Cart.js'
+import Profile from '../classes/Profile.js';
 
 
+
+// classes initialization
 let profile;
 let shoppingCart;
 let product;
@@ -42,53 +36,37 @@ window.addEventListener('DOMContentLoaded', () => {
 
     shoppingCart = Cart.getInstance();
 
-    // Po otvaranju stranice inicijalno prikazujemo proizvode iz kategorije 'Retro Football Jerseys'.
     product = new Product();
-    product.updateProducts('Retro Football Jerseys');
+    product.fetchProducts();
 });
 
 
 
 
-// Sticky header
+// ui/ux
 window.addEventListener('scroll', headerToggler);
-
-// Back to top button vidljivost
 window.addEventListener('scroll', backToTopButtonToggler);
-
-// Nazad na vrh stranice
 document.querySelector('.scroll-to-top-button').addEventListener('click', scrollToTop);
 
 
-
-/* ------------------------------------------------------            SMOOTH SCROLL LISTENERI              ---------------------------------------------------- */
-/* -------------------- Smooth scroll sa vrha do 'PRODUCTS' sekcije -------------------- */
 document.querySelector('#animate-arrow').addEventListener('click', () => {
     scrollToProductSection(document.querySelector('.products-section'));
 });
 
-/* --------------------- Smooth scroll do 'WHAT WE DO' sekcije --------------------- */
 document.querySelector('#learn-more-button').addEventListener('click', () => {
     scrollToWhatWeDoSection(document.querySelector('.what-we-do-section'));
 });
 
-/* --------------------- Smooth scroll do 'PRODUCTS' sekcije --------------------- */
 document.querySelector('#fa-products-section-trigger').addEventListener('click', () => {
     scrollToProductSection(document.querySelector('.products-section'));
 });
 
-/* --------------------- Smooth scroll do 'CUSTOMER REVIEWS' sekcije --------------------- */
 document.querySelector('#fa-customer-products-section-trigger').addEventListener('click', () => {
     scrollToCustomerReviewsSection(document.querySelector('.customer-reviews-section'));
 });
 
 
 
-
-
-
-
-/* --------------------- HAMBURGER MENU --------------------- */
 const hamburgerMenuIcon = document.querySelector('#hamburger-menu-icon');
 const nav = document.querySelector('#navbar');
 
@@ -101,9 +79,6 @@ hamburgerMenuIcon.addEventListener('click', () => {
 
 
 
-
-
-/* ------------------------------------------------------- EXPORTS ------------------------------------------------------- */
 export {
     shoppingCart,
 }

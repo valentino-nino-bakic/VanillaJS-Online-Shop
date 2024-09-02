@@ -3,135 +3,198 @@ import Cart from "./Cart.js";
 const shoppingCart = Cart.getInstance();
 
 
-/*----------------------------------------      AZURIRANJE STRANICE SA PODACIMA O PROIZVODIMA IZ NASE BAZE PODATAKA      --------------------------------------------*/
+
+
+// Product handling class - fetching, displaying, filtering, sorting...
 class Product {
     constructor() {
-        this.selectElement = document.querySelector('#category-select');
+        this.products = [];
+        this.filteredProducts = [];
+
+        this.productsPerPage = 4;
+        this.currentPage = 1;
+
+        this.sortOption = '';
+        this.selectedCategory = '';
+
         this.addChangeListeners();
+        this.addClickListeners();
     }
 
 
 
-    // Funkcija za dohvatanje proizvoda
+    // fetching products - initial display...
     async fetchProducts() {
-        const response = await fetch('http://localhost:8080/api/products');
-        if (response.ok) {
+        try {
+            const response = await fetch('http://localhost:8080/api/products');
+            if (!response.ok) {
+                const data = await response.json();
+                throw new Error(data.message);
+            }
             const data = await response.json();
-            return data.products;
+            this.products = data.products;
+            this.filterAndSort();
+            this.displayProducts();
+        } catch (error) {
+            console.log(error);
         }
-        throw new Error('Error fetching products from our server');
     }
 
 
 
-    // Funkcija za sortiranje proizvoda.
-    sortProducts(products, sortOrder) {
-        switch (sortOrder) {
-            case 'name-asc':
-                return products.sort((a, b) => a.productTitle.localeCompare(b.productTitle));
-            case 'name-desc':
-                return products.sort((a, b) => b.productTitle.localeCompare(a.productTitle));
+    // products sorting and filtering.
+    filterAndSort() {
+        this.filteredProducts = this.selectedCategory
+            ? this.products.filter(product => product.productCategory === this.selectedCategory)
+            : this.products;
+
+        switch (this.sortOption) {
+            case 'a-z':
+                this.filteredProducts.sort((a, b) => a.productTitle.localeCompare(b.productTitle));
+                break;
+            case 'z-a':
+                this.filteredProducts.sort((a, b) => b.productTitle.localeCompare(a.productTitle));
+                break;
             case 'price-asc':
-                return products.sort((a, b) => a.productPrice - b.productPrice);
+                this.filteredProducts.sort((a, b) => a.productPrice - b.productPrice);
+                break;
             case 'price-desc':
-                return products.sort((a, b) => b.productPrice - a.productPrice);
-            default:
-                return products;
+                this.filteredProducts.sort((a, b) => b.productPrice - a.productPrice);
+                break;
         }
+
+        this.currentPage = 1;
     }
 
 
 
-    // Funkcija za prikazivanje proizvoda
-    async updateProducts(category) {
+    // displaying products
+    displayProducts() {
         const productContainer = document.getElementById('product-container');
         productContainer.innerHTML = '';
 
+        const firstIndex = (this.currentPage - 1) * this.productsPerPage;
+        const secondIndex = firstIndex + this.productsPerPage;
+        const productsToDisplay = this.filteredProducts.slice(firstIndex, secondIndex);
 
-        try {
-            let products = await this.fetchProducts();
-            products = products.filter(product => product.productCategory === category && product.inStock > 0);
-
-            // const selectedSortOption = document.querySelector('input[name="sort-option"]:checked')?.value;
-            // if (selectedSortOption) {
-            //     products = sortProducts(products, selectedSortOption);
-            // }
-
-            for (let product of products) {
-                const productHTML = `
-                    <div class="single-product">
-                        <img src="${product.productImageUrl}" alt="${product.productTitle}">
-                        <h4>${product.productTitle.length > 50 ? product.productTitle = product.productTitle.substring(0, 50).concat('...') : product.productTitle}</h4>
-                        <p>${product.productDescription.length > 140 ? product.productDescription = product.productDescription.substring(0, 140).concat('...') : product.productDescription}</p>
-                        <h5>$${product.productPrice}</h5>
-                        <div class="actions">
-                            <input class="quantity" type="number" value="1" min="1" max="${product.inStock}" required />
-                            <button class="add-to-cart-button" data-product-id="${product._id}" ${shoppingCart.isProductInCart(product._id) ? 'disabled' : ''}>ADD TO CART</button>
-                        </div>
+        for (let product of productsToDisplay) {
+            const productHTML = `
+                <div class="single-product">
+                    <img src="${product.productImageUrl}" alt="${product.productTitle}">
+                    <h4>${product.productTitle.length > 50 ? product.productTitle = product.productTitle.substring(0, 50).concat('...') : product.productTitle}</h4>
+                    <p>${product.productDescription.length > 140 ? product.productDescription = product.productDescription.substring(0, 140).concat('...') : product.productDescription}</p>
+                    <h5>$${product.productPrice}</h5>
+                    <div class="actions">
+                        <input class="quantity" type="number" value="1" min="1" max="${product.inStock}" required />
+                        <button class="add-to-cart-button" data-product-id="${product._id}" ${shoppingCart.isProductInCart(product._id) ? 'disabled' : ''}>ADD TO CART</button>
                     </div>
-                `
+                </div>
+            `
+            productContainer.innerHTML += productHTML;
 
-
-                productContainer.innerHTML += productHTML;
-
-                gsap.fromTo(
-                    productContainer.children,
-                    {
-                        rotationY: 270,
-                    },
-                    {
-                        rotationY: 360,
-                        duration: 1.6,
-                        ease: 'bounce',
-                        scrollTrigger: {
-                            trigger: productContainer,
-                            start: 'top bottom',
-                            end: 'bottom top'
-                        }
+            gsap.fromTo(
+                productContainer.children,
+                {
+                    rotationY: 270,
+                },
+                {
+                    rotationY: 360,
+                    duration: 1.6,
+                    ease: 'bounce',
+                    scrollTrigger: {
+                        trigger: productContainer,
+                        start: 'top bottom',
+                        end: 'bottom top'
                     }
-                );
-                // 'Event delegation' tehnika.
-                productContainer.querySelectorAll('.single-product').forEach(p => {
-                    p.addEventListener('click', e => {
-                        if (e.target && e.target.matches('.add-to-cart-button')) {
-                            const productID = e.target.getAttribute('data-product-id');
-                            const selectedProduct = products.find(product => product._id == productID);
-                            const quantity = parseInt(e.target.parentElement.querySelector('.quantity').value);
-                            shoppingCart.addItem(selectedProduct, quantity);
-                            shoppingCart.update_checkout_removeAll_buttonsStatus();
-                            shoppingCart.update_addToCartButtonsStatus();
-                        }
-                    });
-                });
+                }
+            );
 
-                // 'Event delegation' tehnika.
-                productContainer.addEventListener('input', e => {
-                    if (e.target && e.target.matches('.quantity')) {
-                        const max = parseInt(e.target.getAttribute('max'));
-                        if (parseInt(e.target.value) > max) {
-                            e.target.value = max;
-                        }
+            // 'Event delegation' technique.
+            productContainer.querySelectorAll('.single-product').forEach(p => {
+                p.addEventListener('click', e => {
+                    if (e.target && e.target.matches('.add-to-cart-button')) {
+                        const productID = e.target.getAttribute('data-product-id');
+                        const selectedProduct = this.products.find(product => product._id == productID);
+                        const quantity = parseInt(e.target.parentElement.querySelector('.quantity').value);
+                        shoppingCart.addItem(selectedProduct, quantity);
+                        shoppingCart.update_checkout_removeAll_buttonsStatus();
+                        shoppingCart.update_addToCartButtonsStatus();
                     }
                 });
-            }
-        } catch (error) {
-            console.error(`Error loading products: ${error}`);
+            });
+
+            // 'Event delegation' technique.
+            productContainer.addEventListener('input', e => {
+                if (e.target && e.target.matches('.quantity')) {
+                    const max = parseInt(e.target.getAttribute('max'));
+                    if (parseInt(e.target.value) > max) {
+                        e.target.value = max;
+                    }
+                }
+            });
         }
+
+        const numOfAllPages = Math.ceil(this.filteredProducts.length / this.productsPerPage);
+        document.querySelector('#current-page').textContent = this.currentPage + ' / ' + numOfAllPages;
+        this.updatePaginationButtons();
     }
 
 
-    // Event listener na 'select' elementu za prikazivanje proizvoda iz izabrane kategorije
-    switchCategory() {
-        const selectedCategory = this.selectElement.value;
-        this.updateProducts(selectedCategory);
-        shoppingCart.update_addToCartButtonsStatus();
+
+    updatePaginationButtons() {
+        const numberOfAllPages = Math.ceil(this.filteredProducts.length / this.productsPerPage);
+        document.querySelector('#prev-page-button').disabled = this.currentPage === 1;
+        document.querySelector('#next-page-button').disabled = this.currentPage === numberOfAllPages;
+    }
+
+
+
+    selectSortOption(sortOption) {
+        this.sortOption = sortOption;
+        this.filterAndSort();
+        this.displayProducts();
+    }
+
+    selectCategory(category) {
+        this.selectedCategory = category;
+        this.filterAndSort();
+        this.displayProducts();
+    }
+
+    goToPreviousPage() {
+        if (this.currentPage > 1) {
+            this.currentPage--;
+            this.displayProducts();
+        }
+    }
+
+    goToNextPage() {
+        if (this.currentPage < Math.ceil(this.filteredProducts.length / this.productsPerPage)) {
+            this.currentPage++;
+            this.displayProducts();
+        }
     }
 
 
     addChangeListeners() {
-        this.selectElement.addEventListener('change', () => {
-            this.switchCategory();
-        })
+        document.getElementById('sort-options').addEventListener('change', e => {
+            this.selectSortOption(e.target.value);
+        });
+
+        document.getElementById('category-select').addEventListener('change', e => {
+            this.selectCategory(e.target.value);
+        });
+    }
+
+
+    addClickListeners() {
+        document.getElementById('prev-page-button').addEventListener('click', () => {
+            this.goToPreviousPage();
+        });
+
+        document.getElementById('next-page-button').addEventListener('click', () => {
+            this.goToNextPage();
+        });
     }
 
 

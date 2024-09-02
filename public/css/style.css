@@ -844,7 +844,7 @@ header a img:hover {
     text-align: center
 }
 
-.products-section .products .single-product .actions button, .add-to-cart-button {
+.products-section .products .single-product .actions button, .add-to-cart-button, .products-section .pagination-controls button {
     padding: 5px 14px;
     background-color: rgb(80, 80, 80);
     color: white;
@@ -866,7 +866,7 @@ header a img:hover {
 }
 
 
-.products-section .products .single-product .actions button:disabled {
+.products-section .products .single-product .actions button:disabled, .products-section .pagination-controls button:disabled {
     cursor: auto;
     opacity: .5;
     background-color: rgb(80, 80, 80);
@@ -880,7 +880,7 @@ header a img:hover {
 
 
 
-#category-select {
+#category-select, #sort-options {
     background-color: rgb(49, 163, 221);
     color: white;
     border: none;
@@ -888,13 +888,13 @@ header a img:hover {
     padding: 5px;
     cursor: pointer;
 }
-#category-select:focus {
+#category-select:focus, #sort-options:focus {
     outline: 1px solid black;
 }
-#category-select option {
+/* #category-select option {
     background-color:black;
     color: white;
-}
+} */
 
 .select-sort-search-container {
     display: flex;
@@ -905,6 +905,10 @@ header a img:hover {
 }
 
 
+.products-section .pagination-controls {
+    width: fit-content;
+    margin: 37px auto 0 auto;
+}
 
 
 

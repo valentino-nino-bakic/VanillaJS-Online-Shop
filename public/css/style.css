@@ -880,7 +880,7 @@ header a img:hover {
     text-align: center
 }
 
-.products-section .products .single-product .actions button, .add-to-cart-button, .products-section .pagination-controls button {
+.products-section .products .single-product .actions button, .add-to-cart-button, .products-section .pagination-controls button, .product-page-add-to-cart-button {
     padding: 5px 14px;
     background-color: rgb(80, 80, 80);
     color: white;
@@ -902,7 +902,7 @@ header a img:hover {
 }
 
 
-.products-section .products .single-product .actions button:disabled, .products-section .pagination-controls button:disabled {
+.products-section .products .single-product .actions button:disabled, .products-section .pagination-controls button:disabled, .product-page-add-to-cart-button:disabled {
     cursor: auto;
     opacity: .5;
     background-color: rgb(80, 80, 80);

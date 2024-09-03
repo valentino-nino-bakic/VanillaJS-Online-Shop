@@ -10,6 +10,7 @@ const productRouter = require('./routes/productRoutes');
 const cartRouter = require('./routes/cartRoutes');
 const contactMessageRouter = require('./routes/contactMessageRoutes');
 
+const Product = require('./models/productModel');
 
 
 app.use(express.json());
@@ -49,6 +50,18 @@ app.get('/about', (req, res) => {
 });
 app.get('/profile', (req, res) => {
     res.render('profile');
+});
+app.get('/product/:id', async (req, res) => {
+    const productId = req.params.id;
+    try {
+        const product = await Product.findById(productId);
+        if (!product) {
+            return res.status(404).render('not_found');
+        }
+        res.render('product', { product });
+    } catch (error) {
+        res.status(500).send('Internal server error.');
+    }
 });
 
 

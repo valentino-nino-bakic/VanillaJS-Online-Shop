@@ -1,7 +1,3 @@
-/* ------------------------------------------------------------------------
---------------- KREIRAMO KLASU 'Cart' KOJA PREDSTAVLJA KORPU --------------
------------------------------------------------------------------------- */
-
 class Cart {
     constructor() {
         /* singleton pattern along wiht static 'getInstance' method below 
@@ -25,6 +21,7 @@ class Cart {
         this.updateCartBadge();
         this.update_addToCartButtonsStatus();
         this.update_checkout_removeAll_buttonsStatus();
+        this.update_productPage_addToCartButtons();
         this.addClickListeners();
     }
 
@@ -82,7 +79,8 @@ class Cart {
                 console.log(data.message);
                 this.clearCart();
                 this.resetTotalPrice();
-                update_addToCartButtonsStatus();
+                this.update_addToCartButtonsStatus();
+                this.update_productPage_addToCartButtons();
                 document.querySelector('#loader').style.display = 'none';
                 document.querySelector('.cart-toggler-wrapper').style.display = 'none';
                 document.body.classList.remove('disable-scroll');
@@ -244,6 +242,17 @@ class Cart {
     }
 
 
+    update_productPage_addToCartButtons() {
+        const productPageAddToCartButtons = document.querySelectorAll('.product-page-add-to-cart-button');
+        productPageAddToCartButtons.forEach(button => {
+            if (button) {
+                const productId = button.getAttribute('data-product-id');
+                button.disabled = this.isProductInCart(productId);
+            }
+        })
+    }
+
+
 
 
     isProductInCart(productID) {
@@ -291,6 +300,55 @@ class Cart {
                 document.documentElement.classList.remove('disable-scroll');
             }
         });
+
+
+
+
+
+        const productPage_addToCartButton = document.querySelectorAll('.product-page-add-to-cart-button');
+        productPage_addToCartButton.forEach(button => {
+            if (button) {
+                button.addEventListener('click', async e => {
+                    const productID = e.target.getAttribute('data-product-id');
+
+                    try {
+                        const response = await fetch('http://localhost:8080/api/products');
+                        if (!response.ok) {
+                            const data = await response.json();
+                            throw new Error(data.message);
+                        }
+
+                        const data = await response.json();
+                        const products = data.products;
+                        const selectedProduct = products.find(product => product._id == productID);
+                        
+                        const quantity = parseInt(e.target.parentElement.querySelector('.product-page-quantity').value);
+                        
+                        this.addItem(selectedProduct, quantity);
+                        this.update_checkout_removeAll_buttonsStatus();
+                        this.update_addToCartButtonsStatus();
+                        this.update_productPage_addToCartButtons();
+                    } catch (error) {
+                        console.log(error);
+                    }
+                });
+            }
+        });
+
+
+
+
+        const productPage_quantityInputs = document.querySelectorAll('.product-page-quantity');
+        productPage_quantityInputs.forEach(quantityInput => {
+            if (quantityInput) {
+                quantityInput.addEventListener('input', e => {
+                    const max = parseInt(e.target.getAttribute('max'));
+                    if (parseInt(e.target.value) > max) {
+                        e.target.value = max;
+                    }
+                })
+            }
+        })
     }
 
 

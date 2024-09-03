@@ -102,10 +102,10 @@ class Product {
                 <h4>${product.productTitle.length > 50 ? product.productTitle = product.productTitle.substring(0, 50).concat('...') : product.productTitle}</h4>
                 <h5>$${product.productPrice}</h5>
             `;
+            li.addEventListener('click', () => {
+                location.href = `/product/${product._id}`;
+            });
             searchResults.appendChild(li);
-            // li.addEventListener('click', () => {
-            //     location.href = `/product/${product._id}`;
-            // });
         });
 
         searchResults.classList.remove('product-list-hidden');

@@ -67,6 +67,51 @@ class Product {
     }
 
 
+    // we call this method after creating class instance to ensure proper product fetching first..
+    addProductSearchListener() {
+        const searchInput = document.getElementById('search-input');
+        const searchResults = document.getElementById('search-results');
+
+        searchInput.addEventListener('input', e => {
+            const query = e.target.value.toLowerCase();
+            if (query.length > 0) {
+                const matchedProducts = this.products.filter(product => product.productTitle.toLowerCase().includes(query));
+                this.showProductSearchResults(matchedProducts);
+            } else {
+                searchResults.innerHTML = '';
+                searchResults.classList.add('product-list-hidden');
+            }
+        });
+    }
+
+
+    // updating UI
+    showProductSearchResults(matchedProducts) {
+        const searchResults = document.getElementById('search-results');
+        searchResults.innerHTML = '';
+
+        if (matchedProducts.length === 0) {
+            searchResults.classList.add('product-list-hidden');
+            return;
+        }
+
+        matchedProducts.forEach(product => {
+            const li = document.createElement('li');
+            li.innerHTML = `
+                <img src="${product.productImageUrl}" alt="${product.productTitle}">
+                <h4>${product.productTitle.length > 50 ? product.productTitle = product.productTitle.substring(0, 50).concat('...') : product.productTitle}</h4>
+                <h5>$${product.productPrice}</h5>
+            `;
+            searchResults.appendChild(li);
+            // li.addEventListener('click', () => {
+            //     location.href = `/product/${product._id}`;
+            // });
+        });
+
+        searchResults.classList.remove('product-list-hidden');
+    }
+
+
 
     // displaying products
     displayProducts() {

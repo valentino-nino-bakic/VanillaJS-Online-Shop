@@ -131,10 +131,46 @@ header a img:hover {
 
 
 
-
-
-
-
+#search-input {
+    padding: 5px;
+    font-size: 12px;
+    width: 100%;
+    max-width: 350px;
+}
+#search-results {
+    position: absolute;
+    top: 120px;
+    left: 0;
+    right: 0;
+    background-color: white;
+    list-style-type: none;
+    margin: 0;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    display: flex;
+    flex-wrap: wrap;
+    max-height: 60vh;
+    overflow-y: auto;
+}
+#search-results li {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 20%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    cursor: pointer;
+}
+#search-results li:hover {
+    background-color: #f0f0f0;
+}
+.product-list-hidden {
+    display: none;
+}
+#search-results li img {
+    height: 50px;
+    width: 50px
+}
 
 
 

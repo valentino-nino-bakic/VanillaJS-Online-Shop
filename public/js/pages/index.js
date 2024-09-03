@@ -30,7 +30,9 @@ window.addEventListener('DOMContentLoaded', () => {
     shoppingCart = Cart.getInstance();
 
     product = new Product();
-    product.fetchProducts();
+    product.fetchProducts().then(() => {
+        product.addProductSearchListener();
+    });
 });
 
 

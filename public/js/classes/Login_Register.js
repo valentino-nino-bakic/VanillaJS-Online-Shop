@@ -1,9 +1,8 @@
 import { showErrorMessage, hideErrorMessage, showFinalErrorMessage } from "../utils/inputValidation.js";
 
 
-/* KREIRAMO KLASU ZA LOGIN I REGISTRACIJU KORISNIKA */
 class Login_Register {
-
+    
     constructor(usernameOrEmail, password, newUsername, newEmail, newPassword) {
         this.usernameOrEmail = usernameOrEmail;
         this.password = password;
@@ -13,9 +12,6 @@ class Login_Register {
         this.addClickListeners();
         this.addInputValidationListeners();
     }
-
-
-
 
 
 
@@ -88,11 +84,19 @@ class Login_Register {
                 const data = await response.json();
                 throw new Error(data.message);
             }
-            const data = await response.json();
-            localStorage.setItem('token', JSON.stringify(data.token));
-            alert(data.message);
-            location.href = '/profile';
 
+            const data = await response.json();
+            const role = jwt_decode(data.token).role;
+
+            if (role === 'admin') {
+                localStorage.setItem('token', JSON.stringify(data.token));
+                alert(data.message);
+                location.href = '/admin';
+            } else {
+                localStorage.setItem('token', JSON.stringify(data.token));
+                alert(data.message);
+                location.href = '/profile';
+            }
         } catch (error) {
             alert(error);
             console.log(error);

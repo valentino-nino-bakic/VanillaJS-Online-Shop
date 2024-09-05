@@ -13,31 +13,31 @@
     </head>
     <body>
         
-        <!---------------------------------------------------    DEFAULT HEADER(NAVBAR)     ------------------------------------------------------>
+        <!-- default header(navbar) -->
         <%- include('partials/index/headerDefault') %>   
         
-        <!---------------------------------------------------     MAIN     ------------------------------------------------------>
+        <!-- main -->
         <%- include('partials/shared/main') %>
 
-        <!---------------------------------------------------     FOOTER     ------------------------------------------------------>
+        <!-- footer -->
         <%- include('partials/shared/footer') %>
       
        
 
 
-        <!-- Skrivajuce forme -->
+        <!-- hiding forms -->
         <%- include('partials/index/loginForm') %>
         <%- include('partials/index/registerForm') %>
        
         
         
-        <!--↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓     SKRIVAJUCI CART     ↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓-->
+        <!-- hiding cart -->
         <%- include('partials/shared/cart') %>
-        <!--↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑     SKRIVAJUCI CART     ↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑-->
+
         
         
 
-        <!-- Scroll to top button -->
+        <!-- scroll to top button -->
         <%- include('partials/shared/scrollToTopButton') %>
         
 
@@ -46,7 +46,7 @@
         
         <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
-        <!-- <script src="https://cdn.jsdelivr.net/npm/jwt-decode@3.0.0/build/jwt-decode.min.js"></script> -->
+        <script src="https://cdn.jsdelivr.net/npm/jwt-decode@3.0.0/build/jwt-decode.min.js"></script>
         <script src="js/gsap/gsap_index.js"></script>
         <script src="js/pages/index.js" type="module"></script>
 </body>

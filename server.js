@@ -63,7 +63,9 @@ app.get('/product/:id', async (req, res) => {
         res.status(500).send('Internal server error.');
     }
 });
-
+app.get('/admin', (req, res) => {
+    res.render('admin');
+});
 
 
 app.listen(PORT, () => {

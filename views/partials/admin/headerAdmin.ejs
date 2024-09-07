@@ -1,0 +1,33 @@
+<header>
+    <a href="/admin">
+        <img id="logo" src="/images/logo.png" alt="Yorkshire Logo" title="Home">
+    </a>
+
+    <nav id="navbar">
+        <ul>
+            <li><a href="/admin">DASHBOARD</a></li>
+            <li><a href="/admin/settings">SETTINGS</a></li>
+        </ul>
+    </nav>
+
+
+
+    <div class="user-account-actions-container">
+        <div class="user-account-actions">
+            <button id="logout-button" class="logout-button action-button"><i class="fa fa-sign-out"></i> Log Out</button>
+            <!-- <button class="modify-button action-button"><i class="fas fa-user-edit"></i> Modify Account</button> -->
+            <!-- <hr>
+            <button class="delete-button action-button" title="Delete Your Account">
+                <i class="fas fa-user-times"></i>
+                Delete Account
+            </button> -->
+        </div>
+        <div id="user-account-actions-toggler">
+            <button><i class="fa fa-user"></i></button>
+            <p><%= username %><!-- username got from ejs template callback object --></p>
+        </div>
+    </div>
+
+
+    <i id="hamburger-menu-icon" class="fa-solid fa-bars"></i>
+</header>

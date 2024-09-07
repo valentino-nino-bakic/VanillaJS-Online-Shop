@@ -1,0 +1,18 @@
+.admin-header-adjustment-helper {
+    height: 120px;
+    background-color: rgb(28, 75, 99);
+}
+
+
+.admin-main {
+    padding: 70px;
+}
+
+
+.main-admin-title {
+    text-align: center;
+}
+
+.admin-page-content-section {
+    margin: 80px 0;
+}

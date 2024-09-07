@@ -14,46 +14,45 @@
     <body>
         
         <!-- header -->
-        <%- include('partials/profile/headerProfile') %>   
-        
-        
-        <h1>Admin Page</h1>
-        <h1>Admin Page</h1>
-        <h1>Admin Page</h1>
-        <h1>Admin Page</h1>
-        <h1>Admin Page</h1>
-        <h1>Admin Page</h1>
-        <h1>Admin Page</h1>
-        <h1>Admin Page</h1>
-        <h1>Admin Page</h1>
-        <h1>Admin Page</h1>
-        <h1>Admin Page</h1>
-        <h1>Admin Page</h1>
-        <h1>Admin Page</h1>
-        <h1>Admin Page</h1>
-        <h1>Admin Page</h1>
-        <h1>Admin Page</h1>
-        <h1>Admin Page</h1>
-        <h1>Admin Page</h1>
-        <h1>Admin Page</h1>
-        <h1>Admin Page</h1>
-        <h1>Admin Page</h1>
-        <h1>Admin Page</h1>
-        <h1>Admin Page</h1>
-        <h1>Admin Page</h1>
-        <h1>Admin Page</h1>
-        <h1>Admin Page</h1>
-        <h1>Admin Page</h1>
-        <h1>Admin Page</h1>
-        <h1>Admin Page</h1>
-        <h1>Admin Page</h1>
-        
-        
-        
+        <%- include('partials/admin/headerAdmin') %>   
+
+
+        <div class="admin-header-adjustment-helper"></div>
+
+
+
+
+        <!-- main -->
+        <main class="admin-main">
+            <h2 class="main-admin-title">Yorkshire Admin Panel</h2>
+            <div class="admin-page-content-container">
+                <% if (section === 'users') { %>
+                    <%- include('partials/admin/users') %>
+                <% } else if (section === 'products') { %>
+                    <%- include('partials/admin/products') %>
+                <% } else if (section === 'orders') { %>
+                    <%- include('partials/admin/orders') %>
+                <% } else if (section === 'messages') { %>
+                    <%- include('partials/admin/messages') %>
+                <% } else if (section === 'settings') { %>
+                    <%- include('partials/admin/settings') %>
+                <% } %>
+            </div>
+        </main>
+
+
+
+
         <!-- footer -->
         <%- include('partials/shared/footer') %>
         
         
+
+
+
+
+
+
 
         <!-- scroll to top button -->
         <%- include('partials/shared/scrollToTopButton') %>

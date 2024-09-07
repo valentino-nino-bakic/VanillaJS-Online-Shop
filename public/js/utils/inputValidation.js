@@ -1,14 +1,14 @@
 const errorValidationMessages = {
     'username_or_email': 'This field requires minimum 4 and maximum 15 characters',
-    'password': 'This field requires minimum 7 and maximum 25 characters',
+    'password': 'This field requires minimum 7 characters',
     'new-username': 'This field requires minimum 4 and maximum 15 characters',
     'new-email': 'Invalid email address',
-    'new-password': 'This field requires minimum 7 and maximum 25 characters',
+    'new-password': 'This field requires minimum 7 characters',
 
     'new-modified-username': 'This field requires minimum 4 and maximum 15 characters',
-    'new-modified-password': 'This field requires minimum 7 and maximum 25 characters',
-    'current-user-password': 'This field requires minimum 7 and maximum 25 characters',
-    'confirm-account-deletion-password': 'This field requires minimum 7 and maximum 25 characters',
+    'new-modified-password': 'This field requires minimum 7 characters',
+    'current-user-password': 'This field requires minimum 7 characters',
+    'confirm-account-deletion-password': 'This field requires minimum 7 characters',
 
     'contact-email': 'Invalid email address',
 

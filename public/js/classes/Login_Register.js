@@ -130,7 +130,7 @@ class Login_Register {
         if (this.usernameOrEmail.value.trim().length < 4 || this.usernameOrEmail.value.trim().length > 15) {
             return false;
         }
-        if (this.password.value.trim().length < 7 || this.newPassword.value.trim().length > 25) {
+        if (this.password.value.trim().length < 7) {
             return false;
         }
         return true;
@@ -197,7 +197,7 @@ class Login_Register {
         });
 
         this.password.addEventListener('input', e => {
-            if (e.target.value.trim().length < 7 || e.target.value.trim().length > 25) {
+            if (e.target.value.trim().length < 7) {
                 showErrorMessage(this.password);
             } else {
                 hideErrorMessage(this.password);

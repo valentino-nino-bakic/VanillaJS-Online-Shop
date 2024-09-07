@@ -5,12 +5,14 @@ require('dotenv').config();
 const PORT = process.env.PORT;
 const DB_CONNECTION_STRING = process.env.DB_CONNECTION_STRING;
 
+const adminRouter = require('./routes/adminRoutes');
+
 const userRouter = require('./routes/userRoutes');
 const productRouter = require('./routes/productRoutes');
 const cartRouter = require('./routes/cartRoutes');
 const contactMessageRouter = require('./routes/contactMessageRoutes');
 
-const Product = require('./models/productModel');
+const { renderProductPage } = require('./controllers/productController');
 
 
 app.use(express.json());
@@ -30,7 +32,12 @@ connectToDatabase();
 
 
 
+// website routes
+app.use('/admin', adminRouter);
 
+
+
+// api routes
 app.use('/api', userRouter);
 app.use('/api', productRouter);
 app.use('/api', cartRouter);
@@ -51,21 +58,7 @@ app.get('/about', (req, res) => {
 app.get('/profile', (req, res) => {
     res.render('profile');
 });
-app.get('/product/:id', async (req, res) => {
-    const productId = req.params.id;
-    try {
-        const product = await Product.findById(productId);
-        if (!product) {
-            return res.status(404).render('not_found');
-        }
-        res.render('product', { product });
-    } catch (error) {
-        res.status(500).send('Internal server error.');
-    }
-});
-app.get('/admin', (req, res) => {
-    res.render('admin');
-});
+app.get('/product/:id', renderProductPage);
 
 
 app.listen(PORT, () => {

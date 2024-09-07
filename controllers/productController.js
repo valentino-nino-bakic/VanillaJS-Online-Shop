@@ -4,7 +4,6 @@ const Product = require('../models/productModel');
 
 const ProductController = {
 
-
     getProduct: async (req, res) => {
         try {
             const productId = req.params.id;
@@ -20,8 +19,6 @@ const ProductController = {
     },
 
 
-
-
     getProducts: async (req, res) => {
         try {
             const products = await Product.find();
@@ -31,8 +28,6 @@ const ProductController = {
             res.status(500).json({ message: error.message });
         }
     },
-
-
 
 
     addProduct: async (req, res) => {
@@ -54,12 +49,28 @@ const ProductController = {
             res.status(500).json({ message: error.message });
         }
     }
-
-
+    
 }
 
 
 
 
 
-module.exports = ProductController;
+const renderProductPage = async (req, res) => {
+    const productId = req.params.id;
+    try {
+        const product = await Product.findById(productId);
+        if (!product) {
+            return res.status(404).render('not_found');
+        }
+        res.render('product', { product });
+    } catch (error) {
+        res.status(500).send('Internal server error.');
+    }
+}
+
+
+
+
+
+module.exports = { ProductController, renderProductPage };

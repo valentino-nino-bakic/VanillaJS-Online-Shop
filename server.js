@@ -5,8 +5,9 @@ require('dotenv').config();
 const PORT = process.env.PORT;
 const DB_CONNECTION_STRING = process.env.DB_CONNECTION_STRING;
 
-const adminRouter = require('./routes/adminRoutes');
+const adminViewRouter = require('./routes/adminViewRoutes');
 
+const adminApiRouter = require('./routes/adminApiRoutes');
 const userRouter = require('./routes/userRoutes');
 const productRouter = require('./routes/productRoutes');
 const cartRouter = require('./routes/cartRoutes');
@@ -32,12 +33,13 @@ connectToDatabase();
 
 
 
-// website routes
-app.use('/admin', adminRouter);
 
+// website routes
+app.use('/admin', adminViewRouter);
 
 
 // api routes
+app.use('/api', adminApiRouter);
 app.use('/api', userRouter);
 app.use('/api', productRouter);
 app.use('/api', cartRouter);

@@ -1,32 +1,28 @@
 <section class="admin-page-content-section">
-    <p>users section</p>
-    <p>users section</p>
-    <p>users section</p>
-    <p>users section</p>
-    <p>users section</p>
-    <p>users section</p>
-    <p>users section</p>
-    <p>users section</p>
-    <p>users section</p>
-    <p>users section</p>
-    <p>users section</p>
-    <p>users section</p>
-    <p>users section</p>
-    <p>users section</p>
-    <p>users section</p>
-    <p>users section</p>
-    <p>users section</p>
-    <p>users section</p>
-    <p>users section</p>
-    <p>users section</p>
-    <p>users section</p>
-    <p>users section</p>
-    <p>users section</p>
-    <p>users section</p>
-    <p>users section</p>
-    <p>users section</p>
-    <p>users section</p>
-    <p>users section</p>
-    <p>users section</p>
-    <p>users section</p>
+    <h3>Users</h3>
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Role</th>
+                <th>Username</th>
+                <th>Email</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% users.forEach(user => { %>
+                <tr>
+                    <td><%= user.id %></td>
+                    <td><%= user.role %></td>
+                    <td><%= user.username %></td>
+                    <td><%= user.email %></td>
+                    <td>
+                        <button>Edit</button>
+                        <button>Delete</button>
+                    </td>
+                </tr>
+            <% }) %>
+        </tbody>
+    </table>
 </section>

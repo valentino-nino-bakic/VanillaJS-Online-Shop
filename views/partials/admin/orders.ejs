@@ -1,32 +1,35 @@
 <section class="admin-page-content-section">
-    <p>orders section</p>
-    <p>orders section</p>
-    <p>orders section</p>
-    <p>orders section</p>
-    <p>orders section</p>
-    <p>orders section</p>
-    <p>orders section</p>
-    <p>orders section</p>
-    <p>orders section</p>
-    <p>orders section</p>
-    <p>orders section</p>
-    <p>orders section</p>
-    <p>orders section</p>
-    <p>orders section</p>
-    <p>orders section</p>
-    <p>orders section</p>
-    <p>orders section</p>
-    <p>orders section</p>
-    <p>orders section</p>
-    <p>orders section</p>
-    <p>orders section</p>
-    <p>orders section</p>
-    <p>orders section</p>
-    <p>orders section</p>
-    <p>orders section</p>
-    <p>orders section</p>
-    <p>orders section</p>
-    <p>orders section</p>
-    <p>orders section</p>
-    <p>orders section</p>
+    <h3 class="page-title">ORDERS</h3>
+    <% if (orders.length > 0) { %>
+        <% orders.forEach(order => { %>
+            <div class="single-order">
+                <h2>Order ID: <%= order._id %></h2>
+                <p class="ordered-by">Ordered by: <span class="customer-email"><%= order.userId.email %></span></p>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Product Title</th>
+                            <th>Product Price</th>
+                            <th>Product Image</th>
+                            <th>Quantity</th>
+                            <th>Total Cost</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% order.products.forEach(product => { %>
+                            <tr>
+                                <td><%= product.productId.productTitle %></td>
+                                <td>$<%= product.productId.productPrice %></td>
+                                <td><img src="<%= product.productId.productImageUrl %>" alt="Product Image" /></td>
+                                <td><%= product.quantity %></td>
+                                <td>$<%= product.productId.productPrice * product.quantity %></td>
+                            </tr>
+                        <% }) %>
+                    </tbody>
+                </table>
+            </div>     
+        <% }) %>
+    <% } else { %>
+        <p>No orders found...</p>
+    <% } %>
 </section>

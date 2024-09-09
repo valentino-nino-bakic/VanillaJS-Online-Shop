@@ -13,7 +13,7 @@
     text-align: center;
 }
 
-.page-title {
+.section-title {
     margin-bottom: 70px;
 }
 
@@ -62,7 +62,7 @@
     border-collapse: collapse;
 }
 .admin-page-content-section table, .admin-page-content-section th, .admin-page-content-section td {
-    border: 1px solid white;
+    border: 1px solid silver;
 }
 .admin-page-content-section th, .admin-page-content-section td {
     padding: 10px;

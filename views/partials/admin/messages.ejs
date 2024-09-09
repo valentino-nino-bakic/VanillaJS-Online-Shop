@@ -1,32 +1,29 @@
 <section class="admin-page-content-section">
-    <p>messages section</p>
-    <p>messages section</p>
-    <p>messages section</p>
-    <p>messages section</p>
-    <p>messages section</p>
-    <p>messages section</p>
-    <p>messages section</p>
-    <p>messages section</p>
-    <p>messages section</p>
-    <p>messages section</p>
-    <p>messages section</p>
-    <p>messages section</p>
-    <p>messages section</p>
-    <p>messages section</p>
-    <p>messages section</p>
-    <p>messages section</p>
-    <p>messages section</p>
-    <p>messages section</p>
-    <p>messages section</p>
-    <p>messages section</p>
-    <p>messages section</p>
-    <p>messages section</p>
-    <p>messages section</p>
-    <p>messages section</p>
-    <p>messages section</p>
-    <p>messages section</p>
-    <p>messages section</p>
-    <p>messages section</p>
-    <p>messages section</p>
-    <p>messages section</p>
+    <h3 class="section-title">MESSAGES</h3>
+    <% if (messages.length > 0) { %>
+        <table>
+            <thead>
+                <tr>
+                    <th>Email</th>
+                    <th>Name</th>
+                    <th>Subject</th>
+                    <th>Message</th>
+                    <th>Created At</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% messages.forEach(message => { %>
+                    <tr>
+                        <td><%= message.email %></td>
+                        <td><%= message.name %></td>
+                        <td><%= message.subject %></td>
+                        <td><%= message.message %></td>
+                        <td><%= new Date(message.createdAt).toLocaleString() %></td>
+                    </tr>
+                <% }) %>
+            </tbody>
+        </table>
+    <% } else { %>
+        <p>No messages found...</p>
+    <% } %>
 </section>

@@ -6,6 +6,7 @@ const ContactMessage = mongoose.model('Contact_Message', {
     email: { type: String, required: true, unique: true },
     subject: { type: String, required: false },
     message: { type: String, required: true },
+    replied: { type: Boolean, default: false },
     createdAt: { type: Date, default: Date.now }
 });
 

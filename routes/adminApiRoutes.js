@@ -3,7 +3,7 @@ const router = express.Router();
 const AdminController = require('../controllers/adminController');
 
 
-
+router.post('/admin/messages/email-reply', AdminController.replyToMessageViaEmail);
 router.delete('/admin/users/:id', AdminController.deleteUser);
 
 

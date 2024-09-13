@@ -5,15 +5,15 @@ require('dotenv').config();
 const PORT = process.env.PORT;
 const DB_CONNECTION_STRING = process.env.DB_CONNECTION_STRING;
 
-const adminViewRouter = require('./routes/adminViewRoutes');
+const adminViewRouter = require('./src/routes/adminViewRoutes');
 
-const adminApiRouter = require('./routes/adminApiRoutes');
-const userRouter = require('./routes/userRoutes');
-const productRouter = require('./routes/productRoutes');
-const cartRouter = require('./routes/cartRoutes');
-const contactMessageRouter = require('./routes/contactMessageRoutes');
+const adminApiRouter = require('./src/routes/adminApiRoutes');
+const userRouter = require('./src/routes/userRoutes');
+const productRouter = require('./src/routes/productRoutes');
+const cartRouter = require('./src/routes/cartRoutes');
+const contactMessageRouter = require('./src/routes/contactMessageRoutes');
 
-const { renderProductPage } = require('./controllers/productController');
+const { renderProductPage } = require('./src/controllers/productController');
 
 
 app.use(express.json());

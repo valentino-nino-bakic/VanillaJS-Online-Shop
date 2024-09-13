@@ -7,37 +7,36 @@
         <title>Yorkshire Ecommerce</title>
         <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
-        <link rel="stylesheet" href="css/style.css">
-        <link rel="stylesheet" href="css/media_queries.css">
+        <link rel="stylesheet" href="/css/style.css">
+        <link rel="stylesheet" href="/css/media_queries.css">
 
     </head>
     <body>
         
-        <!---------------------------------------------------    PROFILE HEADER(NAVBAR)     ------------------------------------------------------>
+        <!-- profile header(navbar) -->
         <%- include('partials/profile/headerProfile') %>   
         
-        <!---------------------------------------------------     MAIN     ------------------------------------------------------>
+        <!-- main -->
         <%- include('partials/shared/main') %>
 
-        <!---------------------------------------------------     FOOTER     ------------------------------------------------------>
+        <!-- footer -->
         <%- include('partials/shared/footer') %>
       
        
 
 
-        <!-- Skrivajuce forme -->
+        <!-- hiding forms -->
         <%- include('partials/profile/accountModificationForm') %>
         <%- include('partials/profile/accountDeletionForm') %>
        
         
         
-        <!--↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓     SKRIVAJUCI CART     ↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓-->
+        <!-- hiding cart -->
         <%- include('partials/shared/cart') %>
-        <!--↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑     SKRIVAJUCI CART     ↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑-->
         
         
 
-        <!-- Scroll to top button -->
+        <!-- scroll to top button -->
         <%- include('partials/shared/scrollToTopButton') %>
 
 
@@ -47,7 +46,7 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/jwt-decode@3.0.0/build/jwt-decode.min.js"></script>
-        <script src="js/gsap/gsap_index.js"></script>
-        <script src="js/pages/profile.js" type="module"></script>
+        <script src="/gsap/gsap_index.js"></script>
+        <script src="/js/profile.bundle.js" type="module"></script>
     </body>
 </html>

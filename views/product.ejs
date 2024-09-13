@@ -13,7 +13,7 @@
     </head>
     <body>
         
-        <!---------------------------------------------------    PROFILE HEADER(NAVBAR)     ------------------------------------------------------>
+        <!-- profile header(navbar) -->
         <%- include('partials/profile/headerProfile') %>   
         
         <section class="single-product-details" style="margin: 230px 0 0 230px">
@@ -31,24 +31,23 @@
 
        
 
-        <!---------------------------------------------------     FOOTER     ------------------------------------------------------>
+        <!-- footer -->
         <%- include('partials/shared/footer') %>
       
 
 
-        <!-- Skrivajuce forme -->
+        <!-- hiding forms -->
         <%- include('partials/profile/accountModificationForm') %>
         <%- include('partials/profile/accountDeletionForm') %>
        
         
         
-        <!--↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓     SKRIVAJUCI CART     ↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓-->
+        <!-- hiding cart -->
         <%- include('partials/shared/cart') %>
-        <!--↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑     SKRIVAJUCI CART     ↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑-->
         
         
 
-        <!-- Scroll to top button -->
+        <!-- scroll to top button -->
         <%- include('partials/shared/scrollToTopButton') %>
 
 
@@ -59,6 +58,6 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/jwt-decode@3.0.0/build/jwt-decode.min.js"></script>
         <script src="js/gsap/gsap_index.js"></script> -->
-        <script src="/js/pages/product.js" type="module"></script>
+        <script src="/js/product.bundle.js" type="module"></script>
     </body>
 </html>

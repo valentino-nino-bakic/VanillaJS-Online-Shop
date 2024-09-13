@@ -17,7 +17,7 @@ const { renderProductPage } = require('./controllers/productController');
 
 
 app.use(express.json());
-app.use(express.static('public'));
+app.use(express.static('dist'));
 app.set('view engine', 'ejs');
 
 
@@ -34,10 +34,6 @@ connectToDatabase();
 
 
 
-// website routes
-app.use('/admin', adminViewRouter);
-
-
 // api routes
 app.use('/api', adminApiRouter);
 app.use('/api', userRouter);
@@ -46,6 +42,10 @@ app.use('/api', cartRouter);
 app.use('/api', contactMessageRouter);
 
 
+
+
+// view routes
+app.use('/admin', adminViewRouter);
 
 
 app.get('/', (req, res) => {

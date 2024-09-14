@@ -68,16 +68,8 @@ const AdminController = {
 
     deleteUser: async (req, res) => {
         try {
-            // const password = req.body.password;
-
-            // const validPassword = await bcrypt.compare(password, req.user.password);
-            // if (!validPassword) {
-            //     return res.status(401).json({ message: 'Invalid password' });
-            // }
-
-            await User.findByIdAndDelete(req.user._id);
+            await User.findByIdAndDelete(req.params.id);
             return res.status(200).json({ message: 'User has been successfully deleted!' });
-
         } catch (error) {
             console.log(error);
             res.status(500).json({ message: error.message });

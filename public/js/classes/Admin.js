@@ -64,6 +64,30 @@ class Admin {
 
 
 
+
+    async deleteUser(e) {
+        const userId = e.target.getAttribute('data-user-id');
+        try {
+            if (confirm('Are you sure you want to delete this user account?')) {
+                const response = await fetch(`http://localhost:8080/api/admin/users/${userId}`, {
+                    method: 'DELETE'
+                });
+                if (!response.ok) {
+                    const data = await response.json();
+                    throw new Error(data.message);
+                }
+                const data = await response.json();
+                alert(data.message);
+                location.reload();
+            }
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
+
+
+
     logout() {
         localStorage.removeItem('token');
         location.href = '/';
@@ -82,7 +106,11 @@ class Admin {
             this.logout();
         });
 
-        document.querySelector('#add-new-user-form').addEventListener('submit', this.addNewUser.bind(this));
+
+        const addNewUserForm = document.querySelector('#add-new-user-form');
+        if (addNewUserForm) {
+            addNewUserForm.addEventListener('submit', this.addNewUser.bind(this));
+        }
 
 
         document.querySelector('#user-account-actions-toggler').addEventListener('click', () => {
@@ -95,12 +123,14 @@ class Admin {
         });
 
 
-
-        document.querySelector('.add-new-user-button').addEventListener('click', () => {
-            document.querySelector('.add-new-user-form-wrapper').style.display = 'flex';
-            document.body.classList.add('disable-scroll');
-            document.documentElement.classList.add('disable-scroll');
-        })
+        const addNewUserButton = document.querySelector('.add-new-user-button');
+        if (addNewUserButton) {
+            addNewUserButton.addEventListener('click', () => {
+                document.querySelector('.add-new-user-form-wrapper').style.display = 'flex';
+                document.body.classList.add('disable-scroll');
+                document.documentElement.classList.add('disable-scroll');
+            });
+        }
 
 
         document.querySelectorAll('.close-form-button').forEach(button => {
@@ -110,6 +140,15 @@ class Admin {
                 document.documentElement.classList.remove('disable-scroll');
             });
         });
+
+
+
+
+        document.querySelectorAll('.delete-user-button').forEach(button => {
+            if (button) {
+                button.addEventListener('click', this.deleteUser.bind(this));
+            }
+        })
     }
 }
 

@@ -92,3 +92,68 @@
 .admin-page-content-section table img {
     width: 50px;
 }
+
+
+
+
+
+
+
+
+
+/* add new user form */
+.add-new-user-form-wrapper {
+    height: 100vh;
+    width: 100%;
+    background-color: rgba(255, 255, 255, .8);
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: none;
+    z-index: 20000;
+}
+
+#add-new-user-form {
+    background-color: black;
+    color: white;
+    width: 320px;
+    padding: 40px;
+    border-radius: 7px;
+    box-shadow: 0px 0px 10px black;
+    position: relative;
+}
+
+
+#add-new-user-form h3 {
+    font-weight: 400;
+    margin-bottom: 35px;
+}
+
+#add-new-user-form label {
+    display: block;
+    font-size: .9rem;
+    margin-bottom: 3px;
+}
+
+#add-new-user-form input {
+    margin-bottom: 5px;
+    font-size: .9rem;
+    outline: none;
+    padding: 1px 5px;
+    width: 100%;
+}
+
+#add-new-user-form button {
+    padding: 7px;
+    background-color: rgb(165, 165, 165);
+    border-radius: 1rem;
+    color: black;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    transition: all .3s;
+    width: 100%;
+    margin-top: 5px
+}

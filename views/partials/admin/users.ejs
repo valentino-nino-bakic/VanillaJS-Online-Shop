@@ -1,5 +1,19 @@
 <section class="admin-page-content-section">
     <h3 class="section-title">USERS</h3>
+    <button class="add-new-user-button">Add New User</button>
+    <div class="add-new-user-form-wrapper">
+        <form id="add-new-user-form">
+            <h3>Add New User</h3>
+            <label for="admin-created-user-username">Username</label>
+            <input type="text" value="" id="admin-created-user-username">
+            <label for="admin-created-user-email">Email</label>
+            <input type="email" value="" id="admin-created-user-email">
+            <label for="admin-created-user-password">Password</label>
+            <input type="password" value="" id="admin-created-user-password">
+            <button type="submit">ADD NEW USER</button>
+            <span class="close-form-button">x</span>
+        </form>
+    </div>
     <% if (users.length > 0) { %>
         <table>
             <thead>

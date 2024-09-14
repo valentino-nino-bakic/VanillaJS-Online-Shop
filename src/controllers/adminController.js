@@ -66,6 +66,32 @@ const AdminController = {
 
 
 
+    editUser: async (req, res) => {
+        try {
+            const { adminModifiedUserUsername, adminModifiedUserRole } = req.body;
+    
+            const usernameOccupied = await User.findOne({ username: adminModifiedUserUsername });
+            if (usernameOccupied) {
+                return res.status(400).json({ message: `Username ${usernameOccupied} already exists, try with different one...` });
+            }
+    
+            const userId = req.params.id;
+            const user = await User.findById(userId);
+
+            user.username = adminModifiedUserUsername;
+            user.role = adminModifiedUserRole;
+    
+            await user.save();
+            return res.status(200).json({ message: 'User has been successfully modified!' });
+        } catch (error) {
+            console.error(error);
+            return res.status(500).json({ message: error.message });
+        }
+    },
+
+
+
+
     deleteUser: async (req, res) => {
         try {
             await User.findByIdAndDelete(req.params.id);

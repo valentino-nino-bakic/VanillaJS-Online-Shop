@@ -14,6 +14,27 @@
             <span class="close-form-button">x</span>
         </form>
     </div>
+    <div class="edit-user-form-wrapper">
+        <form id="edit-user-form">
+            <h3>Edit User</h3>
+            <div>
+                <p>Current username: <span id="current-username"></span></p>
+                <label for="admin-modified-user-username">New</label>
+                <input type="text" value="" id="admin-modified-user-username">
+            </div>
+            <div>
+                <p>Current role: <span id="current-role"></span></p>
+                <label for="admin-modified-user-role">New</label>
+                <select id="admin-modified-user-role">
+                    <option value="user">User</option>
+                    <option value="admin">Admin</option>
+                </select>
+            </div>
+            
+            <button class="edit-user-form-submit-button" type="submit">MODIFY</button>
+            <span class="close-form-button">x</span>
+        </form>
+    </div>
     <% if (users.length > 0) { %>
         <table>
             <thead>
@@ -28,12 +49,12 @@
             <tbody>
                 <% users.forEach(user => { %>
                     <tr>
-                        <td><%= user._id %></td>
-                        <td><%= user.role %></td>
-                        <td><%= user.username %></td>
+                        <td class="current-id"><%= user._id %></td>
+                        <td class="current-role"><%= user.role %></td>
+                        <td class="current-username"><%= user.username %></td>
                         <td><%= user.email %></td>
                         <td>
-                            <button>Edit</button>
+                            <button class="edit-user-button">Edit</button>
                             <button data-user-id="<%= user._id %>" class="delete-user-button">Delete</button>
                         </td>
                     </tr>

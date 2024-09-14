@@ -37,6 +37,35 @@ class Admin {
 
 
 
+    async editUser(e) {
+        e.preventDefault();
+        const requestBody = {
+            adminModifiedUserUsername: document.querySelector('#admin-modified-user-username').value,
+            adminModifiedUserRole: document.querySelector('#admin-modified-user-role').value
+        }
+        const userId = e.target.querySelector('button').getAttribute('data-user-id');
+        try {
+            const response = await fetch(`http://localhost:8080/api/admin/users/${userId}`, {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(requestBody)
+            });
+            if (!response.ok) {
+                const data = await response.json();
+                throw new Error(data.message);
+            }
+            const data = await response.json();
+            alert(data.message);
+            location.reload();
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
+
+
     async replyToMessageViaEmail(e) {
         e.preventDefault();
         const requestBody = {
@@ -133,6 +162,25 @@ class Admin {
         }
 
 
+
+        const editUserButton = document.querySelectorAll('.edit-user-button');
+        editUserButton.forEach(button => {
+            if (button) {
+                button.addEventListener('click', e => {
+                    const closestUsername = e.target.parentElement.parentElement.querySelector('.current-username').innerText;
+                    const closestRole = e.target.parentElement.parentElement.querySelector('.current-role').innerText;
+                    const closestId = e.target.parentElement.parentElement.querySelector('.current-id').innerText;
+                    document.querySelector('#current-username').innerText = closestUsername;
+                    document.querySelector('#current-role').innerText = closestRole;
+                    document.querySelector('.edit-user-form-submit-button').setAttribute('data-user-id', closestId);
+                    document.querySelector('.edit-user-form-wrapper').style.display = 'flex';
+                    document.body.classList.add('disable-scroll');
+                    document.documentElement.classList.add('disable-scroll');
+                });
+            }
+        })
+
+
         document.querySelectorAll('.close-form-button').forEach(button => {
             button.addEventListener('click', e => {
                 e.target.parentElement.parentElement.style.display = 'none';
@@ -148,8 +196,13 @@ class Admin {
             if (button) {
                 button.addEventListener('click', this.deleteUser.bind(this));
             }
-        })
-    }
+        });
+
+        const editUserForm = document.querySelector('#edit-user-form');
+            if (editUserForm) { 
+                editUserForm.addEventListener('submit', this.editUser.bind(this));
+            }
+        }
 }
 
 

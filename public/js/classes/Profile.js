@@ -1,4 +1,5 @@
 import { showErrorMessage, hideErrorMessage, showFinalErrorMessage } from "../utils/inputValidation.js";
+import BASE_URL from '../config/baseUrl.js';
 
 /* KREIRAMO KLASU ZA ULOGOVANOG KORISNIKA */
 class Profile {
@@ -30,14 +31,13 @@ class Profile {
             const token = JSON.parse(localStorage.getItem('token'));
             const decodedToken = jwt_decode(token);
             const userId = decodedToken.id;
-            const apiUrl = `http://localhost:8080/api/delete/${userId}`;
 
             if (!this.validateOnAccountDeletion()) {
                 showFinalErrorMessage(document.querySelector('.final-account-deletion-error-message'));
                 return;
             }
 
-            const response = await fetch(apiUrl, {
+            const response = await fetch(`${BASE_URL}/api/delete/${userId}`, {
                 method: 'DELETE',
                 headers: {
                     'Authorization': `Bearer: ${token}`,
@@ -69,7 +69,6 @@ class Profile {
             const token = JSON.parse(localStorage.getItem('token'));
             const decodedToken = jwt_decode(token);
             const userId = decodedToken.id;
-            const apiUrl = `http://localhost:8080/api/modify/${userId}`;
 
             const requestBody = {
                 newUsername: newModifiedUsername,
@@ -82,7 +81,7 @@ class Profile {
                 return;
             }
 
-            const response = await fetch(apiUrl, {
+            const response = await fetch(`${BASE_URL}/api/modify/${userId}`, {
                 method: 'PUT',
                 headers: {
                     'Authorization': `Bearer: ${token}`,

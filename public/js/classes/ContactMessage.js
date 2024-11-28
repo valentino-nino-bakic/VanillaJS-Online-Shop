@@ -1,4 +1,5 @@
 import { showErrorMessage, hideErrorMessage } from '../utils/inputValidation.js';
+import BASE_URL from '../config/baseUrl.js';
 
 
 
@@ -20,7 +21,6 @@ class ContactMessage {
         const message = document.querySelector('#contact-message').value;
 
         try {
-            const url = 'http://localhost:8080/api/contact-message';
             const requestBody = {
                 name: name || '',
                 email: email,
@@ -32,7 +32,7 @@ class ContactMessage {
                 return;
             }
 
-            const response = await fetch(url, {
+            const response = await fetch(`${BASE_URL}/api/contact-message`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

@@ -1,3 +1,6 @@
+import BASE_URL from '../config/baseUrl.js';
+
+
 class Cart {
     constructor() {
         /* singleton pattern along wiht static 'getInstance' method below 
@@ -58,7 +61,7 @@ class Cart {
                 };
             });
 
-            const response = await fetch('http://localhost:8080/api/carts', {
+            const response = await fetch(`${BASE_URL}/api/carts`, {
                 method: 'POST',
                 headers: {
                     'Content-type': 'application/json',
@@ -312,7 +315,7 @@ class Cart {
                     const productID = e.target.getAttribute('data-product-id');
 
                     try {
-                        const response = await fetch('http://localhost:8080/api/products');
+                        const response = await fetch(`${BASE_URL}/api/products`);
                         if (!response.ok) {
                             const data = await response.json();
                             throw new Error(data.message);

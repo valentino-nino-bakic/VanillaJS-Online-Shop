@@ -1,4 +1,5 @@
 import { showErrorMessage, hideErrorMessage, showFinalErrorMessage } from "../utils/inputValidation.js";
+import BASE_URL from '../config/baseUrl.js';
 
 
 class Login_Register {
@@ -23,14 +24,13 @@ class Login_Register {
                 email: this.newEmail.value,
                 password: this.newPassword.value,
             }
-            const apiUrl = 'http://localhost:8080/api/signup';
 
             if (!this.validateOnSignUp()) {
                 showFinalErrorMessage(document.querySelector('.final-signup-error-message'));
                 return;
             }
 
-            const response = await fetch(apiUrl, {
+            const response = await fetch(`${BASE_URL}/api/signup`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -66,14 +66,13 @@ class Login_Register {
                 usernameOrEmail: this.usernameOrEmail.value,
                 password: this.password.value,
             }
-            const apiUrl = 'http://localhost:8080/api/login';
 
             if (!this.validateOnLogin()) {
                 showFinalErrorMessage(document.querySelector('.final-login-error-message'));
                 return;
             }
 
-            const response = await fetch(apiUrl, {
+            const response = await fetch(`${BASE_URL}/api/login`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'

@@ -1,5 +1,6 @@
 const path = require('path');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
+const Dotenv = require('dotenv-webpack');
 
 
 
@@ -38,6 +39,7 @@ module.exports = {
                 { from: 'public/css', to: 'css' },
                 { from: 'public/js/gsap', to: 'gsap' }
             ]
-        })
+        }),
+        new Dotenv()
     ]
 }

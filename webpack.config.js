@@ -40,9 +40,6 @@ module.exports = {
                 { from: 'public/css', to: 'css' },
                 { from: 'public/js/gsap', to: 'gsap' }
             ]
-        }),
-        new webpack.DefinePlugin({
-            'process.env.BASE_URL': JSON.stringify(process.env.BASE_URL)
-        }),
+        })
     ]
 }

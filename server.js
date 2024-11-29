@@ -3,7 +3,7 @@ const app = express();
 const cors = require('cors');
 const mongoose = require('mongoose');
 require('dotenv').config();
-const PORT = process.env.PORT;
+const PORT = process.env.PORT || 8080;
 const DB_CONNECTION_STRING = process.env.DB_CONNECTION_STRING;
 
 const adminViewRouter = require('./src/routes/adminViewRoutes');

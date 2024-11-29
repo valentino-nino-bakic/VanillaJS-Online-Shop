@@ -1,6 +1,7 @@
+const webpack = require('webpack');
 const path = require('path');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
-const Dotenv = require('dotenv-webpack');
+require('dotenv').config();
 
 
 
@@ -40,6 +41,8 @@ module.exports = {
                 { from: 'public/js/gsap', to: 'gsap' }
             ]
         }),
-        new Dotenv()
+        new webpack.DefinePlugin({
+            'process.env.BASE_URL': JSON.stringify(process.env.BASE_URL)
+        }),
     ]
 }

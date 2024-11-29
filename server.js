@@ -1,5 +1,6 @@
 const express = require('express');
 const app = express();
+const cors = require('cors');
 const mongoose = require('mongoose');
 require('dotenv').config();
 const PORT = process.env.PORT;
@@ -17,6 +18,7 @@ const { renderProductPage } = require('./src/controllers/productController');
 
 
 app.use(express.json());
+app.use(cors);
 app.use(express.static('dist'));
 app.set('view engine', 'ejs');
 

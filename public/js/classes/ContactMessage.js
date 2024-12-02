@@ -1,5 +1,4 @@
 import { showErrorMessage, hideErrorMessage } from '../utils/inputValidation.js';
-import BASE_URL from '../config/baseUrl.js';
 
 
 
@@ -32,7 +31,7 @@ class ContactMessage {
                 return;
             }
 
-            const response = await fetch(`${BASE_URL}/api/contact-message`, {
+            const response = await fetch(`/api/contact-message`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

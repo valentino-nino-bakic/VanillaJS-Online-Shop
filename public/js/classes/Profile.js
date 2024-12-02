@@ -1,5 +1,4 @@
 import { showErrorMessage, hideErrorMessage, showFinalErrorMessage } from "../utils/inputValidation.js";
-import BASE_URL from '../config/baseUrl.js';
 
 /* KREIRAMO KLASU ZA ULOGOVANOG KORISNIKA */
 class Profile {
@@ -37,7 +36,7 @@ class Profile {
                 return;
             }
 
-            const response = await fetch(`${BASE_URL}/api/delete/${userId}`, {
+            const response = await fetch(`/api/delete/${userId}`, {
                 method: 'DELETE',
                 headers: {
                     'Authorization': `Bearer: ${token}`,
@@ -81,7 +80,7 @@ class Profile {
                 return;
             }
 
-            const response = await fetch(`${BASE_URL}/api/modify/${userId}`, {
+            const response = await fetch(`/api/modify/${userId}`, {
                 method: 'PUT',
                 headers: {
                     'Authorization': `Bearer: ${token}`,

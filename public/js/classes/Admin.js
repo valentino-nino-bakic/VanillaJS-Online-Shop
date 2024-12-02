@@ -1,4 +1,3 @@
-import BASE_URL from '../config/baseUrl.js';
 
 
 class Admin {
@@ -16,7 +15,7 @@ class Admin {
             password: document.querySelector('#admin-created-user-password').value,
         }
         try {
-            const response = await fetch(`${BASE_URL}/api/admin/users/add-new-user`, {
+            const response = await fetch(`/api/admin/users/add-new-user`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -45,7 +44,7 @@ class Admin {
         }
         const userId = e.target.querySelector('button').getAttribute('data-user-id');
         try {
-            const response = await fetch(`${BASE_URL}/api/admin/users/${userId}`, {
+            const response = await fetch(`/api/admin/users/${userId}`, {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json'
@@ -73,7 +72,7 @@ class Admin {
             emailReplyMessage: e.target.querySelector('textarea').value
         }
         try {
-            const response = await fetch(`${BASE_URL}/api/admin/messages/email-reply`, {
+            const response = await fetch(`/api/admin/messages/email-reply`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -98,7 +97,7 @@ class Admin {
         const userId = e.target.getAttribute('data-user-id');
         try {
             if (confirm('Are you sure you want to delete this user account?')) {
-                const response = await fetch(`${BASE_URL}/api/admin/users/${userId}`, {
+                const response = await fetch(`/api/admin/users/${userId}`, {
                     method: 'DELETE'
                 });
                 if (!response.ok) {

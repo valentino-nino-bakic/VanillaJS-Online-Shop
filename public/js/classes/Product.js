@@ -1,6 +1,5 @@
 /* ------------------------------------------------------- IMPORTS ------------------------------------------------------- */
 import Cart from './Cart.js';
-import BASE_URL from '../config/baseUrl.js';
 const shoppingCart = Cart.getInstance();
 
 
@@ -27,7 +26,7 @@ class Product {
     // fetching products - initial display...
     async fetchProducts() {
         try {
-            const response = await fetch(`${BASE_URL}/api/products`);
+            const response = await fetch(`/api/products`);
             if (!response.ok) {
                 const data = await response.json();
                 throw new Error(data.message);

@@ -1,4 +1,3 @@
-import BASE_URL from '../config/baseUrl.js';
 
 
 class Cart {
@@ -61,7 +60,7 @@ class Cart {
                 };
             });
 
-            const response = await fetch(`${BASE_URL}/api/carts`, {
+            const response = await fetch(`/api/carts`, {
                 method: 'POST',
                 headers: {
                     'Content-type': 'application/json',
@@ -315,7 +314,7 @@ class Cart {
                     const productID = e.target.getAttribute('data-product-id');
 
                     try {
-                        const response = await fetch(`${BASE_URL}/api/products`);
+                        const response = await fetch(`/api/products`);
                         if (!response.ok) {
                             const data = await response.json();
                             throw new Error(data.message);

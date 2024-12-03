@@ -1,7 +1,12 @@
 // redirection
-if (!localStorage.getItem('token') && location.pathname === '/profile') {
-    location.href = '/';
-}
+// if (!localStorage.getItem('token') && location.pathname === '/profile') {
+//     location.href = '/';
+// }
+window.addEventListener('DOMContentLoaded', function () {
+    if (!localStorage.getItem('token') && location.pathname === '/profile') {
+        location.href = '/';
+    }
+});
 
 
 // imports

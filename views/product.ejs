@@ -58,6 +58,6 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/jwt-decode@3.0.0/build/jwt-decode.min.js"></script>
         <script src="js/gsap/gsap_index.js"></script> -->
-        <script src="/js/product.bundle.js" type="module"></script>
+        <script src="<%= process.env.NODE_ENV === 'production' ? '/js/product.bundle.js' : '/js/pages/profile.js' %>" type="module"></script>
     </body>
 </html>

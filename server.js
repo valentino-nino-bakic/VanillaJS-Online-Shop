@@ -19,7 +19,13 @@ const { renderProductPage } = require('./src/controllers/productController');
 
 app.use(express.json());
 app.use(cors());
-app.use(express.static('dist'));
+
+if (process.env.NODE_ENV === 'production') {
+    app.use(express.static('dist'));
+} else {
+    app.use(express.static('public'));
+}
+
 app.set('view engine', 'ejs');
 
 

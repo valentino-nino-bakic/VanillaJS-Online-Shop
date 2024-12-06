@@ -102,7 +102,7 @@
 
 
 
-.add-new-user-form-wrapper, .edit-user-form-wrapper {
+.add-new-user-form-wrapper, .edit-user-form-wrapper, .email-reply-message-form-wrapper {
     height: 100vh;
     width: 100%;
     background-color: rgba(255, 255, 255, .8);
@@ -115,7 +115,7 @@
     z-index: 20000;
 }
 
-#add-new-user-form, #edit-user-form {
+#add-new-user-form, #edit-user-form, .email-reply-message-form {
     background-color: black;
     color: white;
     width: 320px;
@@ -137,7 +137,7 @@
     margin-bottom: 3px;
 }
 
-#add-new-user-form input, #edit-user-form input {
+#add-new-user-form input, #edit-user-form input, .email-reply-message-form textarea {
     margin-bottom: 5px;
     font-size: .9rem;
     outline: none;
@@ -145,7 +145,7 @@
     width: 100%;
 }
 
-#add-new-user-form button, #edit-user-form button {
+#add-new-user-form button, #edit-user-form button, .email-reply-message-form button {
     padding: 7px;
     background-color: rgb(165, 165, 165);
     border-radius: 1rem;
@@ -171,4 +171,15 @@
 
 #edit-user-form div {
     margin-bottom: 30px;
+}
+
+
+
+.email-reply-message-form {
+    width: 500px;
+    margin: 0 20px;
+}
+
+.email-reply-message-form textarea {
+    height: 100px;
 }

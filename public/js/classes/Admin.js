@@ -85,6 +85,7 @@ class Admin {
             }
             const data = await response.json();
             alert(data.message);
+            location.reload();
         } catch (error) {
             console.log(error);
         }
@@ -127,6 +128,26 @@ class Admin {
         document.querySelectorAll('.email-reply-message-form').forEach(form => {
             form.addEventListener('submit', this.replyToMessageViaEmail.bind(this));
         })
+
+
+        document.querySelectorAll('.email-reply-button').forEach(button => {
+            if (button) {
+                button.addEventListener('click', e => {
+                    e.target.parentElement.querySelector('.email-reply-message-form-wrapper').style.display = 'flex';
+                    document.body.classList.add('disable-scroll');
+                    document.documentElement.classList.add('disable-scroll');
+                });
+            }
+        });
+           
+
+        document.querySelectorAll('.close-form-button').forEach(button => {
+            button.addEventListener('click', e => {
+                e.target.parentElement.parentElement.style.display = 'none';
+                document.body.classList.remove('disable-scroll');
+                document.documentElement.classList.remove('disable-scroll');
+            });
+        });
 
 
         document.querySelector('#logout-button').addEventListener('click', e => {

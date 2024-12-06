@@ -23,11 +23,16 @@
                         <td><%= new Date(message.createdAt).toLocaleString() %></td>
                         <td><%= message.replied %></td>
                         <td>
-                            <form class="email-reply-message-form">
-                                <input type="hidden" value="<%= message._id %>">
-                                <textarea required></textarea>
-                                <button type="submit">Reply</button>
-                            </form>
+                            <button class="email-reply-button">Reply</button>
+                            <div class="email-reply-message-form-wrapper">
+                                <form class="email-reply-message-form">
+                                    <input type="hidden" value="<%= message._id %>">
+                                    <h3 style="margin-bottom: 12px">Reply to <%= message.name ? message.name : "user" %></h3>
+                                    <textarea required></textarea>
+                                    <button type="submit">Reply</button>
+                                    <span class="close-form-button">x</span>
+                                </form>
+                            </div>
                         </td>
                     </tr>
                 <% }) %>

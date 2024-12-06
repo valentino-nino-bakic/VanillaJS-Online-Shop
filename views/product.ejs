@@ -16,15 +16,22 @@
         <!-- profile header(navbar) -->
         <%- include('partials/profile/headerProfile') %>   
         
-        <section class="single-product-details" style="margin: 230px 0 0 230px">
-            <img src="<%= product.productImageUrl %>" alt="<%= product.productTitle %>" width="300px">
+        <section class="single-product-details">
+            <h1><%= product.productTitle %></h1>
+            <img src="<%= product.productImageUrl %>" alt="<%= product.productTitle %>" class="image-modal-trigger">
             <div class="single-product-info">
-                <h2>Product Description</h2>
-                <p><%= product.productDescription %></p>
-                <h3>Price: $<%= product.productPrice %></h3>
+                <p class="p-first">Product Description</p>
+                <p class="p-second"><%= product.productDescription %></p>
+                <p>Price: $<%= product.productPrice %></p>
                 <div class="actions">
                     <button class="product-page-add-to-cart-button" data-product-id="<%= product._id %>">Add to Cart</button>
                     <input class="product-page-quantity" type="number" value="1" min="1" max="<%= product.inStock %>" required />
+                </div>
+            </div>
+            <div class="image-modal-wrapper">
+                <div class="image-modal">
+                    <img src="<%= product.productImageUrl %>" alt="<%= product.productTitle %>" />
+                    <span class="close-image-modal-button">x</span>
                 </div>
             </div>
         </section>
@@ -58,6 +65,6 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/jwt-decode@3.0.0/build/jwt-decode.min.js"></script>
         <script src="js/gsap/gsap_index.js"></script> -->
-        <script src="<%= process.env.NODE_ENV === 'production' ? '/js/product.bundle.js' : '/js/pages/profile.js' %>" type="module"></script>
+        <script src="<%= process.env.NODE_ENV === 'production' ? '/js/product.bundle.js' : '/js/pages/product.js' %>" type="module"></script>
     </body>
 </html>

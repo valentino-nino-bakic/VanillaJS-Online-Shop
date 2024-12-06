@@ -1,6 +1,7 @@
 @import url(about_us.css);
 @import url(contact.css);
 @import url(admin.css);
+@import url(single_product.css);
 
 
 * {
@@ -1518,14 +1519,3 @@ footer .footer-contact .icons a .fa-linkedin-in:hover {
 .scroll-to-top-button:hover {
     background-color: rgba(178, 178, 178, 1);
 }
-
-
-
-
-
-
-
-
-
-
-

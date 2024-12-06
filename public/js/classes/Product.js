@@ -125,7 +125,9 @@ class Product {
         for (let product of productsToDisplay) {
             const productHTML = `
                 <div class="single-product">
-                    <img src="${product.productImageUrl}" alt="${product.productTitle}">
+                    <a href="/product/${product._id}">
+                        <img src="${product.productImageUrl}" alt="${product.productTitle}">
+                    </a>
                     <h4>${product.productTitle.length > 50 ? product.productTitle = product.productTitle.substring(0, 50).concat('...') : product.productTitle}</h4>
                     <p>${product.productDescription.length > 140 ? product.productDescription = product.productDescription.substring(0, 140).concat('...') : product.productDescription}</p>
                     <h5>$${product.productPrice}</h5>

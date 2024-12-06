@@ -38,3 +38,40 @@ hamburgerMenuIcon.addEventListener('click', () => {
       document.querySelector('header').style.backgroundColor = ''
     }
 });
+
+
+
+
+function openModal(modalWrapper) {
+    modalWrapper.style.display = 'flex';
+    document.body.classList.add('disable-scroll');
+    document.documentElement.classList.add('disable-scroll');
+}
+function closeModal(modalWrapper) {
+    modalWrapper.style.display = 'none';
+    document.body.classList.remove('disable-scroll');
+    document.documentElement.classList.remove('disable-scroll');
+}
+
+
+document.querySelectorAll('.image-modal-trigger').forEach(imageModalTrigger => {
+    imageModalTrigger.addEventListener('click', () => {
+        openModal(document.querySelector('.image-modal-wrapper'));
+    });
+});
+
+document.querySelectorAll('.close-image-modal-button').forEach(button => {
+    button.addEventListener('click', e => {
+        closeModal(e.target.parentElement.parentElement);
+    });
+});
+
+
+
+document.querySelectorAll('.image-modal-wrapper').forEach(wrapper => {
+    wrapper.addEventListener('click', e => {
+        if (e.target === wrapper) {
+            closeModal(wrapper);
+        }
+    });
+});

@@ -1,10 +1,26 @@
 import Cart from "../classes/Cart.js";
+import Profile from "../classes/Profile.js";
+import Login_Register from "../classes/Login_Register.js";
 
-
-// cart functionality
+// core
 let shoppingCart;
+let profile;
+let login_register;
 window.addEventListener('DOMContentLoaded', () => {
     shoppingCart = Cart.getInstance();
+
+    const newModifiedUsername = document.querySelector('#new-modified-username');
+    const newModifiedPassword = document.querySelector('#new-modified-password');
+    const currentUserPassword = document.querySelector('#current-user-password');
+    const confirmAccountDeletionPassword = document.querySelector('#confirm-account-deletion-password');
+    profile = new Profile(newModifiedUsername, newModifiedPassword, currentUserPassword, confirmAccountDeletionPassword);
+
+    const usernameOrEmail = document.querySelector('#username_or_email');
+    const password = document.querySelector('#password');
+    const newUsername = document.querySelector('#new-username');
+    const newEmail = document.querySelector('#new-email');
+    const newPassword = document.querySelector('#new-password');
+    login_register = new Login_Register(usernameOrEmail, password, newUsername, newEmail, newPassword);
 });
 
 

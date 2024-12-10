@@ -153,17 +153,22 @@ class Login_Register {
         })
 
 
-
-        document.querySelector('.login-button').addEventListener('click', () => {
-            document.querySelector('.login-form-wrapper').style.display = 'flex';
-            document.body.classList.add('disable-scroll');
-            document.documentElement.classList.add('disable-scroll');
-        })
-        document.querySelector('.register-button').addEventListener('click', () => {
-            document.querySelector('.register-form-wrapper').style.display = 'flex';
-            document.body.classList.add('disable-scroll');
-            document.documentElement.classList.add('disable-scroll');
-        })
+        const loginButton = document.querySelector('.login-button');
+        if (loginButton) {
+            loginButton.addEventListener('click', () => {
+                document.querySelector('.login-form-wrapper').style.display = 'flex';
+                document.body.classList.add('disable-scroll');
+                document.documentElement.classList.add('disable-scroll');
+            });
+        }
+        const registerButton = document.querySelector('.register-button');
+        if (registerButton) {
+            registerButton.addEventListener('click', () => {
+                document.querySelector('.register-form-wrapper').style.display = 'flex';
+                document.body.classList.add('disable-scroll');
+                document.documentElement.classList.add('disable-scroll');
+            });
+        }
         document.querySelectorAll('.close-form-button').forEach(button => {
             button.addEventListener('click', e => {
                 e.target.parentElement.parentElement.style.display = 'none';

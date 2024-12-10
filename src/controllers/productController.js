@@ -58,12 +58,15 @@ const ProductController = {
 
 const renderProductPage = async (req, res) => {
     const productId = req.params.id;
+    let referer = req.headers.referer;
+    let loggedIn = referer === 'http://localhost:8080/profile' || referer === 'https://vanillajs-online-shop.onrender.com/profile';
+
     try {
         const product = await Product.findById(productId);
         if (!product) {
             return res.status(404).render('not_found');
         }
-        res.render('product', { product });
+        res.render('product', { product, loggedIn });
     } catch (error) {
         res.status(500).send('Internal server error.');
     }

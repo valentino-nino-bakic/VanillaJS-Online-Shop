@@ -145,32 +145,43 @@ class Profile {
             e.preventDefault();
             this.deleteAccount(this.confirmAccountDeletionPassword);
         })
-        document.querySelector('#logout-button').addEventListener('click', e => {
-            e.preventDefault();
-            this.logout();
-        });
-
-        document.querySelector('#user-account-actions-toggler').addEventListener('click', () => {
-            let userAccountActionsDiv = document.querySelector('.user-account-actions');
-            if (userAccountActionsDiv.style.display === 'flex') {
-                userAccountActionsDiv.style.display = 'none';
-            } else {
-                userAccountActionsDiv.style.display = 'flex';
-            }
-        });
-        document.querySelector('.delete-button').addEventListener('click', e => {
-            if (confirm('Are you sure you want to delete your account?\nIf so, there is no going back and all your orders will be cancelled if there are any')) {
-                document.querySelector('.confirm-account-deletion-wrapper').style.display = 'flex';
-                document.body.classList.add('disable-scroll');
-                document.documentElement.classList.add('disable-scroll');
-
-            }
-        });
-        document.querySelector('.modify-button').addEventListener('click', e => {
-            document.querySelector('.modify-account-form-wrapper').style.display = 'flex';
-            document.body.classList.add('disable-scroll');
-            document.documentElement.classList.add('disable-scroll');
-        });
+        const logoutButton = document.querySelector('#logout-button');
+        if (logoutButton) {
+            logoutButton.addEventListener('click', e => {
+                e.preventDefault();
+                this.logout();
+            });
+        }
+        const userAccountActionsToggler = document.querySelector('#user-account-actions-toggler');
+        if (userAccountActionsToggler) {
+            userAccountActionsToggler.addEventListener('click', () => {
+                let userAccountActionsDiv = document.querySelector('.user-account-actions');
+                if (userAccountActionsDiv.style.display === 'flex') {
+                    userAccountActionsDiv.style.display = 'none';
+                } else {
+                    userAccountActionsDiv.style.display = 'flex';
+                }
+            });
+        }
+        const deleteButton = document.querySelector('.delete-button');
+        if (deleteButton) {
+            deleteButton.addEventListener('click', e => {
+                if (confirm('Are you sure you want to delete your account?\nIf so, there is no going back and all your orders will be cancelled if there are any')) {
+                    document.querySelector('.confirm-account-deletion-wrapper').style.display = 'flex';
+                    document.body.classList.add('disable-scroll');
+                    document.documentElement.classList.add('disable-scroll');
+    
+                }
+            });
+        }
+        const modifyButton = document.querySelector('.modify-button');
+        if (modifyButton) {
+            modifyButton.addEventListener('click', e => {
+                 document.querySelector('.modify-account-form-wrapper').style.display = 'flex';
+                 document.body.classList.add('disable-scroll');
+                 document.documentElement.classList.add('disable-scroll');
+             });
+        }
         document.querySelectorAll('.close-form-button').forEach(button => {
             button.addEventListener('click', e => {
                 e.target.parentElement.parentElement.style.display = 'none';
@@ -185,37 +196,45 @@ class Profile {
 
 
     addInputValidationListeners() {
-        this.newModifiedUsername.addEventListener('input', e => {
-            if (e.target.value.trim().length < 4 || e.target.value.trim().length > 15) {
-                showErrorMessage(this.newModifiedUsername);
-            } else {
-                hideErrorMessage(this.newModifiedUsername);
-            }
-        });
+        if (this.newModifiedUsername) {
+            this.newModifiedUsername.addEventListener('input', e => {
+                if (e.target.value.trim().length < 4 || e.target.value.trim().length > 15) {
+                    showErrorMessage(this.newModifiedUsername);
+                } else {
+                    hideErrorMessage(this.newModifiedUsername);
+                }
+            });
+        }
 
-        this.newModifiedPassword.addEventListener('input', e => {
-            if (e.target.value.trim().length < 7 || e.target.value.trim().length > 25) {
-                showErrorMessage(this.newModifiedPassword);
-            } else {
-                hideErrorMessage(this.newModifiedPassword);
-            }
-        });
+        if (this.newModifiedPassword) {
+            this.newModifiedPassword.addEventListener('input', e => {
+                if (e.target.value.trim().length < 7 || e.target.value.trim().length > 25) {
+                    showErrorMessage(this.newModifiedPassword);
+                } else {
+                    hideErrorMessage(this.newModifiedPassword);
+                }
+            });
+        }
 
-        this.currentUserPassword.addEventListener('input', e => {
-            if (e.target.value.trim().length < 7 || e.target.value.trim().length > 25) {
-                showErrorMessage(this.currentUserPassword);
-            } else {
-                hideErrorMessage(this.currentUserPassword);
-            }
-        });
+        if (this.currentUserPassword) {
+            this.currentUserPassword.addEventListener('input', e => {
+                if (e.target.value.trim().length < 7 || e.target.value.trim().length > 25) {
+                    showErrorMessage(this.currentUserPassword);
+                } else {
+                    hideErrorMessage(this.currentUserPassword);
+                }
+            });
+        }
 
-        this.confirmAccountDeletionPassword.addEventListener('input', e => {
-            if (e.target.value.trim().length < 7 || e.target.value.trim().length > 25) {
-                showErrorMessage(this.confirmAccountDeletionPassword);
-            } else {
-                hideErrorMessage(this.confirmAccountDeletionPassword);
-            }
-        });
+        if (this.confirmAccountDeletionPassword) {
+            this.confirmAccountDeletionPassword.addEventListener('input', e => {
+                if (e.target.value.trim().length < 7 || e.target.value.trim().length > 25) {
+                    showErrorMessage(this.confirmAccountDeletionPassword);
+                } else {
+                    hideErrorMessage(this.confirmAccountDeletionPassword);
+                }
+            });
+        }
     }
 
 
@@ -223,9 +242,12 @@ class Profile {
 
 
     setLoggedInUserUsername() {
-        const decoded = jwt_decode(JSON.parse(localStorage.getItem('token')));
-        const username = decoded.username;
-        document.querySelector('#user-account-actions-toggler p').textContent = username;
+        const token = JSON.parse(localStorage.getItem('token'));
+        if (token) {
+            const decoded = jwt_decode(token);
+            const username = decoded.username;
+            document.querySelector('#user-account-actions-toggler p').textContent = username;
+        }
     }
 
 

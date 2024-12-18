@@ -12,7 +12,7 @@ window.addEventListener('DOMContentLoaded', function () {
 
 
 // imports
-import { backToTopButtonToggler, headerToggler, scrollToTop, scrollToProductSection, scrollToCustomerReviewsSection, scrollToWhatWeDoSection } from '../utils/listeners_callbacks.js';
+import { backToTopButtonToggler, headerToggler, scrollToTop, scrollToProductSection, scrollToCustomerReviewsSection, scrollToWhatWeDoSection, toggleHamburgerMenu } from '../utils/listeners_callbacks.js';
 
 import Login_Register from '../classes/Login_Register.js';
 import Cart from '../classes/Cart.js';
@@ -66,4 +66,13 @@ document.querySelector('#fa-customer-products-section-trigger').addEventListener
 
 document.querySelector('#learn-more-button').addEventListener('click', () => {
     scrollToWhatWeDoSection(document.querySelector('.what-we-do-section'));
+});
+
+
+
+const hamburgerMenuIcon = document.querySelector('#hamburger-menu-icon');
+const nav = document.querySelector('#navbar');
+
+hamburgerMenuIcon.addEventListener('click', () => {
+    toggleHamburgerMenu(nav, document.querySelector('header'));
 });

@@ -1,6 +1,6 @@
 .admin-header-adjustment-helper {
     height: 120px;
-    background-color: rgb(28, 75, 99);
+    background-color: black
 }
 
 
@@ -32,7 +32,8 @@
 
 .sidebar {
     font-size: 0.75rem;
-    background-color: rgb(28, 75, 99);
+    /* background-color: rgb(28, 75, 99); */
+    background-color: black;
     color: white;
     width: 200px;
     height: 100vh;
@@ -51,7 +52,7 @@
 }
 
 .sidebar a:hover {
-    background-color: black;
+    background-color: rgb(80, 80, 80);
 }
 
 
@@ -60,6 +61,7 @@
     font-size: .8rem;
     width: 100%;
     border-collapse: collapse;
+    table-layout: fixed;
 }
 .admin-page-content-section table, .admin-page-content-section th, .admin-page-content-section td {
     border: 1px solid silver;
@@ -67,12 +69,32 @@
 .admin-page-content-section th, .admin-page-content-section td {
     padding: 10px;
     text-align: left;
+    word-wrap: break-word;
 }
 .admin-page-content-section th {
     background-color: black;
     color: white;
 }
 
+.admin-page-content-section table img {
+    width: 50px;
+}
+
+.admin-page-content-section table button {
+    width: 100%;
+    margin: 2px auto;
+    padding: 8px;
+    font-size: .8rem;
+    background-color: rgb(80, 80, 80);
+    color: white;
+    border: none;
+    outline: none;
+    border-radius: 3px;
+    cursor: pointer;
+}
+.admin-page-content-section table button:hover {
+    background-color: black;
+}
 
 
 .customer-email {
@@ -88,12 +110,6 @@
 .single-order .ordered-by {
     margin: 15px 0;
 }
-
-.admin-page-content-section table img {
-    width: 50px;
-}
-
-
 
 
 

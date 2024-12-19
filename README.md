@@ -80,9 +80,9 @@ git clone https://github.com/valentino-nino-bakic/VanillaJS-Online-Shop.git
 ```dotenv
 PORT=8080
 DB_CONNECTION_STRING='mongodb+srv://<yourusername>:<yourpassword>@<cluster>.mongodb.net/<dbname>?retryWrites=true&w=majority&appName=<appname>'
-SECRET_KEY='<your_secret_key>'
+SECRET_KEY='<your_JWT_secret_key>'
 SENDGRID_API_KEY='<your_sendgrid_api_key>'
-SENDGRID_FROM_EMAIL='<your_email_address>'
+SENDGRID_FROM_EMAIL='<your_verified_email_address>'
  ```
 
  **6. Run server with nodemon so you don't have to do it manually every time you make some changes**

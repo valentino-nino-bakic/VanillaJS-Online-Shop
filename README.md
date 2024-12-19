@@ -44,11 +44,11 @@ Node(ExpressJS) server-side rendering ecommerce application
 ## Installation
 
 #### Prerequisites
-- [Node](https://nodejs.org/en){:target="_blank"}
-- [MongoDB Atlas account](https://www.mongodb.com/){:target="_blank"} - Sign up and [create a new cluster](https://www.mongodb.com/docs/guides/atlas/cluster/){:target="_blank"}
-- [SendGrid account](https://sendgrid.com/en-us){:target="_blank"} - Sign up and follow [these 5 steps](https://www.twilio.com/docs/sendgrid/for-developers/sending-email/quickstart-nodejs){:target="_blank"}
-and feel free to ignore 4th step and set up [Single Sender Verification](https://www.twilio.com/docs/sendgrid/ui/sending-email/sender-verification){:target="_blank"}
-instead of [Domain Authentication](https://www.twilio.com/docs/sendgrid/ui/account-and-settings/how-to-set-up-domain-authentication#twilio-docs-content-area){:target="_blank"}
+- [Node](https://nodejs.org/en) - You must have it installed on your system
+- [MongoDB Atlas account](https://www.mongodb.com/) - Sign up and [create a new cluster](https://www.mongodb.com/docs/guides/atlas/cluster/)
+- [SendGrid account](https://sendgrid.com/en-us) - Sign up and follow [these 5 steps](https://www.twilio.com/docs/sendgrid/for-developers/sending-email/quickstart-nodejs)
+and feel free to ignore 4th step and set up [Single Sender Verification](https://www.twilio.com/docs/sendgrid/ui/sending-email/sender-verification)
+instead of [Domain Authentication](https://www.twilio.com/docs/sendgrid/ui/account-and-settings/how-to-set-up-domain-authentication#twilio-docs-content-area)
 
 <br />
 

@@ -55,37 +55,37 @@ instead of [Domain Authentication](https://www.twilio.com/docs/sendgrid/ui/accou
 
 Follow the steps below to run the project locall    y on your machine:
 
-1. Clone this repository
+**1. Clone this repository**
 ```bash
 git clone https://github.com/valentino-nino-bakic/VanillaJS-Online-Shop.git
 ```
 
-2. Make sure you're in the project root
+**2. Make sure you're in the project root**
 ```bash
  cd <directory-you-cloned-this-repo-to>
  ```
 
-3. Install dependencies
+**3. Install dependencies**
 ```bash
  npm install
  ```
 
-4. Create '.env' file
+**4. Create '.env' file**
 ```bash
  touch .env
  ```
 
-5. Open up newly created '.env' file then paste the following contents to it and make sure you replace placeholder values with your own variables values:
+**5. Open up newly created '.env' file then paste the following contents to it and make sure you replace placeholder values with your own variables values:**
 
-
+```dotenv
 PORT=8080
-DB_CONNECTION_STRING='mongodb+srv://<yourusername>:<yourpassword>@<cluster>.mongodb.net/<dbname>?retryWrites=true&w=majority&appName=Cluster0'
+DB_CONNECTION_STRING='mongodb+srv://<yourusername>:<yourpassword>@<cluster>.mongodb.net/<dbname>?retryWrites=true&w=majority&appName=<appname>'
 SECRET_KEY='<your_secret_key>'
 SENDGRID_API_KEY='<your_sendgrid_api_key>'
 SENDGRID_FROM_EMAIL='<your_email_address>'
+ ```
 
-
- 6. Run server with nodemon so you don't have to do it manually every time you make some changes
+ **6. Run server with nodemon so you don't have to do it manually every time you make some changes**
 ```bash
  npx nodemon server.js
  ```

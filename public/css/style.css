@@ -99,6 +99,20 @@ header a img:hover {
     display: none;
     transform: translateY(-5vh);
 }
+#search-icon {
+    cursor: pointer;
+    color: white;
+    position: absolute;
+    left: 25px;
+    bottom: 11px;
+    display: none;
+}
+.search-input-active {
+    position: absolute;
+    top: 100%;
+    min-width: 100vw;
+    margin-left: -20px;
+}
 
 #navbar {
     transform: translateX(5vw);

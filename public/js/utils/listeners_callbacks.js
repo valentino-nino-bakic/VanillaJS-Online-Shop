@@ -74,6 +74,15 @@ function toggleHamburgerMenu(nav, header) {
 }
 
 
+function toggleSearchInput(searchInput) {
+    if (searchInput.style.display === 'block') {
+        searchInput.style.display = 'none'
+        searchInput.classList.remove('search-input-active');
+    } else {
+        searchInput.style.display = 'block';
+        searchInput.classList.add('search-input-active');
+    }
+}
 
 
 
@@ -87,4 +96,5 @@ export {
     scrollToWhatWeDoSection,
     scrollToCustomerReviewsSection,
     toggleHamburgerMenu,
+    toggleSearchInput
 }

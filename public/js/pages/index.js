@@ -12,7 +12,16 @@ window.addEventListener('DOMContentLoaded', function () {
 
 
 // imports
-import { backToTopButtonToggler, headerToggler, scrollToTop, scrollToProductSection, scrollToCustomerReviewsSection, scrollToWhatWeDoSection, toggleHamburgerMenu } from '../utils/listeners_callbacks.js';
+import {
+    headerToggler,
+    backToTopButtonToggler,
+    scrollToTop,
+    scrollToProductSection,
+    scrollToCustomerReviewsSection,
+    scrollToWhatWeDoSection,
+    toggleHamburgerMenu,
+    toggleSearchInput
+} from '../utils/listeners_callbacks.js';
 
 import Login_Register from '../classes/Login_Register.js';
 import Cart from '../classes/Cart.js';
@@ -75,4 +84,11 @@ const nav = document.querySelector('#navbar');
 
 hamburgerMenuIcon.addEventListener('click', () => {
     toggleHamburgerMenu(nav, document.querySelector('header'));
+});
+
+
+const searchIcon = document.querySelector('#search-icon');
+const searchInput = document.querySelector('#search-input');
+searchIcon.addEventListener('click', () => {
+    toggleSearchInput(searchInput);
 });

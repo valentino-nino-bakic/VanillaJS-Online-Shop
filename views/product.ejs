@@ -13,7 +13,7 @@
     </head>
     <body>
         
-        <!-- profile header(navbar) -->
+        <!-- dynamically rendered based on if user is logged on or not -->
         <% if (loggedIn) { %>
             <%- include('partials/profile/headerProfile') %>   
         <% } else { %>
@@ -73,6 +73,7 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/jwt-decode@3.0.0/build/jwt-decode.min.js"></script>
         <!-- <script src="js/gsap/gsap_index.js"></script> -->
+        <script src="<%= process.env.NODE_ENV === 'production' ? '/gsap/gsap_index.js' : '/js/gsap/gsap_index.js' %>"></script>
         <script src="<%= process.env.NODE_ENV === 'production' ? '/js/product.bundle.js' : '/js/pages/product.js' %>" type="module"></script>
     </body>
 </html>

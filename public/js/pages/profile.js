@@ -17,7 +17,8 @@ import {
     scrollToProductSection,
     scrollToWhatWeDoSection,
     scrollToCustomerReviewsSection,
-    toggleHamburgerMenu
+    toggleHamburgerMenu,
+    toggleSearchInput
 } from '../utils/listeners_callbacks.js';
 
 
@@ -81,8 +82,11 @@ hamburgerMenuIcon.addEventListener('click', () => {
     toggleHamburgerMenu(nav, document.querySelector('header'));
 });
 
-
-
+const searchIcon = document.querySelector('#search-icon');
+const searchInput = document.querySelector('#search-input');
+searchIcon.addEventListener('click', () => {
+    toggleSearchInput(searchInput);
+});
 
 
 

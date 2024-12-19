@@ -291,9 +291,25 @@
         padding-left: 20px;
     }
     #search-input {
-        
+        display: none;
     }
-
+    #search-icon {
+        display: block;
+    }
+    .login-button, .register-button {
+        display: block;
+    }
+    .register-button {
+        margin-top: 5px;
+    }
+    #logo {
+        position: absolute;
+        top: 5px;
+        left: 10px;
+    }
+    #search-results {
+        top: 152px;
+    }
 
     hr {
         margin: 60px auto;

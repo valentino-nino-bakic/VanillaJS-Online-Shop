@@ -1,7 +1,7 @@
 /* -----------------------------------------------------------    do 1200px     --------------------------------------------------------------- */
 @media only screen and (max-width: 1200px) {
     table {
-        background-color: yellow;
+        /* background-color: yellow; */
     }
     .admin-page-content-section th, .admin-page-content-section td {
         /* background-color: yellow; */
@@ -81,13 +81,20 @@
 
 /* -----------------------------------------------------------    do 992px     --------------------------------------------------------------- */
 @media only screen and (max-width: 992px) {
-    /* .admin-main {
-        padding: 70px 10px;
-    } */
+    .admin-main {
+        padding: 40px;
+    }
     .sidebar {
-        width: 150px;
+        width: 135px;
     }
 
+    #search-results li {
+        width: 33.33%;
+    }
+
+    .admin-page-content-container {
+        margin-left: 135px;
+    }
     
 
     header {
@@ -154,6 +161,12 @@
 @media only screen and (max-width: 768px) {
     .admin-page-content-container {
         margin-left: 0;
+    }
+    .small-screen-ul {
+        display: flex !important;
+    }
+    .big-screen-ul {
+        display: none !important;
     }
     .sidebar {
         display: none;
@@ -309,6 +322,32 @@
     }
     #search-results {
         top: 152px;
+    }
+    #search-results li {
+        width: 50%;
+    }
+    .select-sort-search-container div {
+        width: 100%;
+        text-align: center;
+    }
+    .single-product-details {
+        margin-bottom: 10px;
+        padding: 20px;
+    }
+    .single-product-details h1 {
+        font-size: 24px;
+    }
+    .single-product-info .p-first {
+        font-size: 19px;
+    }
+    .admin-page-content-container {
+        display: none;
+    }
+    .bigger-screen-required {
+        display: flex;
+    }
+    .admin-panel-hamburger-menu-icon {
+        display: none !important;
     }
 
     hr {

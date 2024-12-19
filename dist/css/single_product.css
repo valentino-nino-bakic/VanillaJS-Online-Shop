@@ -1,5 +1,6 @@
 .single-product-details {
     width: fit-content;
+    padding: 30px;
     margin: 185px auto 60px auto;
 }
 .single-product-details h1 {
@@ -18,7 +19,7 @@
     font-size: 24px;
 }
 .single-product-info .p-second {
-    width: 700px;
+    max-width: 700px;
     font-size: 12px;
     margin: 20px 0;
 }

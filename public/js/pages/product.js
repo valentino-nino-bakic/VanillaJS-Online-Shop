@@ -2,6 +2,8 @@ import Cart from "../classes/Cart.js";
 import Profile from "../classes/Profile.js";
 import Login_Register from "../classes/Login_Register.js";
 
+import { toggleSearchInput } from "../utils/listeners_callbacks.js";
+
 // core
 let shoppingCart;
 let profile;
@@ -90,4 +92,12 @@ document.querySelectorAll('.image-modal-wrapper').forEach(wrapper => {
             closeModal(wrapper);
         }
     });
+});
+
+
+
+const searchIcon = document.querySelector('#search-icon');
+const searchInput = document.querySelector('#search-input');
+searchIcon.addEventListener('click', () => {
+    toggleSearchInput(searchInput);
 });

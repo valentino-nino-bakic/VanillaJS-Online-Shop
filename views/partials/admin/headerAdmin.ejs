@@ -1,14 +1,22 @@
 <header>
     <a href="/admin" class="logo-link">
-        <img id="logo" src="/images/logo.png" alt="Yorkshire Logo" title="Home">
+        <img id="logo" src="/images/logo.png" alt="Yorkshire Logo" title="Home" class="admin-panel-logo">
     </a>
 
-    <nav id="navbar">
-        <ul>
+    <nav id="navbar" class="admin-panel-nav">
+        <ul class="big-screen-ul">
             <li><a href="/admin">DASHBOARD</a></li>
             <li><a href="/admin/settings">SETTINGS</a></li>
         </ul>
+        <ul class="small-screen-ul">
+            <li><a href="/admin/users">USERS</a></li>
+            <li><a href="/admin/products">PRODUCTS</a></li>
+            <li><a href="/admin/orders">ORDERS</a></li>
+            <li><a href="/admin/messages">MESSAGES</a></li>
+            <li><a href="/admin/settings">SETTINGS</a></li>
+        </ul>
     </nav>
+
 
 
 
@@ -29,5 +37,5 @@
     </div>
 
 
-    <i id="hamburger-menu-icon" class="fa-solid fa-bars"></i>
+    <i id="hamburger-menu-icon" class="fa-solid fa-bars admin-panel-hamburger-menu-icon"></i>
 </header>

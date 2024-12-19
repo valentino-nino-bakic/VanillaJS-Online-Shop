@@ -44,31 +44,52 @@ Node(ExpressJS) server-side rendering ecommerce application
 ## Installation
 
 #### Prerequisites
-- [Node](https://nodejs.org/en)
-- [MongoDB Atlas account](https://www.mongodb.com/)
-- [Send Grid account](https://sendgrid.com/en-us)
+- [Node](https://nodejs.org/en){:target="_blank"}
+- [MongoDB Atlas account](https://www.mongodb.com/){:target="_blank"} - Sign up and [create a new cluster](https://www.mongodb.com/docs/guides/atlas/cluster/){:target="_blank"}
+- [SendGrid account](https://sendgrid.com/en-us){:target="_blank"} - Sign up and follow [these 5 steps](https://www.twilio.com/docs/sendgrid/for-developers/sending-email/quickstart-nodejs){:target="_blank"}
+and feel free to ignore 4th step and set up [Single Sender Verification](https://www.twilio.com/docs/sendgrid/ui/sending-email/sender-verification){:target="_blank"}
+instead of [Domain Authentication](https://www.twilio.com/docs/sendgrid/ui/account-and-settings/how-to-set-up-domain-authentication#twilio-docs-content-area){:target="_blank"}
 
 <br />
 
 
-Follow the steps below to run the project locally on your machine:
+Follow the steps below to run the project locall    y on your machine:
 
 1. Clone this repository
 ```bash
 git clone https://github.com/valentino-nino-bakic/VanillaJS-Online-Shop.git
 ```
 
- 2. Make sure you're in the project root
+2. Make sure you're in the project root
 ```bash
  cd <directory-you-cloned-this-repo-to>
  ```
 
- 3. Install dependencies
+3. Install dependencies
 ```bash
  npm install
  ```
 
- 4. Run server with nodemon so you don't have to do it manually every time you make some changes
+4. Create '.env' file
+```bash
+ touch .env
+ ```
+
+5. Open up newly created '.env' file then paste the following contents to it and make sure you replace placeholder values with your own variables values:
+
+
+PORT=8080
+DB_CONNECTION_STRING='mongodb+srv://<yourusername>:<yourpassword>@<cluster>.mongodb.net/<dbname>?retryWrites=true&w=majority&appName=Cluster0'
+SECRET_KEY='<your_secret_key>'
+SENDGRID_API_KEY='<your_sendgrid_api_key>'
+SENDGRID_FROM_EMAIL='<your_email_address>'
+
+
+ 6. Run server with nodemon so you don't have to do it manually every time you make some changes
 ```bash
  npx nodemon server.js
  ```
+
+<br />
+
+And you're all set! Feel free to open up your browser and visit your website at http://localhost:8080

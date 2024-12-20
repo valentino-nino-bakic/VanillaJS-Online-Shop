@@ -53,7 +53,7 @@ instead of [Domain Authentication](https://www.twilio.com/docs/sendgrid/ui/accou
 <br />
 
 
-Follow the steps below to run the project locall    y on your machine:
+Follow the steps below to run the project locally on your machine:
 
 **1. Clone this repository**
 ```bash
@@ -85,11 +85,21 @@ SENDGRID_API_KEY='<your_sendgrid_api_key>'
 SENDGRID_FROM_EMAIL='<your_verified_email_address>'
  ```
 
- **6. Run server with nodemon so you don't have to do it manually every time you make some changes**
+**6. Import initial products to your Mongo database**
+```bash
+ node importInitialProductsToMongoDB.js
+ ```
+
+ **7. Run server with nodemon so you don't have to do it manually every time you make some changes**
 ```bash
  npx nodemon server.js
  ```
 
 <br />
 
+#### Almost there
+To access the admin panel for the first time, you need to go to your MongoDB atlas then manually change the role of some existing user from 'user' to 'admin' so the website could recognize you as an administrator
+
+
+***
 And you're all set! Feel free to open up your browser and visit your website at http://localhost:8080

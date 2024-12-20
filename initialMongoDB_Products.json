@@ -1,0 +1,258 @@
+[
+    {
+        "productCategory": "Shoes",
+        "productImageUrl": "/images/products/adidas_superstar.png",
+        "productTitle": "Adidas Superstar Sneakers",
+        "productDescription": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae iure aperiam labore quibusdam error laudantium provident, iste nam cumque porro suscipit repellat eligendi! Assumenda iure sed voluptatibus libero perferendis esse neque praesentium voluptatum ducimus at dolorum, voluptas numquam nihil sint quibusdam. Nam deserunt architecto, dicta eum aliquam neque dolores totam doloribus, impedit quis maxime eligendi fugiat illum possimus accusantium sit. Commodi cum harum natus nostrum dolorem laborum quasi. Architecto quod minus commodi expedita fugiat autem temporibus, ipsum dolore, voluptates sint molestiae in id cumque vel sed? At nulla autem ex architecto saepe ratione eaque rem dolores repellat? Ad sunt velit adipisci quae et vero magni voluptatum consequatur quos qui assumenda obcaecati excepturi eius suscipit harum, illo beatae, quisquam!",
+        "productPrice": 90,
+        "inStock": 10
+    },
+    {
+        "productCategory": "Shoes",
+        "productImageUrl": "/images/products/adidas_tennis.png",
+        "productTitle": "Adidas Tennis Sneakers",
+        "productDescription": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae iure aperiam labore quibusdam error laudantium provident, iste nam cumque porro suscipit repellat eligendi! Assumenda iure sed voluptatibus libero perferendis esse neque praesentium voluptatum ducimus at dolorum, voluptas numquam nihil sint quibusdam. Nam deserunt architecto, dicta eum aliquam neque dolores totam doloribus, impedit quis maxime eligendi fugiat illum possimus accusantium sit. Commodi cum harum natus nostrum dolorem laborum quasi. Architecto quod minus commodi expedita fugiat autem temporibus, ipsum dolore, voluptates sint molestiae in id cumque vel sed? At nulla autem ex architecto saepe ratione eaque rem dolores repellat? Ad sunt velit adipisci quae et vero magni voluptatum consequatur quos qui assumenda obcaecati excepturi eius suscipit harum, illo beatae, quisquam!",
+        "productPrice": 120,
+        "inStock": 10
+    },
+    {
+        "productCategory": "Shoes",
+        "productImageUrl": "/images/products/converse_allstar.png",
+        "productTitle": "Chuck Taylor All Star Classic",
+        "productDescription": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae iure aperiam labore quibusdam error laudantium provident, iste nam cumque porro suscipit repellat eligendi! Assumenda iure sed voluptatibus libero perferendis esse neque praesentium voluptatum ducimus at dolorum, voluptas numquam nihil sint quibusdam. Nam deserunt architecto, dicta eum aliquam neque dolores totam doloribus, impedit quis maxime eligendi fugiat illum possimus accusantium sit. Commodi cum harum natus nostrum dolorem laborum quasi. Architecto quod minus commodi expedita fugiat autem temporibus, ipsum dolore, voluptates sint molestiae in id cumque vel sed? At nulla autem ex architecto saepe ratione eaque rem dolores repellat? Ad sunt velit adipisci quae et vero magni voluptatum consequatur quos qui assumenda obcaecati excepturi eius suscipit harum, illo beatae, quisquam!",
+        "productPrice": 100,
+        "inStock": 10
+    },
+    {
+        "productCategory": "Shoes",
+        "productImageUrl": "/images/products/new_balance.png",
+        "productTitle": "New Balance Sneakers",
+        "productDescription": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae iure aperiam labore quibusdam error laudantium provident, iste nam cumque porro suscipit repellat eligendi! Assumenda iure sed voluptatibus libero perferendis esse neque praesentium voluptatum ducimus at dolorum, voluptas numquam nihil sint quibusdam. Nam deserunt architecto, dicta eum aliquam neque dolores totam doloribus, impedit quis maxime eligendi fugiat illum possimus accusantium sit. Commodi cum harum natus nostrum dolorem laborum quasi. Architecto quod minus commodi expedita fugiat autem temporibus, ipsum dolore, voluptates sint molestiae in id cumque vel sed? At nulla autem ex architecto saepe ratione eaque rem dolores repellat? Ad sunt velit adipisci quae et vero magni voluptatum consequatur quos qui assumenda obcaecati excepturi eius suscipit harum, illo beatae, quisquam!",
+        "productPrice": 130,
+        "inStock": 10
+    },
+    {
+        "productCategory": "Shoes",
+        "productImageUrl": "/images/products/nike_airjordan.png",
+        "productTitle": "Air Jordan Sneakers",
+        "productDescription": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae iure aperiam labore quibusdam error laudantium provident, iste nam cumque porro suscipit repellat eligendi! Assumenda iure sed voluptatibus libero perferendis esse neque praesentium voluptatum ducimus at dolorum, voluptas numquam nihil sint quibusdam. Nam deserunt architecto, dicta eum aliquam neque dolores totam doloribus, impedit quis maxime eligendi fugiat illum possimus accusantium sit. Commodi cum harum natus nostrum dolorem laborum quasi. Architecto quod minus commodi expedita fugiat autem temporibus, ipsum dolore, voluptates sint molestiae in id cumque vel sed? At nulla autem ex architecto saepe ratione eaque rem dolores repellat? Ad sunt velit adipisci quae et vero magni voluptatum consequatur quos qui assumenda obcaecati excepturi eius suscipit harum, illo beatae, quisquam!",
+        "productPrice": 160,
+        "inStock": 10
+    },
+    {
+        "productCategory": "Shoes",
+        "productImageUrl": "/images/products/nike_airmax.png",
+        "productTitle": "Nike Air Max Shoes",
+        "productDescription": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae iure aperiam labore quibusdam error laudantium provident, iste nam cumque porro suscipit repellat eligendi! Assumenda iure sed voluptatibus libero perferendis esse neque praesentium voluptatum ducimus at dolorum, voluptas numquam nihil sint quibusdam. Nam deserunt architecto, dicta eum aliquam neque dolores totam doloribus, impedit quis maxime eligendi fugiat illum possimus accusantium sit. Commodi cum harum natus nostrum dolorem laborum quasi. Architecto quod minus commodi expedita fugiat autem temporibus, ipsum dolore, voluptates sint molestiae in id cumque vel sed? At nulla autem ex architecto saepe ratione eaque rem dolores repellat? Ad sunt velit adipisci quae et vero magni voluptatum consequatur quos qui assumenda obcaecati excepturi eius suscipit harum, illo beatae, quisquam!",
+        "productPrice": 150,
+        "inStock": 10
+    },
+    {
+        "productCategory": "Shoes",
+        "productImageUrl": "/images/products/nike_blazer.png",
+        "productTitle": "Nike Blazer Shoes",
+        "productDescription": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae iure aperiam labore quibusdam error laudantium provident, iste nam cumque porro suscipit repellat eligendi! Assumenda iure sed voluptatibus libero perferendis esse neque praesentium voluptatum ducimus at dolorum, voluptas numquam nihil sint quibusdam. Nam deserunt architecto, dicta eum aliquam neque dolores totam doloribus, impedit quis maxime eligendi fugiat illum possimus accusantium sit. Commodi cum harum natus nostrum dolorem laborum quasi. Architecto quod minus commodi expedita fugiat autem temporibus, ipsum dolore, voluptates sint molestiae in id cumque vel sed? At nulla autem ex architecto saepe ratione eaque rem dolores repellat? Ad sunt velit adipisci quae et vero magni voluptatum consequatur quos qui assumenda obcaecati excepturi eius suscipit harum, illo beatae, quisquam!",
+        "productPrice": 110,
+        "inStock": 10
+    },
+    {
+        "productCategory": "Shoes",
+        "productImageUrl": "/images/products/tamaris_tavia.png",
+        "productTitle": "Tamaris Tavia Sneakers",
+        "productDescription": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae iure aperiam labore quibusdam error laudantium provident, iste nam cumque porro suscipit repellat eligendi! Assumenda iure sed voluptatibus libero perferendis esse neque praesentium voluptatum ducimus at dolorum, voluptas numquam nihil sint quibusdam. Nam deserunt architecto, dicta eum aliquam neque dolores totam doloribus, impedit quis maxime eligendi fugiat illum possimus accusantium sit. Commodi cum harum natus nostrum dolorem laborum quasi. Architecto quod minus commodi expedita fugiat autem temporibus, ipsum dolore, voluptates sint molestiae in id cumque vel sed? At nulla autem ex architecto saepe ratione eaque rem dolores repellat? Ad sunt velit adipisci quae et vero magni voluptatum consequatur quos qui assumenda obcaecati excepturi eius suscipit harum, illo beatae, quisquam!",
+        "productPrice": 90,
+        "inStock": 10
+    },
+    {
+        "productCategory": "Retro Football Jerseys",
+        "productImageUrl": "/images/products/delpiero.png",
+        "productTitle": "Alessandro Del Piero Retro Jersey",
+        "productDescription": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae iure aperiam labore quibusdam error laudantium provident, iste nam cumque porro suscipit repellat eligendi! Assumenda iure sed voluptatibus libero perferendis esse neque praesentium voluptatum ducimus at dolorum, voluptas numquam nihil sint quibusdam. Nam deserunt architecto, dicta eum aliquam neque dolores totam doloribus, impedit quis maxime eligendi fugiat illum possimus accusantium sit. Commodi cum harum natus nostrum dolorem laborum quasi. Architecto quod minus commodi expedita fugiat autem temporibus, ipsum dolore, voluptates sint molestiae in id cumque vel sed? At nulla autem ex architecto saepe ratione eaque rem dolores repellat? Ad sunt velit adipisci quae et vero magni voluptatum consequatur quos qui assumenda obcaecati excepturi eius suscipit harum, illo beatae, quisquam!",
+        "productPrice": 100,
+        "inStock": 10
+    },
+    {
+        "productCategory": "Retro Football Jerseys",
+        "productImageUrl": "/images/products/drogba.png",
+        "productTitle": "Didier Drogba Retro Jersey",
+        "productDescription": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae iure aperiam labore quibusdam error laudantium provident, iste nam cumque porro suscipit repellat eligendi! Assumenda iure sed voluptatibus libero perferendis esse neque praesentium voluptatum ducimus at dolorum, voluptas numquam nihil sint quibusdam. Nam deserunt architecto, dicta eum aliquam neque dolores totam doloribus, impedit quis maxime eligendi fugiat illum possimus accusantium sit. Commodi cum harum natus nostrum dolorem laborum quasi. Architecto quod minus commodi expedita fugiat autem temporibus, ipsum dolore, voluptates sint molestiae in id cumque vel sed? At nulla autem ex architecto saepe ratione eaque rem dolores repellat? Ad sunt velit adipisci quae et vero magni voluptatum consequatur quos qui assumenda obcaecati excepturi eius suscipit harum, illo beatae, quisquam!",
+        "productPrice": 100,
+        "inStock": 10
+    },
+    {
+        "productCategory": "Retro Football Jerseys",
+        "productImageUrl": "/images/products/gerrard.png",
+        "productTitle": "Steven Gerrard Retro Jersey",
+        "productDescription": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae iure aperiam labore quibusdam error laudantium provident, iste nam cumque porro suscipit repellat eligendi! Assumenda iure sed voluptatibus libero perferendis esse neque praesentium voluptatum ducimus at dolorum, voluptas numquam nihil sint quibusdam. Nam deserunt architecto, dicta eum aliquam neque dolores totam doloribus, impedit quis maxime eligendi fugiat illum possimus accusantium sit. Commodi cum harum natus nostrum dolorem laborum quasi. Architecto quod minus commodi expedita fugiat autem temporibus, ipsum dolore, voluptates sint molestiae in id cumque vel sed? At nulla autem ex architecto saepe ratione eaque rem dolores repellat? Ad sunt velit adipisci quae et vero magni voluptatum consequatur quos qui assumenda obcaecati excepturi eius suscipit harum, illo beatae, quisquam!",
+        "productPrice": 100,
+        "inStock": 10
+    },
+    {
+        "productCategory": "Retro Football Jerseys",
+        "productImageUrl": "/images/products/henry.png",
+        "productTitle": "Thierry Henry Retro Jersey",
+        "productDescription": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae iure aperiam labore quibusdam error laudantium provident, iste nam cumque porro suscipit repellat eligendi! Assumenda iure sed voluptatibus libero perferendis esse neque praesentium voluptatum ducimus at dolorum, voluptas numquam nihil sint quibusdam. Nam deserunt architecto, dicta eum aliquam neque dolores totam doloribus, impedit quis maxime eligendi fugiat illum possimus accusantium sit. Commodi cum harum natus nostrum dolorem laborum quasi. Architecto quod minus commodi expedita fugiat autem temporibus, ipsum dolore, voluptates sint molestiae in id cumque vel sed? At nulla autem ex architecto saepe ratione eaque rem dolores repellat? Ad sunt velit adipisci quae et vero magni voluptatum consequatur quos qui assumenda obcaecati excepturi eius suscipit harum, illo beatae, quisquam!",
+        "productPrice": 100,
+        "inStock": 10
+    },
+    {
+        "productCategory": "Retro Football Jerseys",
+        "productImageUrl": "/images/products/lampard.png",
+        "productTitle": "Frank Lampard Retro Jersey",
+        "productDescription": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae iure aperiam labore quibusdam error laudantium provident, iste nam cumque porro suscipit repellat eligendi! Assumenda iure sed voluptatibus libero perferendis esse neque praesentium voluptatum ducimus at dolorum, voluptas numquam nihil sint quibusdam. Nam deserunt architecto, dicta eum aliquam neque dolores totam doloribus, impedit quis maxime eligendi fugiat illum possimus accusantium sit. Commodi cum harum natus nostrum dolorem laborum quasi. Architecto quod minus commodi expedita fugiat autem temporibus, ipsum dolore, voluptates sint molestiae in id cumque vel sed? At nulla autem ex architecto saepe ratione eaque rem dolores repellat? Ad sunt velit adipisci quae et vero magni voluptatum consequatur quos qui assumenda obcaecati excepturi eius suscipit harum, illo beatae, quisquam!",
+        "productPrice": 100,
+        "inStock": 10
+    },
+    {
+        "productCategory": "Retro Football Jerseys",
+        "productImageUrl": "/images/products/ronaldinho.png",
+        "productTitle": "Ronaldinho Retro Jersey",
+        "productDescription": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae iure aperiam labore quibusdam error laudantium provident, iste nam cumque porro suscipit repellat eligendi! Assumenda iure sed voluptatibus libero perferendis esse neque praesentium voluptatum ducimus at dolorum, voluptas numquam nihil sint quibusdam. Nam deserunt architecto, dicta eum aliquam neque dolores totam doloribus, impedit quis maxime eligendi fugiat illum possimus accusantium sit. Commodi cum harum natus nostrum dolorem laborum quasi. Architecto quod minus commodi expedita fugiat autem temporibus, ipsum dolore, voluptates sint molestiae in id cumque vel sed? At nulla autem ex architecto saepe ratione eaque rem dolores repellat? Ad sunt velit adipisci quae et vero magni voluptatum consequatur quos qui assumenda obcaecati excepturi eius suscipit harum, illo beatae, quisquam!",
+        "productPrice": 100,
+        "inStock": 10
+    },
+    {
+        "productCategory": "Retro Football Jerseys",
+        "productImageUrl": "/images/products/scholes.png",
+        "productTitle": "Paul Scholes Retro Jersey",
+        "productDescription": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae iure aperiam labore quibusdam error laudantium provident, iste nam cumque porro suscipit repellat eligendi! Assumenda iure sed voluptatibus libero perferendis esse neque praesentium voluptatum ducimus at dolorum, voluptas numquam nihil sint quibusdam. Nam deserunt architecto, dicta eum aliquam neque dolores totam doloribus, impedit quis maxime eligendi fugiat illum possimus accusantium sit. Commodi cum harum natus nostrum dolorem laborum quasi. Architecto quod minus commodi expedita fugiat autem temporibus, ipsum dolore, voluptates sint molestiae in id cumque vel sed? At nulla autem ex architecto saepe ratione eaque rem dolores repellat? Ad sunt velit adipisci quae et vero magni voluptatum consequatur quos qui assumenda obcaecati excepturi eius suscipit harum, illo beatae, quisquam!",
+        "productPrice": 100,
+        "inStock": 10
+    },
+    {
+        "productCategory": "Retro Football Jerseys",
+        "productImageUrl": "/images/products/totti.png",
+        "productTitle": "Francesco Totti Retro Jersey",
+        "productDescription": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae iure aperiam labore quibusdam error laudantium provident, iste nam cumque porro suscipit repellat eligendi! Assumenda iure sed voluptatibus libero perferendis esse neque praesentium voluptatum ducimus at dolorum, voluptas numquam nihil sint quibusdam. Nam deserunt architecto, dicta eum aliquam neque dolores totam doloribus, impedit quis maxime eligendi fugiat illum possimus accusantium sit. Commodi cum harum natus nostrum dolorem laborum quasi. Architecto quod minus commodi expedita fugiat autem temporibus, ipsum dolore, voluptates sint molestiae in id cumque vel sed? At nulla autem ex architecto saepe ratione eaque rem dolores repellat? Ad sunt velit adipisci quae et vero magni voluptatum consequatur quos qui assumenda obcaecati excepturi eius suscipit harum, illo beatae, quisquam!",
+        "productPrice": 100,
+        "inStock": 10
+    },
+    {
+        "productCategory": "Smartphones",
+        "productImageUrl": "/images/products/huawei_P40.png",
+        "productTitle": "Huawei P40",
+        "productDescription": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae iure aperiam labore quibusdam error laudantium provident, iste nam cumque porro suscipit repellat eligendi! Assumenda iure sed voluptatibus libero perferendis esse neque praesentium voluptatum ducimus at dolorum, voluptas numquam nihil sint quibusdam. Nam deserunt architecto, dicta eum aliquam neque dolores totam doloribus, impedit quis maxime eligendi fugiat illum possimus accusantium sit. Commodi cum harum natus nostrum dolorem laborum quasi. Architecto quod minus commodi expedita fugiat autem temporibus, ipsum dolore, voluptates sint molestiae in id cumque vel sed? At nulla autem ex architecto saepe ratione eaque rem dolores repellat? Ad sunt velit adipisci quae et vero magni voluptatum consequatur quos qui assumenda obcaecati excepturi eius suscipit harum, illo beatae, quisquam!",
+        "productPrice": 250,
+        "inStock": 10
+    },
+    {
+        "productCategory": "Smartphones",
+        "productImageUrl": "/images/products/iphone_15.png",
+        "productTitle": "Apple iPhone 15",
+        "productDescription": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae iure aperiam labore quibusdam error laudantium provident, iste nam cumque porro suscipit repellat eligendi! Assumenda iure sed voluptatibus libero perferendis esse neque praesentium voluptatum ducimus at dolorum, voluptas numquam nihil sint quibusdam. Nam deserunt architecto, dicta eum aliquam neque dolores totam doloribus, impedit quis maxime eligendi fugiat illum possimus accusantium sit. Commodi cum harum natus nostrum dolorem laborum quasi. Architecto quod minus commodi expedita fugiat autem temporibus, ipsum dolore, voluptates sint molestiae in id cumque vel sed? At nulla autem ex architecto saepe ratione eaque rem dolores repellat? Ad sunt velit adipisci quae et vero magni voluptatum consequatur quos qui assumenda obcaecati excepturi eius suscipit harum, illo beatae, quisquam!",
+        "productPrice": 1100,
+        "inStock": 10
+    },
+    {
+        "productCategory": "Smartphones",
+        "productImageUrl": "/images/products/iphone_promax12.png",
+        "productTitle": "Apple iPhone 12 Pro Max",
+        "productDescription": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae iure aperiam labore quibusdam error laudantium provident, iste nam cumque porro suscipit repellat eligendi! Assumenda iure sed voluptatibus libero perferendis esse neque praesentium voluptatum ducimus at dolorum, voluptas numquam nihil sint quibusdam. Nam deserunt architecto, dicta eum aliquam neque dolores totam doloribus, impedit quis maxime eligendi fugiat illum possimus accusantium sit. Commodi cum harum natus nostrum dolorem laborum quasi. Architecto quod minus commodi expedita fugiat autem temporibus, ipsum dolore, voluptates sint molestiae in id cumque vel sed? At nulla autem ex architecto saepe ratione eaque rem dolores repellat? Ad sunt velit adipisci quae et vero magni voluptatum consequatur quos qui assumenda obcaecati excepturi eius suscipit harum, illo beatae, quisquam!",
+        "productPrice": 650,
+        "inStock": 10
+    },
+    {
+        "productCategory": "Smartphones",
+        "productImageUrl": "/images/products/lg_w41_pro.png",
+        "productTitle": "LG W41 Pro",
+        "productDescription": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae iure aperiam labore quibusdam error laudantium provident, iste nam cumque porro suscipit repellat eligendi! Assumenda iure sed voluptatibus libero perferendis esse neque praesentium voluptatum ducimus at dolorum, voluptas numquam nihil sint quibusdam. Nam deserunt architecto, dicta eum aliquam neque dolores totam doloribus, impedit quis maxime eligendi fugiat illum possimus accusantium sit. Commodi cum harum natus nostrum dolorem laborum quasi. Architecto quod minus commodi expedita fugiat autem temporibus, ipsum dolore, voluptates sint molestiae in id cumque vel sed? At nulla autem ex architecto saepe ratione eaque rem dolores repellat? Ad sunt velit adipisci quae et vero magni voluptatum consequatur quos qui assumenda obcaecati excepturi eius suscipit harum, illo beatae, quisquam!",
+        "productPrice": 170,
+        "inStock": 10
+    },
+    {
+        "productCategory": "Smartphones",
+        "productImageUrl": "/images/products/realme_C51.png",
+        "productTitle": "Realme C51",
+        "productDescription": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae iure aperiam labore quibusdam error laudantium provident, iste nam cumque porro suscipit repellat eligendi! Assumenda iure sed voluptatibus libero perferendis esse neque praesentium voluptatum ducimus at dolorum, voluptas numquam nihil sint quibusdam. Nam deserunt architecto, dicta eum aliquam neque dolores totam doloribus, impedit quis maxime eligendi fugiat illum possimus accusantium sit. Commodi cum harum natus nostrum dolorem laborum quasi. Architecto quod minus commodi expedita fugiat autem temporibus, ipsum dolore, voluptates sint molestiae in id cumque vel sed? At nulla autem ex architecto saepe ratione eaque rem dolores repellat? Ad sunt velit adipisci quae et vero magni voluptatum consequatur quos qui assumenda obcaecati excepturi eius suscipit harum, illo beatae, quisquam!",
+        "productPrice": 120,
+        "inStock": 10
+    },
+    {
+        "productCategory": "Smartphones",
+        "productImageUrl": "/images/products/samsung_galaxy_s21.png",
+        "productTitle": "Samsung Galaxy S21",
+        "productDescription": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae iure aperiam labore quibusdam error laudantium provident, iste nam cumque porro suscipit repellat eligendi! Assumenda iure sed voluptatibus libero perferendis esse neque praesentium voluptatum ducimus at dolorum, voluptas numquam nihil sint quibusdam. Nam deserunt architecto, dicta eum aliquam neque dolores totam doloribus, impedit quis maxime eligendi fugiat illum possimus accusantium sit. Commodi cum harum natus nostrum dolorem laborum quasi. Architecto quod minus commodi expedita fugiat autem temporibus, ipsum dolore, voluptates sint molestiae in id cumque vel sed? At nulla autem ex architecto saepe ratione eaque rem dolores repellat? Ad sunt velit adipisci quae et vero magni voluptatum consequatur quos qui assumenda obcaecati excepturi eius suscipit harum, illo beatae, quisquam!",
+        "productPrice": 450,
+        "inStock": 10
+    },
+    {
+        "productCategory": "Smartphones",
+        "productImageUrl": "/images/products/samsung_galaxy_s23.png",
+        "productTitle": "Samsung Galaxy S23",
+        "productDescription": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae iure aperiam labore quibusdam error laudantium provident, iste nam cumque porro suscipit repellat eligendi! Assumenda iure sed voluptatibus libero perferendis esse neque praesentium voluptatum ducimus at dolorum, voluptas numquam nihil sint quibusdam. Nam deserunt architecto, dicta eum aliquam neque dolores totam doloribus, impedit quis maxime eligendi fugiat illum possimus accusantium sit. Commodi cum harum natus nostrum dolorem laborum quasi. Architecto quod minus commodi expedita fugiat autem temporibus, ipsum dolore, voluptates sint molestiae in id cumque vel sed? At nulla autem ex architecto saepe ratione eaque rem dolores repellat? Ad sunt velit adipisci quae et vero magni voluptatum consequatur quos qui assumenda obcaecati excepturi eius suscipit harum, illo beatae, quisquam!",
+        "productPrice": 550,
+        "inStock": 10
+    },
+    {
+        "productCategory": "Smartphones",
+        "productImageUrl": "/images/products/xiaomi_Mi_11i.png",
+        "productTitle": "Xiaomi Mi 11i",
+        "productDescription": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae iure aperiam labore quibusdam error laudantium provident, iste nam cumque porro suscipit repellat eligendi! Assumenda iure sed voluptatibus libero perferendis esse neque praesentium voluptatum ducimus at dolorum, voluptas numquam nihil sint quibusdam. Nam deserunt architecto, dicta eum aliquam neque dolores totam doloribus, impedit quis maxime eligendi fugiat illum possimus accusantium sit. Commodi cum harum natus nostrum dolorem laborum quasi. Architecto quod minus commodi expedita fugiat autem temporibus, ipsum dolore, voluptates sint molestiae in id cumque vel sed? At nulla autem ex architecto saepe ratione eaque rem dolores repellat? Ad sunt velit adipisci quae et vero magni voluptatum consequatur quos qui assumenda obcaecati excepturi eius suscipit harum, illo beatae, quisquam!",
+        "productPrice": 500,
+        "inStock": 10
+    },
+    {
+        "productCategory": "Laptops",
+        "productImageUrl": "/images/products/asus_vivobook.png",
+        "productTitle": "ASUS Vivobook Pro 14 OLED",
+        "productDescription": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae iure aperiam labore quibusdam error laudantium provident, iste nam cumque porro suscipit repellat eligendi! Assumenda iure sed voluptatibus libero perferendis esse neque praesentium voluptatum ducimus at dolorum, voluptas numquam nihil sint quibusdam. Nam deserunt architecto, dicta eum aliquam neque dolores totam doloribus, impedit quis maxime eligendi fugiat illum possimus accusantium sit. Commodi cum harum natus nostrum dolorem laborum quasi. Architecto quod minus commodi expedita fugiat autem temporibus, ipsum dolore, voluptates sint molestiae in id cumque vel sed? At nulla autem ex architecto saepe ratione eaque rem dolores repellat? Ad sunt velit adipisci quae et vero magni voluptatum consequatur quos qui assumenda obcaecati excepturi eius suscipit harum, illo beatae, quisquam!",
+        "productPrice": 1200,
+        "inStock": 10
+    },
+    {
+        "productCategory": "Laptops",
+        "productImageUrl": "/images/products/asus_zenbook.png",
+        "productTitle": "ASUS Zenbook Pro 14 OLED",
+        "productDescription": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae iure aperiam labore quibusdam error laudantium provident, iste nam cumque porro suscipit repellat eligendi! Assumenda iure sed voluptatibus libero perferendis esse neque praesentium voluptatum ducimus at dolorum, voluptas numquam nihil sint quibusdam. Nam deserunt architecto, dicta eum aliquam neque dolores totam doloribus, impedit quis maxime eligendi fugiat illum possimus accusantium sit. Commodi cum harum natus nostrum dolorem laborum quasi. Architecto quod minus commodi expedita fugiat autem temporibus, ipsum dolore, voluptates sint molestiae in id cumque vel sed? At nulla autem ex architecto saepe ratione eaque rem dolores repellat? Ad sunt velit adipisci quae et vero magni voluptatum consequatur quos qui assumenda obcaecati excepturi eius suscipit harum, illo beatae, quisquam!",
+        "productPrice": 2100,
+        "inStock": 10
+    },
+    {
+        "productCategory": "Laptops",
+        "productImageUrl": "/images/products/hp_omen.png",
+        "productTitle": "HP OMEN 16 Gaming Laptop",
+        "productDescription": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae iure aperiam labore quibusdam error laudantium provident, iste nam cumque porro suscipit repellat eligendi! Assumenda iure sed voluptatibus libero perferendis esse neque praesentium voluptatum ducimus at dolorum, voluptas numquam nihil sint quibusdam. Nam deserunt architecto, dicta eum aliquam neque dolores totam doloribus, impedit quis maxime eligendi fugiat illum possimus accusantium sit. Commodi cum harum natus nostrum dolorem laborum quasi. Architecto quod minus commodi expedita fugiat autem temporibus, ipsum dolore, voluptates sint molestiae in id cumque vel sed? At nulla autem ex architecto saepe ratione eaque rem dolores repellat? Ad sunt velit adipisci quae et vero magni voluptatum consequatur quos qui assumenda obcaecati excepturi eius suscipit harum, illo beatae, quisquam!",
+        "productPrice": 1400,
+        "inStock": 10
+    },
+    {
+        "productCategory": "Laptops",
+        "productImageUrl": "/images/products/hp_spectre.png",
+        "productTitle": "HP Spectre x360",
+        "productDescription": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae iure aperiam labore quibusdam error laudantium provident, iste nam cumque porro suscipit repellat eligendi! Assumenda iure sed voluptatibus libero perferendis esse neque praesentium voluptatum ducimus at dolorum, voluptas numquam nihil sint quibusdam. Nam deserunt architecto, dicta eum aliquam neque dolores totam doloribus, impedit quis maxime eligendi fugiat illum possimus accusantium sit. Commodi cum harum natus nostrum dolorem laborum quasi. Architecto quod minus commodi expedita fugiat autem temporibus, ipsum dolore, voluptates sint molestiae in id cumque vel sed? At nulla autem ex architecto saepe ratione eaque rem dolores repellat? Ad sunt velit adipisci quae et vero magni voluptatum consequatur quos qui assumenda obcaecati excepturi eius suscipit harum, illo beatae, quisquam!",
+        "productPrice": 2200,
+        "inStock": 10
+    },
+    {
+        "productCategory": "Laptops",
+        "productImageUrl": "/images/products/lenovo_legion.png",
+        "productTitle": "Lenovo Legion Pro 7i Gaming Laptop",
+        "productDescription": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae iure aperiam labore quibusdam error laudantium provident, iste nam cumque porro suscipit repellat eligendi! Assumenda iure sed voluptatibus libero perferendis esse neque praesentium voluptatum ducimus at dolorum, voluptas numquam nihil sint quibusdam. Nam deserunt architecto, dicta eum aliquam neque dolores totam doloribus, impedit quis maxime eligendi fugiat illum possimus accusantium sit. Commodi cum harum natus nostrum dolorem laborum quasi. Architecto quod minus commodi expedita fugiat autem temporibus, ipsum dolore, voluptates sint molestiae in id cumque vel sed? At nulla autem ex architecto saepe ratione eaque rem dolores repellat? Ad sunt velit adipisci quae et vero magni voluptatum consequatur quos qui assumenda obcaecati excepturi eius suscipit harum, illo beatae, quisquam!",
+        "productPrice": 2500,
+        "inStock": 10
+    },
+    {
+        "productCategory": "Laptops",
+        "productImageUrl": "/images/products/lenovo_thinkpad.png",
+        "productTitle": "Lenovo ThinkPad E16 Business Laptop",
+        "productDescription": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae iure aperiam labore quibusdam error laudantium provident, iste nam cumque porro suscipit repellat eligendi! Assumenda iure sed voluptatibus libero perferendis esse neque praesentium voluptatum ducimus at dolorum, voluptas numquam nihil sint quibusdam. Nam deserunt architecto, dicta eum aliquam neque dolores totam doloribus, impedit quis maxime eligendi fugiat illum possimus accusantium sit. Commodi cum harum natus nostrum dolorem laborum quasi. Architecto quod minus commodi expedita fugiat autem temporibus, ipsum dolore, voluptates sint molestiae in id cumque vel sed? At nulla autem ex architecto saepe ratione eaque rem dolores repellat? Ad sunt velit adipisci quae et vero magni voluptatum consequatur quos qui assumenda obcaecati excepturi eius suscipit harum, illo beatae, quisquam!",
+        "productPrice": 950,
+        "inStock": 10
+    },
+    {
+        "productCategory": "Laptops",
+        "productImageUrl": "/images/products/mb_air.png",
+        "productTitle": "Apple Macbook Air M3",
+        "productDescription": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae iure aperiam labore quibusdam error laudantium provident, iste nam cumque porro suscipit repellat eligendi! Assumenda iure sed voluptatibus libero perferendis esse neque praesentium voluptatum ducimus at dolorum, voluptas numquam nihil sint quibusdam. Nam deserunt architecto, dicta eum aliquam neque dolores totam doloribus, impedit quis maxime eligendi fugiat illum possimus accusantium sit. Commodi cum harum natus nostrum dolorem laborum quasi. Architecto quod minus commodi expedita fugiat autem temporibus, ipsum dolore, voluptates sint molestiae in id cumque vel sed? At nulla autem ex architecto saepe ratione eaque rem dolores repellat? Ad sunt velit adipisci quae et vero magni voluptatum consequatur quos qui assumenda obcaecati excepturi eius suscipit harum, illo beatae, quisquam!",
+        "productPrice": 1300,
+        "inStock": 10
+    },
+    {
+        "productCategory": "Laptops",
+        "productImageUrl": "/images/products/mb_pro.png",
+        "productTitle": "Apple Macbook Pro M3",
+        "productDescription": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae iure aperiam labore quibusdam error laudantium provident, iste nam cumque porro suscipit repellat eligendi! Assumenda iure sed voluptatibus libero perferendis esse neque praesentium voluptatum ducimus at dolorum, voluptas numquam nihil sint quibusdam. Nam deserunt architecto, dicta eum aliquam neque dolores totam doloribus, impedit quis maxime eligendi fugiat illum possimus accusantium sit. Commodi cum harum natus nostrum dolorem laborum quasi. Architecto quod minus commodi expedita fugiat autem temporibus, ipsum dolore, voluptates sint molestiae in id cumque vel sed? At nulla autem ex architecto saepe ratione eaque rem dolores repellat? Ad sunt velit adipisci quae et vero magni voluptatum consequatur quos qui assumenda obcaecati excepturi eius suscipit harum, illo beatae, quisquam!",
+        "productPrice": 1800,
+        "inStock": 10
+    }
+]

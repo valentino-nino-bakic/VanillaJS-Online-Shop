@@ -10,12 +10,11 @@ const initialMongoDB_Products = require('./initialMongoDB_Products.json');
 const init = async () => {
     try {
         await mongoose.connect(DB_CONNECTION_STRING);
-        importInitialProductsToMongoDB();
+        await importInitialProductsToMongoDB();
     } catch (error) {
         console.log(error);
     }
 }
-init();
 
 
 
@@ -40,3 +39,6 @@ const importInitialProductsToMongoDB = async () => {
         mongoose.connection.close();
     }
 }
+
+
+init();
